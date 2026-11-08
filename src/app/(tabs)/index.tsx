@@ -8,11 +8,14 @@ import { BrandHeader } from '@/components/BrandHeader';
 import { PrimaryButton } from '@/components/PrimaryButton';
 import { ProductCard } from '@/components/ProductCard';
 import { SectionHeader } from '@/components/SectionHeader';
-import { categories, products } from '@/data/products';
+import { categories, getFeaturedProducts, products } from '@/data/products';
 import { colors } from '@/theme/colors';
 import { radii, spacing } from '@/theme/spacing';
 
-const mukhiChips = products.filter((p) => p.category === 'rudraksha').slice(0, 6);
+const mukhiChips = products
+  .filter((p) => p.categoryId === 'nepali-rudraksha' && p.mukhi != null)
+  .slice(0, 6);
+const popular = getFeaturedProducts().slice(0, 4);
 
 export default function HomeScreen() {
   return (
@@ -79,7 +82,7 @@ export default function HomeScreen() {
 
         <SectionHeader title="Popular Products" onAction={() => router.push('/(tabs)/search')} />
         <View style={styles.productGrid}>
-          {products.slice(0, 4).map((product) => (
+          {(popular.length ? popular : products.slice(0, 4)).map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </View>

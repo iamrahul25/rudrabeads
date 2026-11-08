@@ -17,8 +17,8 @@ type CartLine = {
 
 export default function CartScreen() {
   const [lines, setLines] = useState<CartLine[]>([
-    { id: '2', qty: 1 },
-    { id: '7', qty: 1 },
+    { id: products[0]?.id ?? '5-mukhi-nepali-rudraksha', qty: 1 },
+    { id: products[1]?.id ?? '7-mukhi-nepali-rudraksha', qty: 1 },
   ]);
 
   const items = lines
@@ -28,7 +28,7 @@ export default function CartScreen() {
     })
     .filter(Boolean) as Array<(typeof products)[number] & { qty: number }>;
 
-  const itemTotal = items.reduce((sum, item) => sum + item.price * item.qty, 0);
+  const itemTotal = items.reduce((sum, item) => sum + (item.price ?? 0) * item.qty, 0);
   const discount = 300;
   const delivery = 0;
   const payable = itemTotal - discount + delivery;

@@ -58,21 +58,25 @@ export default function ProductDetailScreen() {
         <View style={styles.body}>
           <Text style={styles.name}>{product.name}</Text>
           <View style={styles.ratingRow}>
-            <Ionicons name="star" size={14} color={colors.star} />
             <Text style={styles.rating}>
-              {product.rating} · {product.reviews} reviews
+              {product.category}
+              {product.mukhi != null ? ` · ${product.mukhi} Mukhi` : ''}
+              {product.origin ? ` · ${product.origin}` : ''}
             </Text>
           </View>
 
           <View style={styles.priceRow}>
             <Text style={styles.price}>{formatINR(product.price)}</Text>
-            <Text style={styles.original}>{formatINR(product.originalPrice)}</Text>
-            <View style={styles.discount}>
-              <Text style={styles.discountText}>
-                {Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}
-                % OFF
-              </Text>
-            </View>
+            {product.price != null && product.priceUnit ? (
+              <Text style={styles.original}>/ {product.priceUnit}</Text>
+            ) : null}
+            {product.minOrderQty != null ? (
+              <View style={styles.discount}>
+                <Text style={styles.discountText}>
+                  MOQ {product.minOrderQty} {product.minOrderUnit || ''}
+                </Text>
+              </View>
+            ) : null}
           </View>
 
           <View style={styles.trustRow}>
@@ -86,13 +90,29 @@ export default function ProductDetailScreen() {
             ))}
           </View>
 
-          <Text style={styles.sectionTitle}>Benefits</Text>
-          {product.benefits.map((benefit) => (
-            <View key={benefit} style={styles.benefitRow}>
-              <Ionicons name="checkmark-circle" size={16} color={colors.success} />
-              <Text style={styles.benefitText}>{benefit}</Text>
-            </View>
-          ))}
+          {product.benefits.length ? (
+            <>
+              <Text style={styles.sectionTitle}>Highlights</Text>
+              {product.benefits.map((benefit) => (
+                <View key={benefit} style={styles.benefitRow}>
+                  <Ionicons name="checkmark-circle" size={16} color={colors.success} />
+                  <Text style={styles.benefitText}>{benefit}</Text>
+                </View>
+              ))}
+            </>
+          ) : null}
+
+          {Object.keys(product.specs).length ? (
+            <>
+              <Text style={styles.sectionTitle}>Specifications</Text>
+              {Object.entries(product.specs).map(([key, value]) => (
+                <View key={key} style={styles.benefitRow}>
+                  <Text style={styles.specKey}>{key}</Text>
+                  <Text style={styles.benefitText}>{value}</Text>
+                </View>
+              ))}
+            </>
+          ) : null}
 
           <Text style={styles.sectionTitle}>Details</Text>
           <Text style={styles.description}>{product.description}</Text>
@@ -191,7 +211,12 @@ const styles = StyleSheet.create({
     fontFamily: 'DMSans_400Regular',
     fontSize: 14,
     color: colors.textMuted,
-    textDecorationLine: 'line-through',
+  },
+  specKey: {
+    width: 120,
+    fontFamily: 'DMSans_600SemiBold',
+    fontSize: 13,
+    color: colors.text,
   },
   discount: {
     backgroundColor: colors.primaryMuted,

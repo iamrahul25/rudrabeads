@@ -33,7 +33,11 @@ export function ProductCard({ product, width = '48%' }: Props) {
       <View style={styles.priceRow}>
         <View>
           <Text style={styles.price}>{formatINR(product.price)}</Text>
-          <Text style={styles.original}>{formatINR(product.originalPrice)}</Text>
+          {product.originalPrice != null ? (
+            <Text style={styles.original}>{formatINR(product.originalPrice)}</Text>
+          ) : product.priceUnit ? (
+            <Text style={styles.unit}>/{product.priceUnit}</Text>
+          ) : null}
         </View>
         <Pressable
           style={styles.addBtn}
@@ -102,6 +106,12 @@ const styles = StyleSheet.create({
     fontSize: 11,
     color: colors.textMuted,
     textDecorationLine: 'line-through',
+  },
+  unit: {
+    marginTop: 2,
+    fontFamily: 'DMSans_400Regular',
+    fontSize: 11,
+    color: colors.textMuted,
   },
   addBtn: {
     width: 32,

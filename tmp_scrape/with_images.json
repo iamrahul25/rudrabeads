@@ -1,0 +1,1815 @@
+{
+  "categories": [
+    {
+      "id": "nepali-rudraksha",
+      "name": "Nepali Rudraksha",
+      "slug": "nepali-rudraksha",
+      "intro": "Pioneers in the industry, we offer 8 mukhi, 5 mukhi, 7 mukhi, 6 mukhi, 4 mukhi and 10 mukhi nepali rudraksha from India.",
+      "productCount": 17,
+      "image": "assets/products/catalog/5-mukhi-nepali-rudraksha-0.jpg"
+    },
+    {
+      "id": "rudraksha-beads",
+      "name": "Rudraksha Beads",
+      "slug": "rudraksha-beads",
+      "intro": "",
+      "productCount": 8,
+      "image": "assets/products/catalog/7-mukhi-rudraksha-0.jpg"
+    },
+    {
+      "id": "indonesian-rudraksha",
+      "name": "Indonesian Rudraksha",
+      "slug": "indonesian-rudraksha",
+      "intro": "",
+      "productCount": 7,
+      "image": "assets/products/catalog/6-mukhi-indonesian-rudraksha-0.jpg"
+    },
+    {
+      "id": "rudraksha-mala",
+      "name": "Rudraksha Mala",
+      "slug": "rudraksha-mala",
+      "intro": "",
+      "productCount": 5,
+      "image": "assets/products/catalog/5-mukhi-nepali-ganesh-rudraksha-mala-0.jpg"
+    },
+    {
+      "id": "karungali-mala",
+      "name": "Karungali Mala",
+      "slug": "karungali-mala",
+      "intro": "",
+      "productCount": 4,
+      "image": "assets/products/catalog/6mm-copper-karungali-mala-0.jpg"
+    },
+    {
+      "id": "karungali-bracelet",
+      "name": "Karungali Bracelet",
+      "slug": "karungali-bracelet",
+      "intro": "",
+      "productCount": 3,
+      "image": "assets/products/catalog/black-ebony-karungali-bracelet-0.jpg"
+    },
+    {
+      "id": "rudraksha-fruit",
+      "name": "Rudraksha Fruit",
+      "slug": "rudraksha-fruit",
+      "intro": "",
+      "productCount": 2,
+      "image": "assets/products/catalog/2-mukhi-rudraksha-fruit-0.jpg"
+    },
+    {
+      "id": "rudraksha-bracelet",
+      "name": "Rudraksha Bracelet",
+      "slug": "rudraksha-bracelet",
+      "intro": "",
+      "productCount": 1,
+      "image": "assets/products/catalog/8mm-rudraksha-bracelet-0.jpg"
+    },
+    {
+      "id": "gauri-shankar-rudraksha",
+      "name": "Gauri Shankar Rudraksha",
+      "slug": "gauri-shankar-rudraksha",
+      "intro": "",
+      "productCount": 1,
+      "image": "assets/products/catalog/gauri-shankar-rudraksha-0.jpg"
+    },
+    {
+      "id": "natural-hessonite-gomed-gemstone",
+      "name": "Natural Hessonite Gomed Gemstone",
+      "slug": "natural-hessonite-gomed-gemstone",
+      "intro": "",
+      "productCount": 1,
+      "image": "assets/products/catalog/5-01-carats-natural-hessonite-gomed-gemstone-0.jpg"
+    },
+    {
+      "id": "new-items",
+      "name": "New Items",
+      "slug": "new-items",
+      "intro": "",
+      "productCount": 3,
+      "image": "assets/products/catalog/divine-spiritual-pendants-0.jpg"
+    }
+  ],
+  "products": [
+    {
+      "name": "5 Mukhi Nepali Rudraksha",
+      "categoryId": "nepali-rudraksha",
+      "category": "Nepali Rudraksha",
+      "price": 50,
+      "priceUnit": "Piece",
+      "minOrderQty": null,
+      "minOrderUnit": null,
+      "mukhi": 5,
+      "specs": {
+        "Bead Size": "9 mm",
+        "Certification": "Lab Certified",
+        "Treatment": "Dyed",
+        "Lab Name": "IGL",
+        "Shape": "Round",
+        "Fitting Type": "Loose Bead",
+        "Ruling Deity": "Kalagni Rudra",
+        "Ruling Planet": "Jupiter"
+      },
+      "description": "We are engaged in offering 5 Mukhi Nepali Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636459839/AS/RC/JE/254740027/5-mukhi-nepali-rudraksha-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636459812/KE/LT/YT/254740027/5-mukhi-nepali-rudraksha-1000x1000.jpg"
+      ],
+      "order": 1,
+      "imageSource": "seller",
+      "id": "5-mukhi-nepali-rudraksha",
+      "images": [
+        "assets/products/catalog/5-mukhi-nepali-rudraksha-0.jpg",
+        "assets/products/catalog/5-mukhi-nepali-rudraksha-1.jpg"
+      ],
+      "image": "assets/products/catalog/5-mukhi-nepali-rudraksha-0.jpg"
+    },
+    {
+      "name": "7 Mukhi Nepali Rudraksha",
+      "categoryId": "nepali-rudraksha",
+      "category": "Nepali Rudraksha",
+      "price": 150,
+      "priceUnit": "Piece",
+      "minOrderQty": null,
+      "minOrderUnit": null,
+      "mukhi": 7,
+      "specs": {
+        "Bead Size": "12 mm",
+        "Certification": "Lab Certified",
+        "Usage": "Bracelet, Pendant",
+        "Shape": "Round",
+        "Fitting Type": "Loose Bead",
+        "Ruling Deity": "Mahalakshmi",
+        "Ruling Planet": "Saturn"
+      },
+      "description": "We are engaged in offering 7 Mukhi Nepali Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636491391/OR/UJ/ZP/254740027/7-mukhi-nepali-rudraksha-1000x1000.jpg"
+      ],
+      "order": 2,
+      "imageSource": "seller",
+      "id": "7-mukhi-nepali-rudraksha",
+      "images": [
+        "assets/products/catalog/7-mukhi-nepali-rudraksha-0.jpg"
+      ],
+      "image": "assets/products/catalog/7-mukhi-nepali-rudraksha-0.jpg"
+    },
+    {
+      "name": "6 Mukhi Nepali Rudraksha",
+      "categoryId": "nepali-rudraksha",
+      "category": "Nepali Rudraksha",
+      "price": 50,
+      "priceUnit": "Piece",
+      "minOrderQty": null,
+      "minOrderUnit": null,
+      "mukhi": 6,
+      "specs": {
+        "Bead Size": "7 mm",
+        "Certification": "Lab Certified",
+        "Treatment": "Dyed",
+        "Usage": "Bracelet",
+        "Shape": "Round",
+        "Fitting Type": "Loose Bead",
+        "Ruling Deity": "Kartikeya",
+        "Ruling Planet": "Venus"
+      },
+      "description": "We are engaged in offering 6 Mukhi Nepali Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636497375/FZ/HF/TK/254740027/6-mukhi-nepali-rudraksha-1000x1000.jpg"
+      ],
+      "order": 3,
+      "imageSource": "seller",
+      "id": "6-mukhi-nepali-rudraksha",
+      "images": [
+        "assets/products/catalog/6-mukhi-nepali-rudraksha-0.jpg"
+      ],
+      "image": "assets/products/catalog/6-mukhi-nepali-rudraksha-0.jpg"
+    },
+    {
+      "name": "10 Mukhi Nepali Rudraksha",
+      "categoryId": "nepali-rudraksha",
+      "category": "Nepali Rudraksha",
+      "price": 2000,
+      "priceUnit": "Piece",
+      "minOrderQty": null,
+      "minOrderUnit": null,
+      "mukhi": 10,
+      "specs": {
+        "Bead Size": "13 mm",
+        "Certification": "Lab Certified",
+        "Usage": "Pendant",
+        "Shape": "Round",
+        "Fitting Type": "Loose Bead",
+        "Ruling Deity": "Vishnu",
+        "Ruling Planet": "All Planets"
+      },
+      "description": "We are engaged in offering 10 Mukhi Nepali Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636474355/DS/RD/XK/254740027/images-1-jfif-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636474416/AM/NK/MH/254740027/images-jfif-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636474472/WX/LB/XS/254740027/images-2-jfif-1000x1000.jpg"
+      ],
+      "order": 4,
+      "imageSource": "seller",
+      "id": "10-mukhi-nepali-rudraksha",
+      "images": [
+        "assets/products/catalog/10-mukhi-nepali-rudraksha-0.jpg",
+        "assets/products/catalog/10-mukhi-nepali-rudraksha-1.jpg",
+        "assets/products/catalog/10-mukhi-nepali-rudraksha-2.jpg"
+      ],
+      "image": "assets/products/catalog/10-mukhi-nepali-rudraksha-0.jpg"
+    },
+    {
+      "name": "11 Mukhi Nepali Rudraksha",
+      "categoryId": "nepali-rudraksha",
+      "category": "Nepali Rudraksha",
+      "price": 2000,
+      "priceUnit": "Piece",
+      "minOrderQty": null,
+      "minOrderUnit": null,
+      "mukhi": 11,
+      "specs": {
+        "Bead Size": "16 mm",
+        "Certification": "Lab Certified",
+        "Usage": "Pendant",
+        "Shape": "Round",
+        "Fitting Type": "Loose Bead",
+        "Ruling Deity": "Hanuman",
+        "Ruling Planet": "Mars"
+      },
+      "description": "We are engaged in offering 11 Mukhi Nepali Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636488294/DG/WN/NV/254740027/whatsapp-image-2023-09-01-at-12-49-12-pm-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636488319/JC/HE/WH/254740027/whatsapp-image-2023-09-01-at-12-49-12-pm-1-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636488357/MR/ZF/ZH/254740027/whatsapp-image-2023-09-01-at-12-49-11-pm-1000x1000.jpg"
+      ],
+      "order": 5,
+      "imageSource": "seller",
+      "id": "11-mukhi-nepali-rudraksha",
+      "images": [
+        "assets/products/catalog/11-mukhi-nepali-rudraksha-0.jpg",
+        "assets/products/catalog/11-mukhi-nepali-rudraksha-1.jpg",
+        "assets/products/catalog/11-mukhi-nepali-rudraksha-2.jpg"
+      ],
+      "image": "assets/products/catalog/11-mukhi-nepali-rudraksha-0.jpg"
+    },
+    {
+      "name": "14 Mukhi Nepali Rudraksha",
+      "categoryId": "nepali-rudraksha",
+      "category": "Nepali Rudraksha",
+      "price": 25000,
+      "priceUnit": "Piece",
+      "minOrderQty": null,
+      "minOrderUnit": null,
+      "mukhi": 14,
+      "specs": {
+        "Certification": "Lab Certified",
+        "Treatment": "Dyed",
+        "Usage": "Pendant, Puja",
+        "Shape": "Round",
+        "Fitting Type": "Loose Bead",
+        "Ruling Deity": "Hanuman",
+        "Ruling Planet": "Mars"
+      },
+      "description": "We are engaged in offering 14 Mukhi Nepali Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636489008/UD/VE/EU/254740027/61rviecz3jl-sx569-1-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636489049/KA/QE/YE/254740027/61fr-hgde-l-sx569-1-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636489110/SH/CZ/FT/254740027/51xfjhgmkzl-sx569-1-1000x1000.jpg"
+      ],
+      "order": 6,
+      "imageSource": "seller",
+      "id": "14-mukhi-nepali-rudraksha",
+      "images": [
+        "assets/products/catalog/14-mukhi-nepali-rudraksha-0.jpg",
+        "assets/products/catalog/14-mukhi-nepali-rudraksha-1.jpg",
+        "assets/products/catalog/14-mukhi-nepali-rudraksha-2.jpg"
+      ],
+      "image": "assets/products/catalog/14-mukhi-nepali-rudraksha-0.jpg"
+    },
+    {
+      "name": "15 Mukhi Nepali Rudraksha",
+      "categoryId": "nepali-rudraksha",
+      "category": "Nepali Rudraksha",
+      "price": 75000,
+      "priceUnit": "Piece",
+      "minOrderQty": null,
+      "minOrderUnit": null,
+      "mukhi": 15,
+      "specs": {
+        "Bead Size": "20 mm",
+        "Certification": "Lab Certified",
+        "Treatment": "Dyed",
+        "Usage": "Pendant",
+        "Shape": "Round",
+        "Fitting Type": "Loose Bead",
+        "Ruling Deity": "Pashupatinath",
+        "Ruling Planet": "Mercury"
+      },
+      "description": "We are engaged in offering 15 Mukhi Nepali Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636490027/NL/LP/XA/254740027/15-mukhi-nepali-rudraksha-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636490222/AR/PI/AI/254740027/15-mukhi-nepali-rudraksha-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636490372/OP/MR/GA/254740027/15-mukhi-nepali-rudraksha-1000x1000.jpg"
+      ],
+      "order": 7,
+      "imageSource": "seller",
+      "id": "15-mukhi-nepali-rudraksha",
+      "images": [
+        "assets/products/catalog/15-mukhi-nepali-rudraksha-0.jpg",
+        "assets/products/catalog/15-mukhi-nepali-rudraksha-1.jpg",
+        "assets/products/catalog/15-mukhi-nepali-rudraksha-2.jpg"
+      ],
+      "image": "assets/products/catalog/15-mukhi-nepali-rudraksha-0.jpg"
+    },
+    {
+      "name": "13 Mukhi Nepali Rudraksha",
+      "categoryId": "nepali-rudraksha",
+      "category": "Nepali Rudraksha",
+      "price": 3500,
+      "priceUnit": "Piece",
+      "minOrderQty": null,
+      "minOrderUnit": null,
+      "mukhi": 13,
+      "specs": {
+        "Bead Size": "18 mm",
+        "Certification": "Lab Certified",
+        "Treatment": "Dyed",
+        "Usage": "Pendant, Puja",
+        "Lab Name": "In House Lab",
+        "Shape": "Round",
+        "Fitting Type": "Loose Bead",
+        "Ruling Deity": "Kaamdev",
+        "Ruling Planet": "Venus"
+      },
+      "description": "We are engaged in offering 13 Mukhi Nepali Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636454924/YD/WP/TJ/254740027/13-mukhi-nepali-rudraksha-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636454982/ZE/LU/QV/254740027/13-mukhi-nepali-rudraksha-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636455070/XE/NJ/ON/254740027/13-mukhi-indonesian-rudraksha-1000x1000.jpg"
+      ],
+      "order": 8,
+      "imageSource": "seller",
+      "id": "13-mukhi-nepali-rudraksha",
+      "images": [
+        "assets/products/catalog/13-mukhi-nepali-rudraksha-0.jpg",
+        "assets/products/catalog/13-mukhi-nepali-rudraksha-1.jpg",
+        "assets/products/catalog/13-mukhi-nepali-rudraksha-2.jpg"
+      ],
+      "image": "assets/products/catalog/13-mukhi-nepali-rudraksha-0.jpg"
+    },
+    {
+      "name": "3 Mukhi Nepali Rudraksha",
+      "categoryId": "nepali-rudraksha",
+      "category": "Nepali Rudraksha",
+      "price": 150,
+      "priceUnit": "Piece",
+      "minOrderQty": null,
+      "minOrderUnit": null,
+      "mukhi": 3,
+      "specs": {
+        "Bead Size": "10 mm",
+        "Certification": "Lab Certified",
+        "Treatment": "Dyed",
+        "Usage": "Pendant, Bracelet",
+        "Shape": "Round",
+        "Fitting Type": "Loose Bead",
+        "Ruling Deity": "Agni Dev",
+        "Ruling Planet": "Mars"
+      },
+      "description": "We are engaged in offering 3 Mukhi Nepali Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636457556/CD/MF/CL/254740027/3-mukhi-nepali-rudraksha-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636457582/UQ/MV/QT/254740027/3-mukhi-nepali-rudraksha-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636457627/UL/RO/JV/254740027/3-mukhi-nepali-rudraksha-1000x1000.jpg"
+      ],
+      "order": 9,
+      "imageSource": "seller",
+      "id": "3-mukhi-nepali-rudraksha",
+      "images": [
+        "assets/products/catalog/3-mukhi-nepali-rudraksha-0.jpg",
+        "assets/products/catalog/3-mukhi-nepali-rudraksha-1.jpg",
+        "assets/products/catalog/3-mukhi-nepali-rudraksha-2.jpg"
+      ],
+      "image": "assets/products/catalog/3-mukhi-nepali-rudraksha-0.jpg"
+    },
+    {
+      "name": "12 Mukhi Nepali Rudraksha",
+      "categoryId": "nepali-rudraksha",
+      "category": "Nepali Rudraksha",
+      "price": 2500,
+      "priceUnit": "Piece",
+      "minOrderQty": null,
+      "minOrderUnit": null,
+      "mukhi": 12,
+      "specs": {
+        "Bead Size": "24 mm",
+        "Certification": "Lab Certified",
+        "Treatment": "Dyed",
+        "Shape": "Round",
+        "Fitting Type": "Loose Bead",
+        "Ruling Deity": "Surya",
+        "Ruling Planet": "Sun"
+      },
+      "description": "We are engaged in offering 12 Mukhi Nepali Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636457916/WU/ZM/YV/254740027/12-mukhi-nepali-rudraksha-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636459111/SR/XN/PV/254740027/12-mukhi-nepali-rudraksha-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636459150/XV/UL/PS/254740027/12-mukhi-nepali-rudraksha-1000x1000.jpg"
+      ],
+      "order": 10,
+      "imageSource": "seller",
+      "id": "12-mukhi-nepali-rudraksha",
+      "images": [
+        "assets/products/catalog/12-mukhi-nepali-rudraksha-0.jpg",
+        "assets/products/catalog/12-mukhi-nepali-rudraksha-1.jpg",
+        "assets/products/catalog/12-mukhi-nepali-rudraksha-2.jpg"
+      ],
+      "image": "assets/products/catalog/12-mukhi-nepali-rudraksha-0.jpg"
+    },
+    {
+      "name": "12 Mukhi Nepali Rudraksha Beads",
+      "categoryId": "nepali-rudraksha",
+      "category": "Nepali Rudraksha",
+      "price": 3000,
+      "priceUnit": "Piece",
+      "minOrderQty": 10,
+      "minOrderUnit": "Piece",
+      "mukhi": 12,
+      "specs": {
+        "Origin": "Nepal",
+        "Bead Size": "24 mm",
+        "Size": "25 mm",
+        "Color": "Natural",
+        "Shape": "Round",
+        "Material": "Nepali Rudraksha",
+        "Number Of Mukhi": "12 Mukhi"
+      },
+      "description": "12 Mukhi Rudraksha gives radiance, luster, brilliance, sharpness, youthfulness, and vitality. The wearer of Twelve Mukhi Rudraksha gets the power of sight and power of timely action. Twelve Mukhi Rudraksha pacifies the negative influence and afflictions of the Sun.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/SELLER/Default/2025/10/553453936/BU/VK/TM/254740027/12-mukhi-nepali-rudraksha-1000x1000.webp",
+        "https://5.imimg.com/data5/SELLER/Default/2025/10/553453939/JU/BI/BR/254740027/12-mukhi-nepali-rudraksha-1000x1000.webp",
+        "https://5.imimg.com/data5/IOS/Default/2025/11/561150842/MJ/MH/FN/254740027/product-jpeg-1000x1000.jpeg"
+      ],
+      "order": 11,
+      "imageSource": "seller",
+      "id": "12-mukhi-nepali-rudraksha-beads",
+      "images": [
+        "assets/products/catalog/12-mukhi-nepali-rudraksha-beads-0.jpg",
+        "assets/products/catalog/12-mukhi-nepali-rudraksha-beads-1.jpg",
+        "assets/products/catalog/12-mukhi-nepali-rudraksha-beads-2.jpg"
+      ],
+      "image": "assets/products/catalog/12-mukhi-nepali-rudraksha-beads-0.jpg"
+    },
+    {
+      "name": "2 Mukhi Nepali Rudraksha",
+      "categoryId": "nepali-rudraksha",
+      "category": "Nepali Rudraksha",
+      "price": 20000,
+      "priceUnit": "Piece",
+      "minOrderQty": null,
+      "minOrderUnit": null,
+      "mukhi": 2,
+      "specs": {
+        "Bead Size": "10 mm",
+        "Certification": "Lab Certified",
+        "Usage": "Pendant",
+        "Shape": "Round",
+        "Fitting Type": "Loose Bead",
+        "Ruling Deity": "Ardhanarishwar",
+        "Ruling Planet": "Moon"
+      },
+      "description": "We are engaged in offering 2 Mukhi Nepali Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636472394/RM/OP/DZ/254740027/2-mukhi-nepal-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636472426/KP/ZG/BB/254740027/rare-two-mukhi-from-nepal-1000x1000.jpg"
+      ],
+      "order": 12,
+      "imageSource": "seller",
+      "id": "2-mukhi-nepali-rudraksha",
+      "images": [
+        "assets/products/catalog/2-mukhi-nepali-rudraksha-0.jpg",
+        "assets/products/catalog/2-mukhi-nepali-rudraksha-1.jpg"
+      ],
+      "image": "assets/products/catalog/2-mukhi-nepali-rudraksha-0.jpg"
+    },
+    {
+      "name": "8 Mukhi Nepali Rudraksha",
+      "categoryId": "nepali-rudraksha",
+      "category": "Nepali Rudraksha",
+      "price": 1000,
+      "priceUnit": "Piece",
+      "minOrderQty": null,
+      "minOrderUnit": null,
+      "mukhi": 8,
+      "specs": {
+        "Bead Size": "15 mm",
+        "Certification": "Lab Certified",
+        "Treatment": "Dyed",
+        "Usage": "Pendant",
+        "Shape": "Round",
+        "Fitting Type": "Loose Bead",
+        "Ruling Deity": "Ganesha",
+        "Ruling Planet": "Rahu"
+      },
+      "description": "We are engaged in offering 8 Mukhi Nepali Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636453814/SA/YO/ZY/254740027/8-mukhi-nepali-rudraksha-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636454133/UB/CP/HJ/254740027/8-mukhi-nepali-rudraksha-1000x1000.jpg"
+      ],
+      "order": 13,
+      "imageSource": "seller",
+      "id": "8-mukhi-nepali-rudraksha",
+      "images": [
+        "assets/products/catalog/8-mukhi-nepali-rudraksha-0.jpg",
+        "assets/products/catalog/8-mukhi-nepali-rudraksha-1.jpg"
+      ],
+      "image": "assets/products/catalog/8-mukhi-nepali-rudraksha-0.jpg"
+    },
+    {
+      "name": "4 Mukhi Nepali Rudraksha",
+      "categoryId": "nepali-rudraksha",
+      "category": "Nepali Rudraksha",
+      "price": 50,
+      "priceUnit": "Piece",
+      "minOrderQty": null,
+      "minOrderUnit": null,
+      "mukhi": 4,
+      "specs": {
+        "Bead Size": "10 mm",
+        "Certification": "Lab Certified",
+        "Treatment": "Dyed",
+        "Usage": "Mala Making, Puja, Bracelet, Pendant",
+        "Shape": "Round",
+        "Fitting Type": "Loose Bead",
+        "Ruling Deity": "Brahma",
+        "Ruling Planet": "Mercury"
+      },
+      "description": "We are engaged in offering 4 Mukhi Nepali Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636452441/KL/QB/EB/254740027/4-mukhi-nepali-rudraksha-1000x1000.jpg"
+      ],
+      "order": 14,
+      "imageSource": "seller",
+      "id": "4-mukhi-nepali-rudraksha",
+      "images": [
+        "assets/products/catalog/4-mukhi-nepali-rudraksha-0.jpg"
+      ],
+      "image": "assets/products/catalog/4-mukhi-nepali-rudraksha-0.jpg"
+    },
+    {
+      "name": "16 Mukhi Nepali Rudraksha",
+      "categoryId": "nepali-rudraksha",
+      "category": "Nepali Rudraksha",
+      "price": 100009,
+      "priceUnit": "Piece",
+      "minOrderQty": null,
+      "minOrderUnit": null,
+      "mukhi": 16,
+      "specs": {
+        "Bead Size": "20 mm",
+        "Certification": "Lab Certified",
+        "Treatment": "Dyed",
+        "Usage": "Pendant, Collection",
+        "Shape": "Round",
+        "Fitting Type": "Loose Bead",
+        "Ruling Deity": "Mahakaal",
+        "Ruling Planet": "Moon"
+      },
+      "description": "We are engaged in offering 16 Mukhi Nepali Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636498208/IM/IT/TA/254740027/16-mukhi-nepali-rudraksha-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636498246/NQ/NY/FC/254740027/16-mukhi-nepali-rudraksha-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636498274/VE/CM/CR/254740027/16-mukhi-nepali-rudraksha-1000x1000.jpg"
+      ],
+      "order": 15,
+      "imageSource": "seller",
+      "id": "16-mukhi-nepali-rudraksha",
+      "images": [
+        "assets/products/catalog/16-mukhi-nepali-rudraksha-0.jpg",
+        "assets/products/catalog/16-mukhi-nepali-rudraksha-1.jpg",
+        "assets/products/catalog/16-mukhi-nepali-rudraksha-2.jpg"
+      ],
+      "image": "assets/products/catalog/16-mukhi-nepali-rudraksha-0.jpg"
+    },
+    {
+      "name": "1 Mukhi Nepali Rudraksha",
+      "categoryId": "nepali-rudraksha",
+      "category": "Nepali Rudraksha",
+      "price": 5000,
+      "priceUnit": "Piece",
+      "minOrderQty": null,
+      "minOrderUnit": null,
+      "mukhi": 1,
+      "specs": {
+        "Origin": "Nepal"
+      },
+      "description": "We are engaged in offering 1 Mukhi Nepali Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636455741/ZW/NL/MR/254740027/1-mukhi-nepali-rudraksha-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636455792/LT/VK/IO/254740027/1-mukhi-nepali-rudraksha-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636455828/MY/LS/QN/254740027/1-mukhi-nepali-rudraksha-1000x1000.jpg"
+      ],
+      "order": 16,
+      "imageSource": "seller",
+      "id": "1-mukhi-nepali-rudraksha",
+      "images": [
+        "assets/products/catalog/1-mukhi-nepali-rudraksha-0.jpg",
+        "assets/products/catalog/1-mukhi-nepali-rudraksha-1.jpg",
+        "assets/products/catalog/1-mukhi-nepali-rudraksha-2.jpg"
+      ],
+      "image": "assets/products/catalog/1-mukhi-nepali-rudraksha-0.jpg"
+    },
+    {
+      "name": "9 Mukhi Nepali Rudraksha",
+      "categoryId": "nepali-rudraksha",
+      "category": "Nepali Rudraksha",
+      "price": 2500,
+      "priceUnit": "Piece",
+      "minOrderQty": null,
+      "minOrderUnit": null,
+      "mukhi": 9,
+      "specs": {
+        "Bead Size": "10 mm",
+        "Certification": "Lab Certified",
+        "Treatment": "Unheated",
+        "Usage": "Pendant",
+        "Shape": "Round",
+        "Fitting Type": "Loose Bead",
+        "Ruling Deity": "Durga",
+        "Ruling Planet": "Ketu"
+      },
+      "description": "We are engaged in offering 9 Mukhi Nepali Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636497759/BN/BH/NV/254740027/9-mukhi-nepali-rudraksha-1000x1000.jpg"
+      ],
+      "order": 17,
+      "imageSource": "seller",
+      "id": "9-mukhi-nepali-rudraksha",
+      "images": [
+        "assets/products/catalog/9-mukhi-nepali-rudraksha-0.jpg"
+      ],
+      "image": "assets/products/catalog/9-mukhi-nepali-rudraksha-0.jpg"
+    },
+    {
+      "name": "7 Mukhi Rudraksha",
+      "categoryId": "rudraksha-beads",
+      "category": "Rudraksha Beads",
+      "price": 50,
+      "priceUnit": "Piece",
+      "minOrderQty": 1000,
+      "minOrderUnit": "Piece",
+      "mukhi": 7,
+      "specs": {
+        "Bead Size": "18mm",
+        "Treatment": "Dyed",
+        "Usage": "Mala Making",
+        "Color": "Brown",
+        "Shape": "Round",
+        "Ruling Deity": "Mahalakshmi",
+        "Ruling Planet": "Saturn"
+      },
+      "description": "Powerful 7 Mukhi Rudraksha Benefits And Its Wearing Rules ...The 7 mukhi rudraksha is believed to offer benefits for financial growth, emotional stability, and spiritual awareness. It is said to bring wealth and prosperity, reduce negative effects from Saturn, and enhance career success. It is also associated with improved confidence, stress reduction, and protection from negative energies.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/WA_9696/Default/2025/11/556936442/TG/FO/PG/254740027/image-1000x1000.jpeg",
+        "https://5.imimg.com/data5/IOS/Default/2025/11/560573802/TA/RR/PG/254740027/product-jpeg-1000x1000.jpeg"
+      ],
+      "order": 1,
+      "imageSource": "seller",
+      "id": "7-mukhi-rudraksha",
+      "images": [
+        "assets/products/catalog/7-mukhi-rudraksha-0.jpg",
+        "assets/products/catalog/7-mukhi-rudraksha-1.jpg"
+      ],
+      "image": "assets/products/catalog/7-mukhi-rudraksha-0.jpg"
+    },
+    {
+      "name": "5 Mukhi Rudraksha Beads",
+      "categoryId": "rudraksha-beads",
+      "category": "Rudraksha Beads",
+      "price": 100,
+      "priceUnit": "Piece",
+      "minOrderQty": 10,
+      "minOrderUnit": "Piece",
+      "mukhi": 5,
+      "specs": {
+        "Origin": "Nepal",
+        "Bead Size": "18 mm",
+        "Certification": "Lab Certified",
+        "Size": "5 Mukhi",
+        "Color": "Natural",
+        "Shape": "Round",
+        "Material": "Rudraksha",
+        "Number Of Mukhi": "5 Mukhi"
+      },
+      "description": "5 Mukhi Rudraksha gives radiance, luster, brilliance, sharpness, youthfulness, and vitality. The wearer of Twelve Mukhi Rudraksha gets the power of sight and power of timely action. 5 Mukhi Rudraksha pacifies the negative influence and afflictions of the Sun.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/SELLER/Default/2025/10/553453700/SC/OH/WE/254740027/5-mukhi-rudraksha-beads-1000x1000.jpg"
+      ],
+      "order": 2,
+      "imageSource": "seller",
+      "id": "5-mukhi-rudraksha-beads",
+      "images": [
+        "assets/products/catalog/5-mukhi-rudraksha-beads-0.jpg"
+      ],
+      "image": "assets/products/catalog/5-mukhi-rudraksha-beads-0.jpg"
+    },
+    {
+      "name": "13 Mukhi Rudraksha Beads",
+      "categoryId": "rudraksha-beads",
+      "category": "Rudraksha Beads",
+      "price": 4500,
+      "priceUnit": "Piece",
+      "minOrderQty": 10,
+      "minOrderUnit": "Piece",
+      "mukhi": 13,
+      "specs": {
+        "Bead Size": "32.57 mm",
+        "Treatment": "Dyed",
+        "Usage": "Puja",
+        "Color": "Natural",
+        "Material": "Rudraksha",
+        "Shape": "Round",
+        "Ruling Deity": "Kaamdev",
+        "Ruling Planet": "Venus",
+        "Number Of Mukhi": "13 Mukhi"
+      },
+      "description": "9 Mukhi Rudraksha gives radiance, luster, brilliance, sharpness, youthfulness, and vitality. The wearer of Twelve Mukhi Rudraksha gets the power of sight and power of timely action. 9 Mukhi Rudraksha pacifies the negative influence and afflictions of the Sun.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/SELLER/Default/2025/10/553453905/DH/HY/VP/254740027/13-mukhi-nepali-rudraksha-1000x1000.webp",
+        "https://5.imimg.com/data5/SELLER/Default/2025/10/553453908/EE/HS/EM/254740027/13-mukhi-nepali-rudraksha-1000x1000.webp",
+        "https://5.imimg.com/data5/SELLER/Default/2025/10/553453909/AZ/WS/YL/254740027/13-mukhi-nepali-rudraksha-1000x1000.webp"
+      ],
+      "order": 3,
+      "imageSource": "seller",
+      "id": "13-mukhi-rudraksha-beads",
+      "images": [
+        "assets/products/catalog/13-mukhi-rudraksha-beads-0.jpg",
+        "assets/products/catalog/13-mukhi-rudraksha-beads-1.jpg",
+        "assets/products/catalog/13-mukhi-rudraksha-beads-2.jpg"
+      ],
+      "image": "assets/products/catalog/13-mukhi-rudraksha-beads-0.jpg"
+    },
+    {
+      "name": "4 Mukhi Rudraksha",
+      "categoryId": "rudraksha-beads",
+      "category": "Rudraksha Beads",
+      "price": 50,
+      "priceUnit": "Piece",
+      "minOrderQty": null,
+      "minOrderUnit": null,
+      "mukhi": 4,
+      "specs": {
+        "Bead Size": "6 mm",
+        "Certification": "Lab Certified",
+        "Treatment": "Dyed",
+        "Usage": "Mala Making",
+        "Ruling Deity": "Brahma",
+        "Ruling Planet": "Mercury"
+      },
+      "description": "We are engaged in offering 4 Mukhi Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636486104/BR/WT/DD/254740027/4-mukhi-rudraksha-1000x1000.jpg"
+      ],
+      "order": 4,
+      "imageSource": "seller",
+      "id": "4-mukhi-rudraksha",
+      "images": [
+        "assets/products/catalog/4-mukhi-rudraksha-0.jpg"
+      ],
+      "image": "assets/products/catalog/4-mukhi-rudraksha-0.jpg"
+    },
+    {
+      "name": "2 Mukhi Rudraksha",
+      "categoryId": "rudraksha-beads",
+      "category": "Rudraksha Beads",
+      "price": 10000,
+      "priceUnit": "Piece",
+      "minOrderQty": 1,
+      "minOrderUnit": "Piece",
+      "mukhi": 2,
+      "specs": {
+        "Origin": "Nepal",
+        "Bead Size": "14 mm",
+        "Certification": "Lab Certified",
+        "Treatment": "Unheated",
+        "Lab Name": "IGI",
+        "Fitting Type": "Loose Bead"
+      },
+      "description": "We are engaged in offering 2 Mukhi Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636484683/XR/FC/IC/254740027/2-mukhi-rudraksha-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636484728/NG/PG/TY/254740027/2-mukhi-rudraksha-1000x1000.jpg"
+      ],
+      "order": 5,
+      "imageSource": "seller",
+      "id": "2-mukhi-rudraksha",
+      "images": [
+        "assets/products/catalog/2-mukhi-rudraksha-0.jpg",
+        "assets/products/catalog/2-mukhi-rudraksha-1.jpg"
+      ],
+      "image": "assets/products/catalog/2-mukhi-rudraksha-0.jpg"
+    },
+    {
+      "name": "8 Mukhi Rudraksha Beads",
+      "categoryId": "rudraksha-beads",
+      "category": "Rudraksha Beads",
+      "price": 1500,
+      "priceUnit": "Piece",
+      "minOrderQty": 10,
+      "minOrderUnit": "Piece",
+      "mukhi": 8,
+      "specs": {
+        "Bead Size": "14 mm",
+        "Treatment": "Dyed",
+        "Usage": "Pendant, Puja",
+        "Color": "Brown",
+        "Material": "Rudraksha",
+        "Shape": "Round",
+        "Ruling Deity": "Ganesha",
+        "Ruling Planet": "Rahu",
+        "Number Of Mukhi": "8 Mukhi"
+      },
+      "description": "The 8 Mukhi Rudraksha, representing Lord Ganesha and said to be ruled by the planet Ketu, is believed to remove obstacles, enhance wisdom, and bring success and prosperity to the wearer, while also promoting emotional stability and mental clarity",
+      "sourceImages": [
+        "https://5.imimg.com/data5/SELLER/Default/2025/10/553453810/VC/RO/OC/254740027/8-mukhi-rudraksha-bead-1000x1000.jpg"
+      ],
+      "order": 6,
+      "imageSource": "seller",
+      "id": "8-mukhi-rudraksha-beads",
+      "images": [
+        "assets/products/catalog/8-mukhi-rudraksha-beads-0.jpg"
+      ],
+      "image": "assets/products/catalog/8-mukhi-rudraksha-beads-0.jpg"
+    },
+    {
+      "name": "21 Mukhi Rudraksha",
+      "categoryId": "rudraksha-beads",
+      "category": "Rudraksha Beads",
+      "price": null,
+      "priceUnit": null,
+      "minOrderQty": null,
+      "minOrderUnit": null,
+      "mukhi": 21,
+      "specs": {},
+      "description": "",
+      "sourceImages": [
+        "https://tdw.imimg.com/template-tdw/n_image_t.png"
+      ],
+      "order": 7,
+      "imageSource": "fallback",
+      "id": "21-mukhi-rudraksha",
+      "images": [
+        "assets/products/catalog/21-mukhi-rudraksha-0.jpg"
+      ],
+      "image": "assets/products/catalog/21-mukhi-rudraksha-0.jpg"
+    },
+    {
+      "name": "1 Mukhi Rudraksha",
+      "categoryId": "rudraksha-beads",
+      "category": "Rudraksha Beads",
+      "price": 3000,
+      "priceUnit": "Piece",
+      "minOrderQty": 10,
+      "minOrderUnit": "Piece",
+      "mukhi": 1,
+      "specs": {
+        "Bead Type": "Round",
+        "Bead Size": "20 mm",
+        "Treatment": "Dyed",
+        "Shape": "Round",
+        "Color": "Brown",
+        "Material": "Wood",
+        "Ruling Deity": "Shiva",
+        "Ruling Planet": "All Planets",
+        "Number Of Mukhi": "1"
+      },
+      "description": "The benefits of a 1 Mukhi Rudraksha include spiritual enlightenment, inner peace, and material success by strengthening the connection with Lord Shiva and enhancing mental clarity, focus, and concentration. It is also believed to provide protection from negative energies, reduce stress and anxiety, and help overcome fear and obstacles. The bead is associated with the Sahasrara Chakra and is said to aid in achieving salvation (\\(Moksha\\)) and breaking free from negative karmic cycles.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/IOS/Default/2025/11/560581250/WL/RG/WL/254740027/product-jpeg-1000x1000.jpeg",
+        "https://5.imimg.com/data5/IOS/Default/2025/11/560581253/IZ/HB/PV/254740027/product-jpeg-1000x1000.jpeg"
+      ],
+      "order": 8,
+      "imageSource": "seller",
+      "id": "1-mukhi-rudraksha",
+      "images": [
+        "assets/products/catalog/1-mukhi-rudraksha-0.jpg",
+        "assets/products/catalog/1-mukhi-rudraksha-1.jpg"
+      ],
+      "image": "assets/products/catalog/1-mukhi-rudraksha-0.jpg"
+    },
+    {
+      "name": "6 Mukhi Indonesian Rudraksha",
+      "categoryId": "indonesian-rudraksha",
+      "category": "Indonesian Rudraksha",
+      "price": 50,
+      "priceUnit": "Piece",
+      "minOrderQty": null,
+      "minOrderUnit": null,
+      "mukhi": 6,
+      "specs": {
+        "Bead Size": "6 mm",
+        "Certification": "Lab Certified",
+        "Usage": "Mala Making",
+        "Shape": "Round",
+        "Fitting Type": "Loose Bead",
+        "Ruling Deity": "Kartikeya",
+        "Ruling Planet": "Venus"
+      },
+      "description": "We are engaged in offering 6 Mukhi Indonesian Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636481575/HY/BX/YL/254740027/6-mukhi-indonesian-rudraksha-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636481617/QX/SU/SQ/254740027/6-mukhi-indonesian-rudraksha-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636481652/OU/FB/UP/254740027/6-mukhi-indonesian-rudraksha-1000x1000.jpg"
+      ],
+      "order": 1,
+      "imageSource": "seller",
+      "id": "6-mukhi-indonesian-rudraksha",
+      "images": [
+        "assets/products/catalog/6-mukhi-indonesian-rudraksha-0.jpg",
+        "assets/products/catalog/6-mukhi-indonesian-rudraksha-1.jpg",
+        "assets/products/catalog/6-mukhi-indonesian-rudraksha-2.jpg"
+      ],
+      "image": "assets/products/catalog/6-mukhi-indonesian-rudraksha-0.jpg"
+    },
+    {
+      "name": "5 Mukhi Indonesian Rudraksha",
+      "categoryId": "indonesian-rudraksha",
+      "category": "Indonesian Rudraksha",
+      "price": 50,
+      "priceUnit": "Piece",
+      "minOrderQty": null,
+      "minOrderUnit": null,
+      "mukhi": 5,
+      "specs": {
+        "Origin": "Indonesia",
+        "Bead Size": "8 mm",
+        "Certification": "Not Certified",
+        "Usage": "Pendant, Mala Making, Bracelet"
+      },
+      "description": "The 5 Mukhi Rudraksha is the most universally accessible bead, representing Lord Kalagni Rudra and ruled by Jupiter. It is highly prized for its ability to lower stress, balance blood pressure, and enhance focus. By cultivating inner peace, it serves as an excellent foundational tool for both spiritual seekers and professionals.Key BenefitsPhysical Health: Traditionally believed to support heart health, regulate blood pressure, and alleviate symptoms of stress.Mental Clarity: Known to sharpen memory, boost cognitive abilities, and soothe overactive emotions like anger and anxiety.Spiritual Well-being: Creates a protective \"cocoon\" of energy, balances the throat chakra (Vishuddha), and deepens meditation.Astrological Harmony: Known to strengthen the positive influence of Jupiter while reducing malefic effects.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/ANDROID/Default/2026/7/623754987/EV/ZQ/FC/254740027/product-jpeg-1000x1000.jpg",
+        "https://5.imimg.com/data5/ANDROID/Default/2026/7/623754993/SN/YY/ZH/254740027/product-1000x1000.jpg",
+        "https://5.imimg.com/data5/ANDROID/Default/2026/7/623754994/JA/GV/FY/254740027/product-1000x1000.jpg"
+      ],
+      "order": 2,
+      "imageSource": "seller",
+      "id": "5-mukhi-indonesian-rudraksha",
+      "images": [
+        "assets/products/catalog/5-mukhi-indonesian-rudraksha-0.jpg",
+        "assets/products/catalog/5-mukhi-indonesian-rudraksha-1.jpg",
+        "assets/products/catalog/5-mukhi-indonesian-rudraksha-2.jpg"
+      ],
+      "image": "assets/products/catalog/5-mukhi-indonesian-rudraksha-0.jpg"
+    },
+    {
+      "name": "14 Mukhi Indonesian Rudraksha",
+      "categoryId": "indonesian-rudraksha",
+      "category": "Indonesian Rudraksha",
+      "price": 3999,
+      "priceUnit": "Piece",
+      "minOrderQty": 10,
+      "minOrderUnit": "Piece",
+      "mukhi": 14,
+      "specs": {
+        "Bead Size": "18 mm",
+        "Certification": "Lab Certified",
+        "Treatment": "Natural",
+        "Usage": "Pendant",
+        "Number Of Mukhi": "14 Mukhi",
+        "Material": "Indonesian Rudraksha",
+        "Shape": "Round",
+        "Fitting Type": "Loose Bead",
+        "Ruling Deity": "Hanuman",
+        "Ruling Planet": "Mars",
+        "Usage/Application": "Spiritual Use"
+      },
+      "description": "We are engaged in offering 14 Mukhi Indonesian Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/SELLER/Default/2025/10/554049288/TW/MG/YR/254740027/14-mukhi-indonesian-rudraksha-1000x1000.webp",
+        "https://5.imimg.com/data5/ANDROID/Default/2026/7/624173678/YH/VX/UI/254740027/product-jpeg-1000x1000.jpg",
+        "https://5.imimg.com/data5/ANDROID/Default/2026/7/624173698/MZ/YE/FK/254740027/product-1000x1000.jpg",
+        "https://5.imimg.com/data5/ANDROID/Default/2026/7/624174113/GH/BY/BB/254740027/product-jpeg-1000x1000.jpg",
+        "https://5.imimg.com/data5/ANDROID/Default/2026/7/624174349/EL/OS/UY/254740027/product-jpeg-1000x1000.jpg"
+      ],
+      "order": 3,
+      "imageSource": "seller",
+      "id": "14-mukhi-indonesian-rudraksha",
+      "images": [
+        "assets/products/catalog/14-mukhi-indonesian-rudraksha-0.jpg",
+        "assets/products/catalog/14-mukhi-indonesian-rudraksha-1.jpg",
+        "assets/products/catalog/14-mukhi-indonesian-rudraksha-2.jpg",
+        "assets/products/catalog/14-mukhi-indonesian-rudraksha-3.jpg"
+      ],
+      "image": "assets/products/catalog/14-mukhi-indonesian-rudraksha-0.jpg"
+    },
+    {
+      "name": "3 Mukhi Rudraksha Indonesian",
+      "categoryId": "indonesian-rudraksha",
+      "category": "Indonesian Rudraksha",
+      "price": 50,
+      "priceUnit": "Piece",
+      "minOrderQty": null,
+      "minOrderUnit": null,
+      "mukhi": 3,
+      "specs": {
+        "Bead Size": "7 mm",
+        "Certification": "Lab Certified",
+        "Treatment": "Dyed",
+        "Usage": "Mala Making, Pendant",
+        "Shape": "Round",
+        "Fitting Type": "Loose Bead",
+        "Ruling Deity": "Agni Dev",
+        "Ruling Planet": "Mars"
+      },
+      "description": "We are engaged in offering 3 Mukhi Rudraksha Indonesian to our clients. Our range of all products is widely appreciated by our clients.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636483164/VB/BZ/FB/254740027/3-mukhi-rudraksha-indonesian-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636483207/BT/VX/RU/254740027/3-mukhi-rudraksha-indonesian-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636483241/PC/BU/RD/254740027/3-mukhi-rudraksha-indonesian-1000x1000.jpg"
+      ],
+      "order": 4,
+      "imageSource": "seller",
+      "id": "3-mukhi-rudraksha-indonesian",
+      "images": [
+        "assets/products/catalog/3-mukhi-rudraksha-indonesian-0.jpg",
+        "assets/products/catalog/3-mukhi-rudraksha-indonesian-1.jpg",
+        "assets/products/catalog/3-mukhi-rudraksha-indonesian-2.jpg"
+      ],
+      "image": "assets/products/catalog/3-mukhi-rudraksha-indonesian-0.jpg"
+    },
+    {
+      "name": "2 Mukhi Indonesian Rudraksha",
+      "categoryId": "indonesian-rudraksha",
+      "category": "Indonesian Rudraksha",
+      "price": 50,
+      "priceUnit": "Piece",
+      "minOrderQty": null,
+      "minOrderUnit": null,
+      "mukhi": 2,
+      "specs": {
+        "Origin": "Indonesia",
+        "Bead Size": "10 mm",
+        "Certification": "Not Certified",
+        "Usage": "Pendant"
+      },
+      "description": "We are engaged in offering 2 Mukhi Indonesian Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/ANDROID/Default/2026/7/623773339/CT/NA/RP/254740027/product-jpeg-1000x1000.jpg",
+        "https://5.imimg.com/data5/ANDROID/Default/2026/7/623773350/XR/UY/RU/254740027/product-1000x1000.jpg",
+        "https://5.imimg.com/data5/ANDROID/Default/2026/7/623773352/YN/TS/XB/254740027/product-1000x1000.jpg"
+      ],
+      "order": 5,
+      "imageSource": "seller",
+      "id": "2-mukhi-indonesian-rudraksha",
+      "images": [
+        "assets/products/catalog/2-mukhi-indonesian-rudraksha-0.jpg",
+        "assets/products/catalog/2-mukhi-indonesian-rudraksha-1.jpg",
+        "assets/products/catalog/2-mukhi-indonesian-rudraksha-2.jpg"
+      ],
+      "image": "assets/products/catalog/2-mukhi-indonesian-rudraksha-0.jpg"
+    },
+    {
+      "name": "1 Mukhi Indonesian Rudraksha",
+      "categoryId": "indonesian-rudraksha",
+      "category": "Indonesian Rudraksha",
+      "price": 500,
+      "priceUnit": "Piece",
+      "minOrderQty": null,
+      "minOrderUnit": null,
+      "mukhi": 1,
+      "specs": {
+        "Origin": "Indonesia",
+        "Bead Type": "Half Moon",
+        "Certification": "Lab Certified",
+        "Bead Size": "10 mm"
+      },
+      "description": "We are engaged in offering 1 Mukhi Indonesian Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/ANDROID/Default/2026/7/623750187/XV/BD/WI/254740027/product-jpeg-1000x1000.jpg",
+        "https://5.imimg.com/data5/ANDROID/Default/2026/7/623750207/QB/FT/IL/254740027/product-1000x1000.jpg"
+      ],
+      "order": 6,
+      "imageSource": "seller",
+      "id": "1-mukhi-indonesian-rudraksha",
+      "images": [
+        "assets/products/catalog/1-mukhi-indonesian-rudraksha-0.jpg",
+        "assets/products/catalog/1-mukhi-indonesian-rudraksha-1.jpg"
+      ],
+      "image": "assets/products/catalog/1-mukhi-indonesian-rudraksha-0.jpg"
+    },
+    {
+      "name": "16 Mukhi Indonesian Rudraksha",
+      "categoryId": "indonesian-rudraksha",
+      "category": "Indonesian Rudraksha",
+      "price": 50000,
+      "priceUnit": "Piece",
+      "minOrderQty": 10,
+      "minOrderUnit": "Piece",
+      "mukhi": 16,
+      "specs": {
+        "Bead Size": "18 mm",
+        "Certification": "Lab Certified",
+        "Treatment": "Unheated",
+        "Usage": "Pendant",
+        "Material": "Indonesian Rudraksha",
+        "Usage/Application": "Spiritual Use",
+        "Shape": "Round",
+        "Packaging Type": "Box",
+        "Number Of Mukhi": "16 Mukhi"
+      },
+      "description": "We are engaged in offering 16 Mukhi Indonesian Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/SELLER/Default/2025/10/554049989/KI/DJ/UR/254740027/18-mukhi-indonesian-rudraksha-1000x1000.webp"
+      ],
+      "order": 7,
+      "imageSource": "seller",
+      "id": "16-mukhi-indonesian-rudraksha",
+      "images": [
+        "assets/products/catalog/16-mukhi-indonesian-rudraksha-0.jpg"
+      ],
+      "image": "assets/products/catalog/16-mukhi-indonesian-rudraksha-0.jpg"
+    },
+    {
+      "name": "5 Mukhi Nepali Ganesh Rudraksha Mala",
+      "categoryId": "rudraksha-mala",
+      "category": "Rudraksha Mala",
+      "price": 6000,
+      "priceUnit": "Piece",
+      "minOrderQty": 10,
+      "minOrderUnit": "Piece",
+      "mukhi": 5,
+      "specs": {
+        "Bead Type": "5 Mukhi",
+        "No Of Beads": "108 Beads",
+        "Thread Material": "Cotton",
+        "Bead Size": "8 mm",
+        "Origin": "Indonesia",
+        "Usage": "Jaap, Wearing",
+        "Size": "12mm",
+        "Shape": "Round",
+        "Color": "Brown",
+        "Spiritual Use": "Japa",
+        "Gender": "Unisex",
+        "Packaging Type": "Box"
+      },
+      "description": "We are engaged in offering 5 Mukhi Nepali Ganesh Rudraksha Mala to our clients. Our range of all products is widely appreciated by our clients.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/SELLER/Default/2025/10/554410271/SX/YS/QY/254740027/nepali-ganesh-rudraksha-mala-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2025/10/554410270/ID/OH/NF/254740027/nepali-ganesh-rudraksha-mala-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2025/10/554043410/ZB/UR/CW/254740027/nepali-ganesh-rudraksha-mala-1000x1000.webp"
+      ],
+      "order": 1,
+      "imageSource": "seller",
+      "id": "5-mukhi-nepali-ganesh-rudraksha-mala",
+      "images": [
+        "assets/products/catalog/5-mukhi-nepali-ganesh-rudraksha-mala-0.jpg",
+        "assets/products/catalog/5-mukhi-nepali-ganesh-rudraksha-mala-1.jpg",
+        "assets/products/catalog/5-mukhi-nepali-ganesh-rudraksha-mala-2.jpg"
+      ],
+      "image": "assets/products/catalog/5-mukhi-nepali-ganesh-rudraksha-mala-0.jpg"
+    },
+    {
+      "name": "9 Mukhi Indonesia Rudraksha Mala",
+      "categoryId": "rudraksha-mala",
+      "category": "Rudraksha Mala",
+      "price": 1800,
+      "priceUnit": "Piece",
+      "minOrderQty": 10,
+      "minOrderUnit": "Piece",
+      "mukhi": 9,
+      "specs": {
+        "Bead Type": "9 mukhi",
+        "No Of Beads": "108 Beads",
+        "Thread Material": "Cotton",
+        "Bead Size": "10 mm",
+        "Origin": "Indonesia",
+        "Usage": "Wearing, Jaap",
+        "Size": "8mm",
+        "Shape": "Round",
+        "Color": "Brown",
+        "Spiritual Use": "Japa",
+        "Gender": "Unisex",
+        "Packaging Type": "Box"
+      },
+      "description": "We are engaged in offering 9 Mukhi Indonesia Rudraksha Mala to our clients. Our range of all products is widely appreciated by our clients.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/SELLER/Default/2025/10/554050396/FU/FD/RS/254740027/9-mukhi-indonesia-rudraksha-mala-1000x1000.webp"
+      ],
+      "order": 2,
+      "imageSource": "seller",
+      "id": "9-mukhi-indonesia-rudraksha-mala",
+      "images": [
+        "assets/products/catalog/9-mukhi-indonesia-rudraksha-mala-0.jpg"
+      ],
+      "image": "assets/products/catalog/9-mukhi-indonesia-rudraksha-mala-0.jpg"
+    },
+    {
+      "name": "5 Mukhi Indonesian Ganesh Rudraksha Mala",
+      "categoryId": "rudraksha-mala",
+      "category": "Rudraksha Mala",
+      "price": 4000,
+      "priceUnit": "Piece",
+      "minOrderQty": 10,
+      "minOrderUnit": "Piece",
+      "mukhi": 5,
+      "specs": {
+        "Origin": "Nepal",
+        "Bead Size": "18",
+        "Certification": "Lab Certified",
+        "Usage": "Mala Making",
+        "Size": "10mm",
+        "Spiritual Use": "Japa",
+        "Gender": "Unisex",
+        "Packaging Type": "Box",
+        "Shape": "Round",
+        "Treatment": "Natural",
+        "Color": "Brown"
+      },
+      "description": "We are engaged in offering 5 Mukhi Indonesian Ganesh Rudraksha Mala to our clients. Our range of all products is widely appreciated by our clients.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/SELLER/Default/2025/10/554050693/WP/CX/ZV/254740027/ganesh-rudraksha-indonesian-mala-1000x1000.webp"
+      ],
+      "order": 3,
+      "imageSource": "seller",
+      "id": "5-mukhi-indonesian-ganesh-rudraksha-mala",
+      "images": [
+        "assets/products/catalog/5-mukhi-indonesian-ganesh-rudraksha-mala-0.jpg"
+      ],
+      "image": "assets/products/catalog/5-mukhi-indonesian-ganesh-rudraksha-mala-0.jpg"
+    },
+    {
+      "name": "5 Mukhi Nepali Rudraksha Mala",
+      "categoryId": "rudraksha-mala",
+      "category": "Rudraksha Mala",
+      "price": 100,
+      "priceUnit": "Piece",
+      "minOrderQty": 10,
+      "minOrderUnit": "Piece",
+      "mukhi": 5,
+      "specs": {
+        "Bead Size": "5 mm",
+        "Certification": "Lab Certified",
+        "Usage": "Mala Making",
+        "Shape": "Round",
+        "Fitting Type": "Loose Bead",
+        "Ruling Deity": "Kalagni Rudra",
+        "Ruling Planet": "Jupiter"
+      },
+      "description": "We are engaged in offering 5 Mukhi Nepali Rudraksha Mala to our clients. Our range of all products is widely appreciated by our clients.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/SELLER/Default/2025/10/554044142/JU/QI/DX/254740027/5-mukhi-nepali-rudraksha-mala-54-beads-kantha-mala-1000x1000.webp"
+      ],
+      "order": 4,
+      "imageSource": "seller",
+      "id": "5-mukhi-nepali-rudraksha-mala",
+      "images": [
+        "assets/products/catalog/5-mukhi-nepali-rudraksha-mala-0.jpg"
+      ],
+      "image": "assets/products/catalog/5-mukhi-nepali-rudraksha-mala-0.jpg"
+    },
+    {
+      "name": "5 Mukhi Gold Plated Rudraksha Mala",
+      "categoryId": "rudraksha-mala",
+      "category": "Rudraksha Mala",
+      "price": 150,
+      "priceUnit": "Piece",
+      "minOrderQty": 10,
+      "minOrderUnit": "Piece",
+      "mukhi": 5,
+      "specs": {
+        "Bead Size": "12 mm",
+        "Certification": "Lab Certified",
+        "Treatment": "Dyed",
+        "Usage": "Mala Making",
+        "Spiritual Use": "Astrology",
+        "Shape": "Round",
+        "Material": "Rudraksha",
+        "Packaging Type": "Box",
+        "Gender": "Unisex"
+      },
+      "description": "We are engaged in offering 5 Mukhi Gold Plated Rudraksha Mala to our clients. Our range of all products is widely appreciated by our clients.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/SELLER/Default/2025/10/554051101/FG/DT/FH/254740027/5-mukhi-rudraksha-mala-with-gold-plated-1000x1000.webp"
+      ],
+      "order": 5,
+      "imageSource": "seller",
+      "id": "5-mukhi-gold-plated-rudraksha-mala",
+      "images": [
+        "assets/products/catalog/5-mukhi-gold-plated-rudraksha-mala-0.jpg"
+      ],
+      "image": "assets/products/catalog/5-mukhi-gold-plated-rudraksha-mala-0.jpg"
+    },
+    {
+      "name": "6mm Copper Karungali Mala",
+      "categoryId": "karungali-mala",
+      "category": "Karungali Mala",
+      "price": 120,
+      "priceUnit": "Piece",
+      "minOrderQty": 10,
+      "minOrderUnit": "Piece",
+      "mukhi": null,
+      "specs": {
+        "Bead Size": "6mm",
+        "Product Type": "Mala",
+        "Finish Type": "Natural",
+        "Mala Length": "24 inch",
+        "Material": "Copper",
+        "Number Of Beads": "54 Beads",
+        "Packaging Type": "Box",
+        "Color": "Black Golden"
+      },
+      "description": "We are engaged in offering 6mm Copper Karungali Mala to our clients. Our range of all products is widely appreciated by our clients.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/SELLER/Default/2025/10/554098995/IG/ZF/ZO/254740027/copper-karungali-mala-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2025/10/554098997/ST/HT/GY/254740027/copper-karungali-mala-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2025/10/554098998/JA/XD/HO/254740027/copper-karungali-mala-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2025/10/554098999/CO/PY/TD/254740027/copper-karungali-mala-1000x1000.jpg"
+      ],
+      "order": 1,
+      "imageSource": "seller",
+      "id": "6mm-copper-karungali-mala",
+      "images": [
+        "assets/products/catalog/6mm-copper-karungali-mala-0.jpg",
+        "assets/products/catalog/6mm-copper-karungali-mala-1.jpg",
+        "assets/products/catalog/6mm-copper-karungali-mala-2.jpg",
+        "assets/products/catalog/6mm-copper-karungali-mala-3.jpg"
+      ],
+      "image": "assets/products/catalog/6mm-copper-karungali-mala-0.jpg"
+    },
+    {
+      "name": "6mm Silver Capping Karungali Mala",
+      "categoryId": "karungali-mala",
+      "category": "Karungali Mala",
+      "price": 100,
+      "priceUnit": "Piece",
+      "minOrderQty": 10,
+      "minOrderUnit": "Piece",
+      "mukhi": null,
+      "specs": {
+        "Material": "Karungali",
+        "Bead Size": "6mm",
+        "Number Of Beads": "54 beads",
+        "Product Type": "Mala",
+        "Finish Type": "Semi-Polished",
+        "Mala Length": "24 inch",
+        "Color": "Black And White"
+      },
+      "description": "We are engaged in offering 6mm Silver Capping Karungali Mala to our clients. Our range of all products is widely appreciated by our clients.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/SELLER/Default/2025/10/554098354/SC/WT/YM/254740027/karungali-silver-capping-mala-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2025/10/554098356/QG/QL/IA/254740027/karungali-silver-capping-mala-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2025/10/554098359/KQ/QQ/JE/254740027/karungali-silver-capping-mala-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2025/10/554098360/NA/TI/FE/254740027/karungali-silver-capping-mala-1000x1000.jpg"
+      ],
+      "order": 2,
+      "imageSource": "seller",
+      "id": "6mm-silver-capping-karungali-mala",
+      "images": [
+        "assets/products/catalog/6mm-silver-capping-karungali-mala-0.jpg",
+        "assets/products/catalog/6mm-silver-capping-karungali-mala-1.jpg",
+        "assets/products/catalog/6mm-silver-capping-karungali-mala-2.jpg",
+        "assets/products/catalog/6mm-silver-capping-karungali-mala-3.jpg"
+      ],
+      "image": "assets/products/catalog/6mm-silver-capping-karungali-mala-0.jpg"
+    },
+    {
+      "name": "8mm Simple Karungali Mala",
+      "categoryId": "karungali-mala",
+      "category": "Karungali Mala",
+      "price": 80,
+      "priceUnit": "Pack",
+      "minOrderQty": 10,
+      "minOrderUnit": "Pack",
+      "mukhi": null,
+      "specs": {
+        "Material": "Karungali",
+        "Bead Size": "8mm",
+        "Number Of Beads": "54 beads",
+        "Product Type": "Mala",
+        "Finish Type": "Natural",
+        "Mala Length": "24 inch",
+        "Color": "Black",
+        "Type": "Box"
+      },
+      "description": "We are engaged in offering 8mm Simple Karungali Mala to our clients. Our range of all products is widely appreciated by our clients.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/SELLER/Default/2025/10/554098199/BL/TG/JE/254740027/108-1-beads-karungali-mala-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2025/10/554098202/AA/PC/UE/254740027/108-1-beads-karungali-mala-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2025/10/554098204/LL/CM/EC/254740027/108-1-beads-karungali-mala-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2025/10/554098209/VL/QV/CB/254740027/108-1-beads-karungali-mala-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2025/10/554098210/XM/FA/YU/254740027/108-1-beads-karungali-mala-1000x1000.jpg"
+      ],
+      "order": 3,
+      "imageSource": "seller",
+      "id": "8mm-simple-karungali-mala",
+      "images": [
+        "assets/products/catalog/8mm-simple-karungali-mala-0.jpg",
+        "assets/products/catalog/8mm-simple-karungali-mala-1.jpg",
+        "assets/products/catalog/8mm-simple-karungali-mala-2.jpg",
+        "assets/products/catalog/8mm-simple-karungali-mala-3.jpg"
+      ],
+      "image": "assets/products/catalog/8mm-simple-karungali-mala-0.jpg"
+    },
+    {
+      "name": "8mm Ebony Wood Karungali Mala",
+      "categoryId": "karungali-mala",
+      "category": "Karungali Mala",
+      "price": 80,
+      "priceUnit": "Piece",
+      "minOrderQty": null,
+      "minOrderUnit": null,
+      "mukhi": null,
+      "specs": {
+        "Material": "Ebony Wood",
+        "Bead Size": "8 mm",
+        "Number Of Beads": "108 beads",
+        "Product Type": "Mala",
+        "Finish Type": "Natural",
+        "Mala Length": "24 inch",
+        "Brand": "Handmade"
+      },
+      "description": "We are engaged in offering 8mm Ebony Wood Karungali Mala to our clients. Our range of all products is widely appreciated by our clients.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636451063/ZH/DI/UK/254740027/karungali-mala-1000x1000.jpeg",
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636451178/XU/RY/RN/254740027/karungali-mala-1000x1000.jpeg",
+        "https://5.imimg.com/data5/SELLER/Default/2026/8/636451291/DF/SW/VU/254740027/karungali-mala-1000x1000.jpeg"
+      ],
+      "order": 4,
+      "imageSource": "seller",
+      "id": "8mm-ebony-wood-karungali-mala",
+      "images": [
+        "assets/products/catalog/8mm-ebony-wood-karungali-mala-0.jpg",
+        "assets/products/catalog/8mm-ebony-wood-karungali-mala-1.jpg",
+        "assets/products/catalog/8mm-ebony-wood-karungali-mala-2.jpg"
+      ],
+      "image": "assets/products/catalog/8mm-ebony-wood-karungali-mala-0.jpg"
+    },
+    {
+      "name": "Black Ebony Karungali Bracelet",
+      "categoryId": "karungali-bracelet",
+      "category": "Karungali Bracelet",
+      "price": 50,
+      "priceUnit": "Piece",
+      "minOrderQty": 20,
+      "minOrderUnit": "Piece",
+      "mukhi": null,
+      "specs": {
+        "Religious Theme": "Hindu",
+        "Bracelet Material": "Wood",
+        "Bracelet Style": "Beaded",
+        "Bracelet Size": "7.5 inch",
+        "String Material": "Elastic cord",
+        "Material": "Stone",
+        "Color": "Black",
+        "Ideal For": "Box",
+        "Stone Types": "Box",
+        "Packaging Type": "Box"
+      },
+      "description": "We are engaged in offering Black Ebony Karungali Bracelet to our clients. Our range of all products is widely appreciated by our clients.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/SELLER/Default/2025/10/554098545/HE/XA/TO/254740027/karungali-bracelet-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2025/10/554098550/FG/HC/QY/254740027/karungali-bracelet-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2025/10/554098553/KI/ML/WE/254740027/karungali-bracelet-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2025/10/554098554/IO/DG/FF/254740027/karungali-bracelet-1000x1000.jpg"
+      ],
+      "order": 1,
+      "imageSource": "seller",
+      "id": "black-ebony-karungali-bracelet",
+      "images": [
+        "assets/products/catalog/black-ebony-karungali-bracelet-0.jpg",
+        "assets/products/catalog/black-ebony-karungali-bracelet-1.jpg",
+        "assets/products/catalog/black-ebony-karungali-bracelet-2.jpg",
+        "assets/products/catalog/black-ebony-karungali-bracelet-3.jpg"
+      ],
+      "image": "assets/products/catalog/black-ebony-karungali-bracelet-0.jpg"
+    },
+    {
+      "name": "Silver Cap Brace Karungali Bracelet",
+      "categoryId": "karungali-bracelet",
+      "category": "Karungali Bracelet",
+      "price": 50,
+      "priceUnit": "Piece",
+      "minOrderQty": 20,
+      "minOrderUnit": "Piece",
+      "mukhi": null,
+      "specs": {
+        "Religious Theme": "Hindu",
+        "Bracelet Material": "Stainless steel",
+        "Bracelet Style": "Beaded",
+        "Bracelet Size": "7.5 inch",
+        "String Material": "Metal chain",
+        "Quality": "Premium Quality",
+        "Material": "Men",
+        "Color": "Men",
+        "Packaging Type": "Men",
+        "Stone Types": "Men",
+        "Ideal For": "Men"
+      },
+      "description": "We are engaged in offering Silver Cap Brace Karungali Bracelet to our clients. Our range of all products is widely appreciated by our clients.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/SELLER/Default/2025/10/554098886/GR/YZ/ZR/254740027/karungali-silver-cap-brace-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2025/10/554098891/TI/NF/YF/254740027/karungali-silver-cap-brace-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2025/10/554098893/DR/CE/FE/254740027/karungali-silver-cap-brace-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2025/10/554098895/YM/SW/WV/254740027/karungali-silver-cap-brace-1000x1000.jpg"
+      ],
+      "order": 2,
+      "imageSource": "seller",
+      "id": "silver-cap-brace-karungali-bracelet",
+      "images": [
+        "assets/products/catalog/silver-cap-brace-karungali-bracelet-0.jpg",
+        "assets/products/catalog/silver-cap-brace-karungali-bracelet-1.jpg",
+        "assets/products/catalog/silver-cap-brace-karungali-bracelet-2.jpg",
+        "assets/products/catalog/silver-cap-brace-karungali-bracelet-3.jpg"
+      ],
+      "image": "assets/products/catalog/silver-cap-brace-karungali-bracelet-0.jpg"
+    },
+    {
+      "name": "Silver Chain Karungali Bracelet",
+      "categoryId": "karungali-bracelet",
+      "category": "Karungali Bracelet",
+      "price": 100,
+      "priceUnit": "Piece",
+      "minOrderQty": 20,
+      "minOrderUnit": "Piece",
+      "mukhi": null,
+      "specs": {
+        "Religious Theme": "Hindu",
+        "Bracelet Material": "Brass",
+        "Bracelet Style": "Chain",
+        "Bracelet Size": "7.5 inch",
+        "String Material": "Metal chain",
+        "Quality": "Natural, Premium Quality",
+        "Ideal For": "Men",
+        "Material": "Silver",
+        "Stone Type": "Karungali",
+        "Packaging Type": "Box",
+        "Color": "Black Silver"
+      },
+      "description": "We are engaged in offering Silver Chain Karungali Bracelet to our clients. Our range of all products is widely appreciated by our clients.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/SELLER/Default/2025/10/554098687/PR/ZC/TD/254740027/karungali-silver-chain-bracelet-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2025/10/554098689/DB/PF/FZ/254740027/karungali-silver-chain-bracelet-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2025/10/554098691/NI/PU/SC/254740027/karungali-silver-chain-bracelet-1000x1000.jpg",
+        "https://5.imimg.com/data5/SELLER/Default/2025/10/554098693/SP/TS/WK/254740027/karungali-silver-chain-bracelet-1000x1000.jpg"
+      ],
+      "order": 3,
+      "imageSource": "seller",
+      "id": "silver-chain-karungali-bracelet",
+      "images": [
+        "assets/products/catalog/silver-chain-karungali-bracelet-0.jpg",
+        "assets/products/catalog/silver-chain-karungali-bracelet-1.jpg",
+        "assets/products/catalog/silver-chain-karungali-bracelet-2.jpg",
+        "assets/products/catalog/silver-chain-karungali-bracelet-3.jpg"
+      ],
+      "image": "assets/products/catalog/silver-chain-karungali-bracelet-0.jpg"
+    },
+    {
+      "name": "2 Mukhi Rudraksha Fruit",
+      "categoryId": "rudraksha-fruit",
+      "category": "Rudraksha Fruit",
+      "price": 50,
+      "priceUnit": "Oz",
+      "minOrderQty": null,
+      "minOrderUnit": null,
+      "mukhi": 2,
+      "specs": {
+        "Mukhi": "1-14",
+        "Origin": "Nepal",
+        "Bead Size": "20 mm",
+        "Usage": "Mala Making",
+        "Certification": "Lab Certified",
+        "Shape": "Round",
+        "Fitting Type": "Loose Bead",
+        "Grade": "Premium"
+      },
+      "description": "Rudraksha fruit—the bright blue outer berry enclosing the sacred seed—offers profound wellness and spiritual benefits. In Ayurvedic traditions, the fleshy pulp is used to treat neurological conditions, fevers, and stress. The revered seeds within promote meditation, stabilize heart rates, and protect against negative energy.Key Health & Spiritual BenefitsStress & Anxiety Relief: The fruit acts as a natural tranquilizer and sedative, traditionally used to help alleviate depression, calm the central nervous system, and improve sleep.Cardiovascular Health: The beads are believed to exhibit electromagnetic properties that stabilize heart palpitations, control blood pressure, and reduce hypertension.Meditation & Focus: Wearing the seeds is said to enhance spiritual growth, concentration, and bring mental clarity while shielding the body from negative external energies.Ayurvedic Remedies: The outer fruit and leaf extracts are used to treat headaches, colds, and skin diseases, and are known for their anti-inflammatory and antibacterial properties.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/IOS/Default/2025/10/554099908/IV/IE/YQ/254740027/product-jpeg-1000x1000.jpeg",
+        "https://5.imimg.com/data5/ANDROID/Default/2026/7/624153832/KK/ZK/RH/254740027/product-jpeg-1000x1000.jpg",
+        "https://5.imimg.com/data5/ANDROID/Default/2026/7/624153846/QC/MT/OS/254740027/product-1000x1000.jpg"
+      ],
+      "order": 1,
+      "imageSource": "seller",
+      "id": "2-mukhi-rudraksha-fruit",
+      "images": [
+        "assets/products/catalog/2-mukhi-rudraksha-fruit-0.jpg",
+        "assets/products/catalog/2-mukhi-rudraksha-fruit-1.jpg",
+        "assets/products/catalog/2-mukhi-rudraksha-fruit-2.jpg"
+      ],
+      "image": "assets/products/catalog/2-mukhi-rudraksha-fruit-0.jpg"
+    },
+    {
+      "name": "3 Mukhi Rudraksha Fruit",
+      "categoryId": "rudraksha-fruit",
+      "category": "Rudraksha Fruit",
+      "price": 50,
+      "priceUnit": "Oz",
+      "minOrderQty": null,
+      "minOrderUnit": null,
+      "mukhi": 3,
+      "specs": {
+        "Mukhi": "3 Mukhi",
+        "Origin": "Nepal",
+        "Bead Size": "18 mm",
+        "Certification": "Not Certified",
+        "Treatment": "Natural",
+        "Usage": "Mala Making",
+        "Shape": "Round",
+        "Fitting Type": "Loose Bead",
+        "Grade": "Premium"
+      },
+      "description": "Rudraksha beads are highly revered seeds known for their stabilizing and protective properties. Both Ayurvedic and yogic traditions highlight that wearing these beads regulates heart rate, balances blood pressure, and calms the nervous system by generating positive bioelectric energy",
+      "sourceImages": [
+        "https://5.imimg.com/data5/ANDROID/Default/2026/7/624156203/XF/LZ/LE/254740027/product-jpeg-1000x1000.jpg",
+        "https://5.imimg.com/data5/ANDROID/Default/2026/7/624156217/GP/VU/SO/254740027/product-1000x1000.jpg",
+        "https://5.imimg.com/data5/ANDROID/Default/2026/7/624156218/RK/XF/BB/254740027/product-1000x1000.jpg",
+        "https://5.imimg.com/data5/ANDROID/Default/2026/7/624157915/FE/TE/WW/254740027/product-jpeg-1000x1000.jpg",
+        "https://5.imimg.com/data5/ANDROID/Default/2026/7/624162681/KL/VG/IL/254740027/product-jpeg-1000x1000.jpg",
+        "https://5.imimg.com/data5/ANDROID/Default/2026/7/624162694/TP/WN/TN/254740027/product-1000x1000.jpg"
+      ],
+      "order": 2,
+      "imageSource": "seller",
+      "id": "3-mukhi-rudraksha-fruit",
+      "images": [
+        "assets/products/catalog/3-mukhi-rudraksha-fruit-0.jpg",
+        "assets/products/catalog/3-mukhi-rudraksha-fruit-1.jpg",
+        "assets/products/catalog/3-mukhi-rudraksha-fruit-2.jpg",
+        "assets/products/catalog/3-mukhi-rudraksha-fruit-3.jpg"
+      ],
+      "image": "assets/products/catalog/3-mukhi-rudraksha-fruit-0.jpg"
+    },
+    {
+      "name": "8mm Rudraksha Bracelet",
+      "categoryId": "rudraksha-bracelet",
+      "category": "Rudraksha Bracelet",
+      "price": 50,
+      "priceUnit": "Piece",
+      "minOrderQty": 100,
+      "minOrderUnit": "Piece",
+      "mukhi": null,
+      "specs": {
+        "Number Of Beads": "21 beads",
+        "Rudraksha Mukhi": "5 mukhi",
+        "Bracelet Size": "5.5 inch",
+        "String Material": "Elastic cord",
+        "Gender": "Unisex",
+        "Bead size": "8 mm",
+        "Purpose": "Meditation"
+      },
+      "description": "Wearing Rudraksha is said to help the wearer achieve a higher state of consciousness, making it a popular accessory for those who meditate or seek mental clarity. The beads are believed to absorb negative energy and offer a shield of protection, making them a powerful tool for enhancing spiritual well-being",
+      "sourceImages": [
+        "https://5.imimg.com/data5/IOS/Default/2025/11/560572948/FF/TI/HR/254740027/product-jpeg-1000x1000.jpeg",
+        "https://5.imimg.com/data5/IOS/Default/2025/11/560572958/BW/QN/EJ/254740027/product-jpeg-1000x1000.jpeg",
+        "https://5.imimg.com/data5/IOS/Default/2025/11/560572979/FD/DI/OM/254740027/product-jpeg-1000x1000.jpeg",
+        "https://5.imimg.com/data5/IOS/Default/2025/11/560572984/SL/DI/KH/254740027/product-jpeg-1000x1000.jpeg",
+        "https://5.imimg.com/data5/IOS/Default/2025/11/560572966/KU/KN/RQ/254740027/product-jpeg-1000x1000.jpeg"
+      ],
+      "order": 1,
+      "imageSource": "seller",
+      "id": "8mm-rudraksha-bracelet",
+      "images": [
+        "assets/products/catalog/8mm-rudraksha-bracelet-0.jpg",
+        "assets/products/catalog/8mm-rudraksha-bracelet-1.jpg",
+        "assets/products/catalog/8mm-rudraksha-bracelet-2.jpg",
+        "assets/products/catalog/8mm-rudraksha-bracelet-3.jpg"
+      ],
+      "image": "assets/products/catalog/8mm-rudraksha-bracelet-0.jpg"
+    },
+    {
+      "name": "Gauri Shankar Rudraksha",
+      "categoryId": "gauri-shankar-rudraksha",
+      "category": "Gauri Shankar Rudraksha",
+      "price": 2000,
+      "priceUnit": "Piece",
+      "minOrderQty": 1,
+      "minOrderUnit": "Piece",
+      "mukhi": 10,
+      "specs": {
+        "Origin": "Nepal",
+        "Bead Size": "34 mm",
+        "Certification": "Lab Certified",
+        "Bead Type": "Natural Joint",
+        "Packaging Type": "packet",
+        "Color": "brown",
+        "Usage": "Puja, Pendant",
+        "Material": "wood",
+        "Number Of Mukhi": "10",
+        "Size": "30 mm",
+        "Shape": "round",
+        "Ruling God": "shankar",
+        "Weight": "4 gram",
+        "Brand": "Rudra beads"
+      },
+      "description": "Collector Gauri Shankar Nepal Rudraksha - Energised Bead for ...The Gauri Shankar Rudraksha benefits include promoting marital harmony and strong relationships, enhancing spiritual growth, providing protection from negative energy, and alleviating stress and anxiety. This two-in-one bead, symbolizing the union of Lord Shiva and Goddess Parvati, is believed to bring balance and peace to the wearer's life by harmonizing relationships and balancing spiritual and mental energies.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/IOS/Default/2025/11/560574967/VE/EX/IE/254740027/product-jpeg-1000x1000.jpeg",
+        "https://5.imimg.com/data5/IOS/Default/2025/11/560575803/MK/LB/UB/254740027/product-jpeg-1000x1000.jpeg"
+      ],
+      "order": 1,
+      "imageSource": "seller",
+      "id": "gauri-shankar-rudraksha",
+      "images": [
+        "assets/products/catalog/gauri-shankar-rudraksha-0.jpg",
+        "assets/products/catalog/gauri-shankar-rudraksha-1.jpg"
+      ],
+      "image": "assets/products/catalog/gauri-shankar-rudraksha-0.jpg"
+    },
+    {
+      "name": "5.01 Carats Natural Hessonite Gomed Gemstone",
+      "categoryId": "natural-hessonite-gomed-gemstone",
+      "category": "Natural Hessonite Gomed Gemstone",
+      "price": 10000,
+      "priceUnit": "Carat",
+      "minOrderQty": 10,
+      "minOrderUnit": "Carat",
+      "mukhi": null,
+      "specs": {
+        "Stone Shape": "Cushion",
+        "Stone Weight": "5.01 ct",
+        "Stone Treatment": "Unheated",
+        "Stone Grade": "Premium",
+        "Stone Cut": "Faceted",
+        "Usage/Application": "Spiritual Use",
+        "Clarity": "Lightly Included"
+      },
+      "description": "We are engaged in offering Natural Hessonite Gomed Gemstone to our clients. Our range of all products is widely appreciated by our clients.",
+      "sourceImages": [
+        "https://5.imimg.com/data5/SELLER/Default/2025/10/554039884/JZ/LL/AQ/254740027/natural-hessonite-gomed-gemstone-1000x1000.webp"
+      ],
+      "order": 1,
+      "imageSource": "seller",
+      "id": "5-01-carats-natural-hessonite-gomed-gemstone",
+      "images": [
+        "assets/products/catalog/5-01-carats-natural-hessonite-gomed-gemstone-0.jpg"
+      ],
+      "image": "assets/products/catalog/5-01-carats-natural-hessonite-gomed-gemstone-0.jpg"
+    },
+    {
+      "name": "Divine Spiritual Pendants",
+      "categoryId": "new-items",
+      "category": "New Items",
+      "price": null,
+      "priceUnit": null,
+      "minOrderQty": null,
+      "minOrderUnit": null,
+      "mukhi": null,
+      "specs": {},
+      "description": "",
+      "sourceImages": [
+        "https://tdw.imimg.com/template-tdw/n_image_t.png"
+      ],
+      "order": 1,
+      "imageSource": "fallback",
+      "id": "divine-spiritual-pendants",
+      "images": [
+        "assets/products/catalog/divine-spiritual-pendants-0.jpg"
+      ],
+      "image": "assets/products/catalog/divine-spiritual-pendants-0.jpg"
+    },
+    {
+      "name": "Crystal Beads Bracelets",
+      "categoryId": "new-items",
+      "category": "New Items",
+      "price": null,
+      "priceUnit": null,
+      "minOrderQty": null,
+      "minOrderUnit": null,
+      "mukhi": null,
+      "specs": {},
+      "description": "",
+      "sourceImages": [
+        "https://tdw.imimg.com/template-tdw/n_image_t.png"
+      ],
+      "order": 2,
+      "imageSource": "fallback",
+      "id": "crystal-beads-bracelets",
+      "images": [
+        "assets/products/catalog/crystal-beads-bracelets-0.jpg"
+      ],
+      "image": "assets/products/catalog/crystal-beads-bracelets-0.jpg"
+    },
+    {
+      "name": "Gemstone Beads Bracelet",
+      "categoryId": "new-items",
+      "category": "New Items",
+      "price": null,
+      "priceUnit": null,
+      "minOrderQty": null,
+      "minOrderUnit": null,
+      "mukhi": null,
+      "specs": {},
+      "description": "",
+      "sourceImages": [
+        "https://tdw.imimg.com/template-tdw/n_image_t.png"
+      ],
+      "order": 3,
+      "imageSource": "fallback",
+      "id": "gemstone-beads-bracelet",
+      "images": [
+        "assets/products/catalog/gemstone-beads-bracelet-0.jpg"
+      ],
+      "image": "assets/products/catalog/gemstone-beads-bracelet-0.jpg"
+    }
+  ]
+}
