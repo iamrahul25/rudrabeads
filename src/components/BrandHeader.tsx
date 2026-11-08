@@ -2,46 +2,100 @@ import { Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
+import { UnderlinedHeading } from '@/components/UnderlinedHeading';
 import { colors } from '@/theme/colors';
 import { radii, spacing } from '@/theme/spacing';
 
 type Props = {
-  showSearch?: boolean;
-  showCart?: boolean;
+  /** Full RudraBeads mark — used on Home / Categories-style screens */
+  showBrand?: boolean;
   title?: string;
   onBack?: () => void;
+  showSearch?: boolean;
+  showCart?: boolean;
+  showNotifications?: boolean;
+  showSettings?: boolean;
+  showShare?: boolean;
+  showWishlist?: boolean;
+  cartCount?: number;
+  onShare?: () => void;
+  onWishlist?: () => void;
+  onSettings?: () => void;
+  wishlistActive?: boolean;
 };
 
+export function BrandMark() {
+  return (
+    <View style={styles.brand} accessibilityRole="header">
+      <View style={styles.logoMark}>
+        <Text style={styles.logoGlyph}>R</Text>
+      </View>
+      <UnderlinedHeading textStyle={styles.brandName} lineWidth={32}>
+        RudraBeads
+      </UnderlinedHeading>
+    </View>
+  );
+}
+
 export function BrandHeader({
-  showSearch = true,
-  showCart = true,
+  showBrand = false,
   title,
   onBack,
+  showSearch = false,
+  showCart = false,
+  showNotifications = false,
+  showSettings = false,
+  showShare = false,
+  showWishlist = false,
+  cartCount = 2,
+  onShare,
+  onWishlist,
+  onSettings,
+  wishlistActive = false,
 }: Props) {
+  const left = onBack ? (
+    <View style={styles.leftGroup}>
+      <Pressable
+        onPress={onBack}
+        hitSlop={12}
+        accessibilityRole="button"
+        accessibilityLabel="Go back"
+        style={styles.iconBtn}
+      >
+        <Ionicons name="arrow-back" size={22} color={colors.text} />
+      </Pressable>
+      {title ? (
+        <UnderlinedHeading textStyle={styles.inlineTitle} lineWidth={24}>
+          {title}
+        </UnderlinedHeading>
+      ) : null}
+    </View>
+  ) : showBrand ? (
+    <BrandMark />
+  ) : title ? (
+    <UnderlinedHeading textStyle={styles.pageTitle} lineWidth={28}>
+      {title}
+    </UnderlinedHeading>
+  ) : (
+    <View style={styles.flex} />
+  );
+
   return (
     <View style={styles.row}>
-      {onBack ? (
-        <Pressable
-          onPress={onBack}
-          hitSlop={12}
-          accessibilityRole="button"
-          accessibilityLabel="Go back"
-          style={styles.iconBtn}
-        >
-          <Ionicons name="arrow-back" size={22} color={colors.text} />
-        </Pressable>
-      ) : (
-        <View style={styles.brand}>
-          <View style={styles.logoMark}>
-            <Text style={styles.logoGlyph}>R</Text>
-          </View>
-          <Text style={styles.brandName}>RudraBeads</Text>
-        </View>
-      )}
-
-      {title ? <Text style={styles.title}>{title}</Text> : <View style={styles.flex} />}
+      {left}
+      {onBack || showBrand || title ? <View style={styles.flex} /> : null}
 
       <View style={styles.actions}>
+        {showNotifications ? (
+          <Pressable
+            hitSlop={10}
+            accessibilityRole="button"
+            accessibilityLabel="Notifications"
+            style={styles.iconBtn}
+          >
+            <Ionicons name="notifications-outline" size={22} color={colors.text} />
+          </Pressable>
+        ) : null}
         {showSearch ? (
           <Pressable
             onPress={() => router.push('/(tabs)/search')}
@@ -53,6 +107,43 @@ export function BrandHeader({
             <Ionicons name="search-outline" size={22} color={colors.text} />
           </Pressable>
         ) : null}
+        {showShare ? (
+          <Pressable
+            onPress={onShare}
+            hitSlop={10}
+            accessibilityRole="button"
+            accessibilityLabel="Share"
+            style={styles.iconBtn}
+          >
+            <Ionicons name="share-outline" size={22} color={colors.text} />
+          </Pressable>
+        ) : null}
+        {showWishlist ? (
+          <Pressable
+            onPress={onWishlist}
+            hitSlop={10}
+            accessibilityRole="button"
+            accessibilityLabel="Wishlist"
+            style={styles.iconBtn}
+          >
+            <Ionicons
+              name={wishlistActive ? 'heart' : 'heart-outline'}
+              size={22}
+              color={wishlistActive ? colors.primary : colors.text}
+            />
+          </Pressable>
+        ) : null}
+        {showSettings ? (
+          <Pressable
+            onPress={onSettings}
+            hitSlop={10}
+            accessibilityRole="button"
+            accessibilityLabel="Settings"
+            style={styles.iconBtn}
+          >
+            <Ionicons name="settings-outline" size={22} color={colors.text} />
+          </Pressable>
+        ) : null}
         {showCart ? (
           <Pressable
             onPress={() => router.push('/cart')}
@@ -62,9 +153,11 @@ export function BrandHeader({
             style={styles.iconBtn}
           >
             <Ionicons name="bag-handle-outline" size={22} color={colors.text} />
-            <View style={styles.badge}>
-              <Text style={styles.badgeText}>2</Text>
-            </View>
+            {cartCount > 0 ? (
+              <View style={styles.badge}>
+                <Text style={styles.badgeText}>{cartCount}</Text>
+              </View>
+            ) : null}
           </Pressable>
         ) : null}
       </View>
@@ -75,42 +168,53 @@ export function BrandHeader({
 const styles = StyleSheet.create({
   row: {
     minHeight: 52,
-    paddingHorizontal: spacing.lg,
+    paddingHorizontal: spacing.md,
     paddingVertical: spacing.sm,
     flexDirection: 'row',
     alignItems: 'center',
     gap: spacing.sm,
   },
+  leftGroup: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.xs,
+    flexShrink: 1,
+  },
   brand: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: spacing.sm,
+    flexShrink: 1,
   },
   logoMark: {
-    width: 32,
-    height: 32,
+    width: 28,
+    height: 28,
     borderRadius: radii.sm,
-    backgroundColor: colors.primary,
+    backgroundColor: colors.star,
     alignItems: 'center',
     justifyContent: 'center',
   },
   logoGlyph: {
     color: colors.surface,
-    fontFamily: 'CormorantGaramond_700Bold',
-    fontSize: 18,
+    fontFamily: 'PlayfairDisplay_700Bold',
+    fontSize: 15,
   },
   brandName: {
-    fontFamily: 'CormorantGaramond_700Bold',
-    fontSize: 24,
+    fontFamily: 'PlayfairDisplay_700Bold',
+    fontSize: 22,
     color: colors.text,
     letterSpacing: 0.2,
   },
-  title: {
-    flex: 1,
-    textAlign: 'center',
+  pageTitle: {
+    fontFamily: 'DMSans_600SemiBold',
+    fontSize: 18,
+    color: colors.text,
+  },
+  inlineTitle: {
     fontFamily: 'DMSans_600SemiBold',
     fontSize: 16,
     color: colors.text,
+    flexShrink: 1,
   },
   flex: { flex: 1 },
   actions: {

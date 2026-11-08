@@ -1,7 +1,18 @@
 import { Ionicons } from '@expo/vector-icons';
 import { Image } from 'expo-image';
 import { router } from 'expo-router';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { useEffect, useRef, useState } from 'react';
+import {
+  Dimensions,
+  FlatList,
+  NativeScrollEvent,
+  NativeSyntheticEvent,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { BrandHeader } from '@/components/BrandHeader';
@@ -12,30 +23,121 @@ import { categories, getFeaturedProducts, products } from '@/data/products';
 import { colors } from '@/theme/colors';
 import { radii, spacing } from '@/theme/spacing';
 
+const SCREEN_WIDTH = Dimensions.get('window').width;
+const HERO_SIDE_INSET = spacing.lg;
+const HERO_WIDTH = SCREEN_WIDTH - HERO_SIDE_INSET * 2;
+const HERO_AUTO_MS = 4000;
+
+type HeroSlide = {
+  id: string;
+  image: number;
+  title: string;
+  subtitle: string;
+};
+
+const heroSlides: HeroSlide[] = [
+  {
+    id: 'original',
+    image: require('../../../assets/hero/hero-0-rudraksha-bead.jpg'),
+    title: 'Authentic\nRudraksha',
+    subtitle: 'Certified • Energized • Natural',
+  },
+  {
+    id: 'mala',
+    image: require('../../../assets/hero/hero-1-mala.jpg'),
+    title: 'Sacred\nMalas',
+    subtitle: 'Handpicked • Lab Tested • Blessed',
+  },
+  {
+    id: 'prayer',
+    image: require('../../../assets/hero/hero-2-hands-mala.jpg'),
+    title: 'Prayer\nReady',
+    subtitle: 'Worn with devotion every day',
+  },
+  {
+    id: 'wear',
+    image: require('../../../assets/hero/hero-3-rudraksha-bracelet.jpg'),
+    title: 'Wear Your\nEnergy',
+    subtitle: 'Bracelets • Beads • Everyday Strength',
+  },
+];
+
 const mukhiChips = products
   .filter((p) => p.categoryId === 'nepali-rudraksha' && p.mukhi != null)
   .slice(0, 6);
 const popular = getFeaturedProducts().slice(0, 4);
 
 export default function HomeScreen() {
+  const [heroIndex, setHeroIndex] = useState(0);
+  const heroListRef = useRef<FlatList<HeroSlide>>(null);
+  const heroIndexRef = useRef(0);
+  const isDraggingRef = useRef(false);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (isDraggingRef.current) return;
+      const next = (heroIndexRef.current + 1) % heroSlides.length;
+      heroIndexRef.current = next;
+      setHeroIndex(next);
+      heroListRef.current?.scrollToIndex({ index: next, animated: true });
+    }, HERO_AUTO_MS);
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <SafeAreaView style={styles.safe} edges={['top']}>
-      <BrandHeader />
+      <BrandHeader showBrand showNotifications showCart />
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.content}>
         <View style={styles.hero}>
-          <Image
-            source={require('../../../assets/hero/authentic-rudraksha.png')}
-            style={styles.heroImage}
-            contentFit="cover"
+          <FlatList
+            ref={heroListRef}
+            data={heroSlides}
+            keyExtractor={(item) => item.id}
+            horizontal
+            pagingEnabled
+            showsHorizontalScrollIndicator={false}
+            decelerationRate="fast"
+            style={styles.heroPager}
+            getItemLayout={(_, index) => ({
+              length: HERO_WIDTH,
+              offset: HERO_WIDTH * index,
+              index,
+            })}
+            onScrollBeginDrag={() => {
+              isDraggingRef.current = true;
+            }}
+            onMomentumScrollEnd={(event: NativeSyntheticEvent<NativeScrollEvent>) => {
+              isDraggingRef.current = false;
+              const nextIndex = Math.round(event.nativeEvent.contentOffset.x / HERO_WIDTH);
+              if (nextIndex >= 0 && nextIndex < heroSlides.length) {
+                heroIndexRef.current = nextIndex;
+                setHeroIndex(nextIndex);
+              }
+            }}
+            renderItem={({ item }) => (
+              <View style={styles.heroSlide}>
+                <Image source={item.image} style={styles.heroImage} contentFit="cover" />
+                <View style={styles.heroOverlay}>
+                  <Text style={styles.heroTitle}>{item.title}</Text>
+                  <Text style={styles.heroSubtitle}>{item.subtitle}</Text>
+                  <PrimaryButton
+                    label="Shop Now"
+                    style={styles.heroCta}
+                    onPress={() => router.push('/(tabs)/search')}
+                  />
+                </View>
+              </View>
+            )}
           />
-          <View style={styles.heroOverlay}>
-            <Text style={styles.heroEyebrow}>Sacred Collection</Text>
-            <Text style={styles.heroTitle}>Authentic{'\n'}Rudraksha</Text>
-            <PrimaryButton
-              label="Shop Now"
-              style={styles.heroCta}
-              onPress={() => router.push('/(tabs)/search')}
-            />
+
+          <View style={styles.dots} pointerEvents="none">
+            {heroSlides.map((slide, index) => (
+              <View
+                key={slide.id}
+                style={[styles.dot, index === heroIndex && styles.dotActive]}
+              />
+            ))}
           </View>
         </View>
 
@@ -95,37 +197,63 @@ const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: colors.background },
   content: { paddingBottom: spacing.xxxl },
   hero: {
-    marginHorizontal: spacing.lg,
-    height: 190,
+    marginHorizontal: HERO_SIDE_INSET,
+    height: 210,
     borderRadius: radii.xl,
     overflow: 'hidden',
-    backgroundColor: colors.primary,
+    backgroundColor: '#5C2E1A',
+  },
+  heroPager: {
+    flex: 1,
+  },
+  heroSlide: {
+    width: HERO_WIDTH,
+    height: 210,
   },
   heroImage: { ...StyleSheet.absoluteFill },
   heroOverlay: {
     flex: 1,
     justifyContent: 'center',
     paddingHorizontal: spacing.xl,
-    backgroundColor: 'rgba(44, 24, 16, 0.28)',
-  },
-  heroEyebrow: {
-    fontFamily: 'DMSans_500Medium',
-    fontSize: 12,
-    color: colors.surface,
-    opacity: 0.9,
-    marginBottom: spacing.xs,
+    backgroundColor: 'rgba(44, 24, 16, 0.42)',
   },
   heroTitle: {
-    fontFamily: 'CormorantGaramond_700Bold',
+    fontFamily: 'PlayfairDisplay_700Bold',
     fontSize: 34,
     lineHeight: 36,
     color: colors.surface,
+    marginBottom: spacing.xs,
+  },
+  heroSubtitle: {
+    fontFamily: 'DMSans_400Regular',
+    fontSize: 12,
+    color: colors.surface,
+    opacity: 0.92,
     marginBottom: spacing.md,
   },
   heroCta: {
     alignSelf: 'flex-start',
     minHeight: 40,
     paddingHorizontal: spacing.lg,
+  },
+  dots: {
+    position: 'absolute',
+    bottom: spacing.sm,
+    left: 0,
+    right: 0,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    gap: 6,
+  },
+  dot: {
+    width: 7,
+    height: 7,
+    borderRadius: 4,
+    backgroundColor: 'rgba(255,255,255,0.35)',
+  },
+  dotActive: {
+    backgroundColor: colors.surface,
+    width: 16,
   },
   hPad: {
     paddingHorizontal: spacing.lg,

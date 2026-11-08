@@ -1,5 +1,6 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
+import { UnderlinedHeading } from '@/components/UnderlinedHeading';
 import { colors } from '@/theme/colors';
 import { spacing } from '@/theme/spacing';
 
@@ -12,7 +13,9 @@ type Props = {
 export function SectionHeader({ title, actionLabel = 'See All', onAction }: Props) {
   return (
     <View style={styles.row}>
-      <Text style={styles.title}>{title}</Text>
+      <UnderlinedHeading textStyle={styles.title} lineWidth={32}>
+        {title}
+      </UnderlinedHeading>
       {onAction ? (
         <Pressable onPress={onAction} hitSlop={8} accessibilityRole="button">
           <Text style={styles.action}>{actionLabel}</Text>
@@ -32,7 +35,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   title: {
-    fontFamily: 'CormorantGaramond_700Bold',
+    fontFamily: 'PlayfairDisplay_700Bold',
     fontSize: 24,
     color: colors.text,
   },

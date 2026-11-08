@@ -5,7 +5,9 @@ import { useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import { BrandHeader } from '@/components/BrandHeader';
 import { PrimaryButton } from '@/components/PrimaryButton';
+import { UnderlinedHeading } from '@/components/UnderlinedHeading';
 import { formatINR, getProductById } from '@/data/products';
 import { colors } from '@/theme/colors';
 import { radii, spacing } from '@/theme/spacing';
@@ -21,6 +23,7 @@ export default function ProductDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const product = getProductById(String(id));
   const [qty, setQty] = useState(1);
+  const [wishlisted, setWishlisted] = useState(false);
 
   if (!product) {
     return (
@@ -33,24 +36,13 @@ export default function ProductDetailScreen() {
 
   return (
     <SafeAreaView style={styles.safe} edges={['top', 'bottom']}>
-      <View style={styles.topBar}>
-        <Pressable
-          onPress={() => router.back()}
-          style={styles.iconBtn}
-          accessibilityRole="button"
-          accessibilityLabel="Go back"
-        >
-          <Ionicons name="arrow-back" size={22} color={colors.text} />
-        </Pressable>
-        <Pressable
-          onPress={() => router.push('/cart')}
-          style={styles.iconBtn}
-          accessibilityRole="button"
-          accessibilityLabel="Cart"
-        >
-          <Ionicons name="bag-handle-outline" size={22} color={colors.text} />
-        </Pressable>
-      </View>
+      <BrandHeader
+        onBack={() => router.back()}
+        showShare
+        showWishlist
+        wishlistActive={wishlisted}
+        onWishlist={() => setWishlisted((v) => !v)}
+      />
 
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.content}>
         <Image source={product.image} style={styles.hero} contentFit="cover" />
@@ -92,7 +84,13 @@ export default function ProductDetailScreen() {
 
           {product.benefits.length ? (
             <>
-              <Text style={styles.sectionTitle}>Highlights</Text>
+              <UnderlinedHeading
+                style={styles.sectionTitleWrap}
+                textStyle={styles.sectionTitle}
+                lineWidth={28}
+              >
+                Highlights
+              </UnderlinedHeading>
               {product.benefits.map((benefit) => (
                 <View key={benefit} style={styles.benefitRow}>
                   <Ionicons name="checkmark-circle" size={16} color={colors.success} />
@@ -104,7 +102,13 @@ export default function ProductDetailScreen() {
 
           {Object.keys(product.specs).length ? (
             <>
-              <Text style={styles.sectionTitle}>Specifications</Text>
+              <UnderlinedHeading
+                style={styles.sectionTitleWrap}
+                textStyle={styles.sectionTitle}
+                lineWidth={28}
+              >
+                Specifications
+              </UnderlinedHeading>
               {Object.entries(product.specs).map(([key, value]) => (
                 <View key={key} style={styles.benefitRow}>
                   <Text style={styles.specKey}>{key}</Text>
@@ -114,7 +118,13 @@ export default function ProductDetailScreen() {
             </>
           ) : null}
 
-          <Text style={styles.sectionTitle}>Details</Text>
+          <UnderlinedHeading
+            style={styles.sectionTitleWrap}
+            textStyle={styles.sectionTitle}
+            lineWidth={28}
+          >
+            Details
+          </UnderlinedHeading>
           <Text style={styles.description}>{product.description}</Text>
 
           <View style={styles.qtyRow}>
@@ -161,17 +171,6 @@ export default function ProductDetailScreen() {
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: colors.background },
-  topBar: {
-    paddingHorizontal: spacing.sm,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  iconBtn: {
-    width: 44,
-    height: 44,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   content: { paddingBottom: spacing.xl },
   hero: {
     marginHorizontal: spacing.lg,
@@ -181,7 +180,7 @@ const styles = StyleSheet.create({
   },
   body: { paddingHorizontal: spacing.lg, paddingTop: spacing.lg },
   name: {
-    fontFamily: 'CormorantGaramond_700Bold',
+    fontFamily: 'PlayfairDisplay_700Bold',
     fontSize: 30,
     color: colors.text,
   },
@@ -252,10 +251,12 @@ const styles = StyleSheet.create({
     color: colors.textSecondary,
     textAlign: 'center',
   },
-  sectionTitle: {
+  sectionTitleWrap: {
     marginTop: spacing.xl,
     marginBottom: spacing.sm,
-    fontFamily: 'CormorantGaramond_700Bold',
+  },
+  sectionTitle: {
+    fontFamily: 'PlayfairDisplay_700Bold',
     fontSize: 22,
     color: colors.text,
   },

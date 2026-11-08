@@ -15,7 +15,7 @@ export default function CategoriesScreen() {
 
   return (
     <SafeAreaView style={styles.safe} edges={['top']}>
-      <BrandHeader />
+      <BrandHeader title="Categories" showSearch showCart />
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <Pressable
           style={styles.searchWrap}
@@ -26,8 +26,6 @@ export default function CategoriesScreen() {
           <Ionicons name="search-outline" size={18} color={colors.textMuted} />
           <Text style={styles.searchInput}>Search categories</Text>
         </Pressable>
-
-        <Text style={styles.heading}>Categories</Text>
 
         <Pressable
           style={styles.featured}
@@ -84,14 +82,8 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: colors.textMuted,
   },
-  heading: {
-    marginTop: spacing.xl,
-    marginBottom: spacing.md,
-    fontFamily: 'CormorantGaramond_700Bold',
-    fontSize: 28,
-    color: colors.text,
-  },
   featured: {
+    marginTop: spacing.xl,
     height: 140,
     borderRadius: radii.xl,
     overflow: 'hidden',
@@ -105,7 +97,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(44,24,16,0.35)',
   },
   featuredTitle: {
-    fontFamily: 'CormorantGaramond_700Bold',
+    fontFamily: 'PlayfairDisplay_700Bold',
     fontSize: 28,
     color: colors.surface,
   },

@@ -5,7 +5,9 @@ import { useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import { BrandHeader } from '@/components/BrandHeader';
 import { PrimaryButton } from '@/components/PrimaryButton';
+import { UnderlinedHeading } from '@/components/UnderlinedHeading';
 import { formatINR, products } from '@/data/products';
 import { colors } from '@/theme/colors';
 import { radii, spacing } from '@/theme/spacing';
@@ -45,18 +47,7 @@ export default function CartScreen() {
 
   return (
     <SafeAreaView style={styles.safe} edges={['top', 'bottom']}>
-      <View style={styles.header}>
-        <Pressable
-          onPress={() => router.back()}
-          style={styles.iconBtn}
-          accessibilityRole="button"
-          accessibilityLabel="Go back"
-        >
-          <Ionicons name="arrow-back" size={22} color={colors.text} />
-        </Pressable>
-        <Text style={styles.title}>Your Cart ({items.length})</Text>
-        <View style={styles.iconBtn} />
-      </View>
+      <BrandHeader title={`Your Cart (${items.length})`} onBack={() => router.back()} />
 
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         {items.map((item) => (
@@ -93,7 +84,13 @@ export default function CartScreen() {
         </View>
 
         <View style={styles.summary}>
-          <Text style={styles.summaryTitle}>Price Details</Text>
+          <UnderlinedHeading
+            style={styles.summaryTitleWrap}
+            textStyle={styles.summaryTitle}
+            lineWidth={28}
+          >
+            Price Details
+          </UnderlinedHeading>
           <View style={styles.summaryRow}>
             <Text style={styles.summaryLabel}>Total Item Price</Text>
             <Text style={styles.summaryValue}>{formatINR(itemTotal)}</Text>
@@ -129,24 +126,6 @@ export default function CartScreen() {
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: colors.background },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal: spacing.sm,
-  },
-  iconBtn: {
-    width: 44,
-    height: 44,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    flex: 1,
-    textAlign: 'center',
-    fontFamily: 'DMSans_600SemiBold',
-    fontSize: 16,
-    color: colors.text,
-  },
   content: {
     paddingHorizontal: spacing.lg,
     paddingBottom: spacing.xl,
@@ -227,11 +206,13 @@ const styles = StyleSheet.create({
     borderColor: colors.border,
     padding: spacing.lg,
   },
+  summaryTitleWrap: {
+    marginBottom: spacing.md,
+  },
   summaryTitle: {
-    fontFamily: 'CormorantGaramond_700Bold',
+    fontFamily: 'PlayfairDisplay_700Bold',
     fontSize: 22,
     color: colors.text,
-    marginBottom: spacing.md,
   },
   summaryRow: {
     flexDirection: 'row',

@@ -29,7 +29,7 @@ const support = [
 export default function AccountScreen() {
   return (
     <SafeAreaView style={styles.safe} edges={['top']}>
-      <BrandHeader title="Account" showSearch={false} />
+      <BrandHeader title="Account" showSettings />
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <View style={styles.profile}>
           <View style={styles.avatar}>
@@ -101,13 +101,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   avatarText: {
-    fontFamily: 'CormorantGaramond_700Bold',
+    fontFamily: 'PlayfairDisplay_700Bold',
     fontSize: 24,
     color: colors.surface,
   },
   profileMeta: { gap: 4 },
   name: {
-    fontFamily: 'CormorantGaramond_700Bold',
+    fontFamily: 'PlayfairDisplay_700Bold',
     fontSize: 26,
     color: colors.text,
   },

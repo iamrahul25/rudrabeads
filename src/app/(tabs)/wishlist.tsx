@@ -12,7 +12,7 @@ export default function WishlistScreen() {
 
   return (
     <SafeAreaView style={styles.safe} edges={['top']}>
-      <BrandHeader title="Wishlist" showSearch={false} />
+      <BrandHeader title="Wishlist" showCart />
       <View style={styles.body}>
         <Text style={styles.subtitle}>{wishlist.length} saved items</Text>
         <View style={styles.grid}>

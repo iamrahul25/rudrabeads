@@ -1,14 +1,14 @@
 import {
-  CormorantGaramond_700Bold,
-  useFonts as useCormorant,
-} from '@expo-google-fonts/cormorant-garamond';
-import {
   DMSans_400Regular,
   DMSans_500Medium,
   DMSans_600SemiBold,
   DMSans_700Bold,
   useFonts as useDMSans,
 } from '@expo-google-fonts/dm-sans';
+import {
+  PlayfairDisplay_700Bold,
+  useFonts as usePlayfair,
+} from '@expo-google-fonts/playfair-display';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
@@ -20,7 +20,7 @@ import { colors } from '@/theme/colors';
 SplashScreen.preventAutoHideAsync().catch(() => undefined);
 
 export default function RootLayout() {
-  const [cormorantLoaded] = useCormorant({ CormorantGaramond_700Bold });
+  const [playfairLoaded] = usePlayfair({ PlayfairDisplay_700Bold });
   const [dmLoaded] = useDMSans({
     DMSans_400Regular,
     DMSans_500Medium,
@@ -28,7 +28,7 @@ export default function RootLayout() {
     DMSans_700Bold,
   });
 
-  const ready = cormorantLoaded && dmLoaded;
+  const ready = playfairLoaded && dmLoaded;
 
   useEffect(() => {
     if (ready) {
