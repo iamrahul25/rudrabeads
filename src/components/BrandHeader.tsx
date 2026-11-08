@@ -1,11 +1,12 @@
 import { Ionicons } from '@expo/vector-icons';
+import { Image } from 'expo-image';
 import { router } from 'expo-router';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { UnderlinedHeading } from '@/components/UnderlinedHeading';
 import { useCart } from '@/context/CartContext';
 import { colors } from '@/theme/colors';
-import { radii, spacing } from '@/theme/spacing';
+import { spacing } from '@/theme/spacing';
 
 type Props = {
   /** Full RudraBeads mark — used on Home / Categories-style screens */
@@ -25,15 +26,27 @@ type Props = {
   wishlistActive?: boolean;
 };
 
+const logoSource = require('../../assets/logo.png');
+const brandTextSource = require('../../assets/brand-text.webp');
+
+/** Display width for wordmark from asset aspect ratio (991×232). */
+const BRAND_WORDMARK_WIDTH = Math.round((991 / 232) * 26);
+
 export function BrandMark() {
   return (
     <View style={styles.brand}>
-      <View style={styles.logoMark}>
-        <Text style={styles.logoGlyph}>R</Text>
-      </View>
-      <UnderlinedHeading textStyle={styles.brandName} lineWidth={32}>
-        RudraBeads
-      </UnderlinedHeading>
+      <Image
+        source={logoSource}
+        style={styles.logoImage}
+        contentFit="contain"
+        accessibilityLabel="RudraBeads trishula mark"
+      />
+      <Image
+        source={brandTextSource}
+        style={styles.brandWordmark}
+        contentFit="contain"
+        accessibilityLabel="RudraBeads"
+      />
     </View>
   );
 }
@@ -189,24 +202,13 @@ const styles = StyleSheet.create({
     gap: spacing.sm,
     flexShrink: 1,
   },
-  logoMark: {
-    width: 28,
+  logoImage: {
+    width: 18,
     height: 28,
-    borderRadius: radii.sm,
-    backgroundColor: colors.star,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
-  logoGlyph: {
-    color: colors.surface,
-    fontFamily: 'PlayfairDisplay_700Bold',
-    fontSize: 15,
-  },
-  brandName: {
-    fontFamily: 'PlayfairDisplay_700Bold',
-    fontSize: 22,
-    color: colors.text,
-    letterSpacing: 0.2,
+  brandWordmark: {
+    width: BRAND_WORDMARK_WIDTH,
+    height: 26,
   },
   pageTitle: {
     fontFamily: 'DMSans_600SemiBold',
