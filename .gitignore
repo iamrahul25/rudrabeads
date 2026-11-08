@@ -9,6 +9,9 @@ dist/
 web-build/
 expo-env.d.ts
 
+# Local Figma extract
+.fig-extract/
+
 # Native
 .kotlin/
 *.orig.*
