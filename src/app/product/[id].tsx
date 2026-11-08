@@ -1,7 +1,9 @@
 import { Ionicons } from '@expo/vector-icons';
 import { Image } from 'expo-image';
 import { router, useLocalSearchParams } from 'expo-router';
-import { useState } from 'react';
+import { useCart } from '@/context/CartContext';
+import { useGoBack } from '@/hooks/useGoBack';
+import { useEffect, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -21,9 +23,18 @@ const trustItems = [
 
 export default function ProductDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
+  const goBack = useGoBack('/');
   const product = getProductById(String(id));
+  const { addItem } = useCart();
   const [qty, setQty] = useState(1);
   const [wishlisted, setWishlisted] = useState(false);
+  const [added, setAdded] = useState(false);
+
+  useEffect(() => {
+    if (!added) return undefined;
+    const timer = setTimeout(() => setAdded(false), 1600);
+    return () => clearTimeout(timer);
+  }, [added]);
 
   if (!product) {
     return (
@@ -37,9 +48,10 @@ export default function ProductDetailScreen() {
   return (
     <SafeAreaView style={styles.safe} edges={['top', 'bottom']}>
       <BrandHeader
-        onBack={() => router.back()}
+        onBack={goBack}
         showShare
         showWishlist
+        showCart
         wishlistActive={wishlisted}
         onWishlist={() => setWishlisted((v) => !v)}
       />
@@ -154,15 +166,21 @@ export default function ProductDetailScreen() {
 
       <View style={styles.footer}>
         <PrimaryButton
-          label="Add to Cart"
+          label={added ? 'Added' : 'Add to Cart'}
           variant="outline"
           style={styles.footerBtn}
-          onPress={() => router.push('/cart')}
+          onPress={() => {
+            addItem(product.id, qty);
+            setAdded(true);
+          }}
         />
         <PrimaryButton
           label="Buy Now"
           style={styles.footerBtn}
-          onPress={() => router.push('/cart')}
+          onPress={() => {
+            addItem(product.id, qty);
+            router.push('/cart');
+          }}
         />
       </View>
     </SafeAreaView>

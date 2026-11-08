@@ -1,55 +1,43 @@
 import { Ionicons } from '@expo/vector-icons';
 import { Image } from 'expo-image';
 import { router } from 'expo-router';
-import { useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { BrandHeader } from '@/components/BrandHeader';
 import { PrimaryButton } from '@/components/PrimaryButton';
 import { UnderlinedHeading } from '@/components/UnderlinedHeading';
-import { formatINR, products } from '@/data/products';
+import { useCart } from '@/context/CartContext';
+import { formatINR } from '@/data/products';
+import { useGoBack } from '@/hooks/useGoBack';
 import { colors } from '@/theme/colors';
 import { radii, spacing } from '@/theme/spacing';
 
-type CartLine = {
-  id: string;
-  qty: number;
-};
-
 export default function CartScreen() {
-  const [lines, setLines] = useState<CartLine[]>([
-    { id: products[0]?.id ?? '5-mukhi-nepali-rudraksha', qty: 1 },
-    { id: products[1]?.id ?? '7-mukhi-nepali-rudraksha', qty: 1 },
-  ]);
-
-  const items = lines
-    .map((line) => {
-      const product = products.find((p) => p.id === line.id);
-      return product ? { ...product, qty: line.qty } : null;
-    })
-    .filter(Boolean) as Array<(typeof products)[number] & { qty: number }>;
+  const goBack = useGoBack('/');
+  const { items, count, setQty, removeItem } = useCart();
 
   const itemTotal = items.reduce((sum, item) => sum + (item.price ?? 0) * item.qty, 0);
-  const discount = 300;
-  const delivery = 0;
-  const payable = itemTotal - discount + delivery;
 
   const updateQty = (id: string, delta: number) => {
-    setLines((prev) =>
-      prev
-        .map((line) =>
-          line.id === id ? { ...line, qty: Math.max(0, line.qty + delta) } : line,
-        )
-        .filter((line) => line.qty > 0),
-    );
+    const current = items.find((item) => item.id === id)?.qty ?? 0;
+    setQty(id, current + delta);
   };
 
   return (
     <SafeAreaView style={styles.safe} edges={['top', 'bottom']}>
-      <BrandHeader title={`Your Cart (${items.length})`} onBack={() => router.back()} />
+      <BrandHeader title={count > 0 ? `Your Cart (${count})` : 'Your Cart'} onBack={goBack} />
 
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
+        {items.length === 0 ? (
+          <View style={styles.empty}>
+            <Ionicons name="bag-handle-outline" size={42} color={colors.primary} />
+            <Text style={styles.emptyTitle}>Your cart is empty</Text>
+            <Text style={styles.emptyText}>Add rudraksha and malas from the shop to see them here.</Text>
+            <PrimaryButton label="Continue Shopping" onPress={() => router.replace('/')} />
+          </View>
+        ) : null}
+
         {items.map((item) => (
           <View key={item.id} style={styles.card}>
             <Image source={item.image} style={styles.thumb} contentFit="cover" />
@@ -57,20 +45,44 @@ export default function CartScreen() {
               <Text style={styles.name} numberOfLines={2}>
                 {item.name}
               </Text>
-              <Text style={styles.price}>{formatINR(item.price)}</Text>
+              <Text style={styles.price}>
+                {formatINR(item.price)}
+                {item.qty > 1 && item.price != null ? ` · ${formatINR(item.price * item.qty)}` : ''}
+              </Text>
               <View style={styles.qtyControls}>
-                <Pressable style={styles.qtyBtn} onPress={() => updateQty(item.id, -1)}>
+                <Pressable
+                  style={styles.qtyBtn}
+                  onPress={() => updateQty(item.id, -1)}
+                  accessibilityRole="button"
+                  accessibilityLabel="Decrease quantity"
+                >
                   <Ionicons name="remove" size={14} color={colors.text} />
                 </Pressable>
                 <Text style={styles.qty}>{item.qty}</Text>
-                <Pressable style={styles.qtyBtn} onPress={() => updateQty(item.id, 1)}>
+                <Pressable
+                  style={styles.qtyBtn}
+                  onPress={() => updateQty(item.id, 1)}
+                  accessibilityRole="button"
+                  accessibilityLabel="Increase quantity"
+                >
                   <Ionicons name="add" size={14} color={colors.text} />
+                </Pressable>
+                <Pressable
+                  onPress={() => removeItem(item.id)}
+                  hitSlop={8}
+                  accessibilityRole="button"
+                  accessibilityLabel={`Remove ${item.name}`}
+                  style={styles.removeBtn}
+                >
+                  <Ionicons name="trash-outline" size={16} color={colors.textMuted} />
                 </Pressable>
               </View>
             </View>
           </View>
         ))}
 
+        {items.length > 0 ? (
+        <>
         <View style={styles.coupon}>
           <Ionicons name="pricetag-outline" size={18} color={colors.primary} />
           <TextInput
@@ -96,18 +108,12 @@ export default function CartScreen() {
             <Text style={styles.summaryValue}>{formatINR(itemTotal)}</Text>
           </View>
           <View style={styles.summaryRow}>
-            <Text style={styles.summaryLabel}>Discount</Text>
-            <Text style={[styles.summaryValue, { color: colors.success }]}>
-              -{formatINR(discount)}
-            </Text>
-          </View>
-          <View style={styles.summaryRow}>
             <Text style={styles.summaryLabel}>Delivery</Text>
             <Text style={[styles.summaryValue, { color: colors.success }]}>FREE</Text>
           </View>
           <View style={[styles.summaryRow, styles.totalRow]}>
             <Text style={styles.totalLabel}>Total Amount</Text>
-            <Text style={styles.totalValue}>{formatINR(payable)}</Text>
+            <Text style={styles.totalValue}>{formatINR(itemTotal)}</Text>
           </View>
         </View>
 
@@ -115,11 +121,15 @@ export default function CartScreen() {
           <Ionicons name="lock-closed" size={14} color={colors.success} />
           <Text style={styles.secureText}>100% Secure Payments</Text>
         </View>
+        </>
+        ) : null}
       </ScrollView>
 
-      <View style={styles.footer}>
-        <PrimaryButton label="Proceed to Checkout" onPress={() => undefined} />
-      </View>
+      {items.length > 0 ? (
+        <View style={styles.footer}>
+          <PrimaryButton label="Proceed to Checkout" onPress={() => undefined} />
+        </View>
+      ) : null}
     </SafeAreaView>
   );
 }
@@ -129,6 +139,26 @@ const styles = StyleSheet.create({
   content: {
     paddingHorizontal: spacing.lg,
     paddingBottom: spacing.xl,
+  },
+  empty: {
+    alignItems: 'center',
+    paddingTop: spacing.xl * 2,
+    paddingHorizontal: spacing.lg,
+    gap: spacing.sm,
+  },
+  emptyTitle: {
+    marginTop: spacing.sm,
+    fontFamily: 'PlayfairDisplay_700Bold',
+    fontSize: 26,
+    color: colors.text,
+  },
+  emptyText: {
+    marginBottom: spacing.md,
+    fontFamily: 'DMSans_400Regular',
+    fontSize: 14,
+    lineHeight: 20,
+    textAlign: 'center',
+    color: colors.textSecondary,
   },
   card: {
     flexDirection: 'row',
@@ -174,6 +204,15 @@ const styles = StyleSheet.create({
     fontFamily: 'DMSans_600SemiBold',
     fontSize: 14,
     color: colors.text,
+    minWidth: 16,
+    textAlign: 'center',
+  },
+  removeBtn: {
+    marginLeft: 'auto',
+    width: 28,
+    height: 28,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   coupon: {
     marginTop: spacing.sm,

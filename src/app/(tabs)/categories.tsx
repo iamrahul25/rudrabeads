@@ -29,8 +29,9 @@ export default function CategoriesScreen() {
 
         <Pressable
           style={styles.featured}
-          onPress={() => router.push('/(tabs)/search')}
+          onPress={() => router.push(`/category/${featured.id}`)}
           accessibilityRole="button"
+          accessibilityLabel={featured.name}
         >
           <Image source={featured.image} style={styles.featuredImage} contentFit="cover" />
           <View style={styles.featuredOverlay}>
@@ -44,7 +45,7 @@ export default function CategoriesScreen() {
             <Pressable
               key={item.id}
               style={styles.card}
-              onPress={() => router.push('/(tabs)/search')}
+              onPress={() => router.push(`/category/${item.id}`)}
               accessibilityRole="button"
               accessibilityLabel={item.name}
             >

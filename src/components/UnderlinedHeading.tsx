@@ -18,8 +18,10 @@ export function UnderlinedHeading({
   accessibilityRole = 'header',
 }: Props) {
   return (
-    <View style={[styles.wrap, style]} accessibilityRole={accessibilityRole}>
-      <Text style={textStyle}>{children}</Text>
+    <View style={[styles.wrap, style]}>
+      <Text accessibilityRole={accessibilityRole} style={textStyle}>
+        {children}
+      </Text>
       <View style={[styles.line, { width: lineWidth }]} />
     </View>
   );

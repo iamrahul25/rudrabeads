@@ -150,10 +150,23 @@ export function getProductById(id: string) {
   return products.find((item) => item.id === id);
 }
 
+export function getCategoryById(id: string) {
+  return categories.find((item) => item.id === id);
+}
+
 export function getProductsByCategory(categoryId: string) {
-  return products.filter((item) => item.categoryId === categoryId);
+  const category = getCategoryById(categoryId);
+  if (!category) return [];
+  const byId = new Map(products.map((item) => [item.id, item]));
+  return category.productIds
+    .map((productId) => byId.get(productId))
+    .filter((item): item is Product => item != null);
 }
 
 export function getFeaturedProducts() {
   return products.filter((item) => item.featured);
+}
+
+export function getProductsByMukhi(mukhi: number) {
+  return products.filter((item) => item.mukhi === mukhi);
 }

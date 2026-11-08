@@ -116,6 +116,7 @@ export const productImages: Record<string, number> = {
   'assets/products/catalog/gauri-shankar-rudraksha-0.jpg': require('../../assets/products/catalog/gauri-shankar-rudraksha-0.jpg'),
   'assets/products/catalog/gauri-shankar-rudraksha-1.jpg': require('../../assets/products/catalog/gauri-shankar-rudraksha-1.jpg'),
   'assets/products/catalog/gemstone-beads-bracelet-0.jpg': require('../../assets/products/catalog/gemstone-beads-bracelet-0.jpg'),
+  'assets/products/catalog/new-items-category-0.jpg': require('../../assets/products/catalog/new-items-category-0.jpg'),
   'assets/products/catalog/silver-cap-brace-karungali-bracelet-0.jpg': require('../../assets/products/catalog/silver-cap-brace-karungali-bracelet-0.jpg'),
   'assets/products/catalog/silver-cap-brace-karungali-bracelet-1.jpg': require('../../assets/products/catalog/silver-cap-brace-karungali-bracelet-1.jpg'),
   'assets/products/catalog/silver-cap-brace-karungali-bracelet-2.jpg': require('../../assets/products/catalog/silver-cap-brace-karungali-bracelet-2.jpg'),

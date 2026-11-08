@@ -3,6 +3,7 @@ import { Image } from 'expo-image';
 import { router } from 'expo-router';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
+import { useCart } from '@/context/CartContext';
 import { formatINR, Product } from '@/data/products';
 import { colors } from '@/theme/colors';
 import { radii, spacing } from '@/theme/spacing';
@@ -13,6 +14,9 @@ type Props = {
 };
 
 export function ProductCard({ product, width = '48%' }: Props) {
+  const { addItem, lines } = useCart();
+  const inCart = lines.find((line) => line.id === product.id)?.qty ?? 0;
+
   return (
     <View style={[styles.card, { width }]}>
       <Pressable
@@ -42,10 +46,14 @@ export function ProductCard({ product, width = '48%' }: Props) {
         <Pressable
           style={styles.addBtn}
           accessibilityRole="button"
-          accessibilityLabel="Add to cart"
-          onPress={() => router.push('/cart')}
+          accessibilityLabel={inCart > 0 ? `${inCart} in cart. Add another` : 'Add to cart'}
+          onPress={() => addItem(product.id, 1)}
         >
-          <Ionicons name="add" size={18} color={colors.surface} />
+          {inCart > 0 ? (
+            <Text style={styles.addQty}>{inCart}</Text>
+          ) : (
+            <Ionicons name="add" size={18} color={colors.surface} />
+          )}
         </Pressable>
       </View>
     </View>
@@ -120,5 +128,10 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  addQty: {
+    fontFamily: 'DMSans_700Bold',
+    fontSize: 13,
+    color: colors.surface,
   },
 });

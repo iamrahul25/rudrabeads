@@ -3,6 +3,7 @@ import { router } from 'expo-router';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { UnderlinedHeading } from '@/components/UnderlinedHeading';
+import { useCart } from '@/context/CartContext';
 import { colors } from '@/theme/colors';
 import { radii, spacing } from '@/theme/spacing';
 
@@ -26,7 +27,7 @@ type Props = {
 
 export function BrandMark() {
   return (
-    <View style={styles.brand} accessibilityRole="header">
+    <View style={styles.brand}>
       <View style={styles.logoMark}>
         <Text style={styles.logoGlyph}>R</Text>
       </View>
@@ -47,12 +48,14 @@ export function BrandHeader({
   showSettings = false,
   showShare = false,
   showWishlist = false,
-  cartCount = 2,
+  cartCount,
   onShare,
   onWishlist,
   onSettings,
   wishlistActive = false,
 }: Props) {
+  const { count } = useCart();
+  const badgeCount = cartCount ?? count;
   const left = onBack ? (
     <View style={styles.leftGroup}>
       <Pressable
@@ -149,13 +152,13 @@ export function BrandHeader({
             onPress={() => router.push('/cart')}
             hitSlop={10}
             accessibilityRole="button"
-            accessibilityLabel="Cart"
+            accessibilityLabel={badgeCount > 0 ? `Cart, ${badgeCount} items` : 'Cart'}
             style={styles.iconBtn}
           >
             <Ionicons name="bag-handle-outline" size={22} color={colors.text} />
-            {cartCount > 0 ? (
+            {badgeCount > 0 ? (
               <View style={styles.badge}>
-                <Text style={styles.badgeText}>{cartCount}</Text>
+                <Text style={styles.badgeText}>{badgeCount > 99 ? '99+' : badgeCount}</Text>
               </View>
             ) : null}
           </Pressable>

@@ -15,7 +15,12 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import { View } from 'react-native';
 
+import { CartProvider } from '@/context/CartContext';
 import { colors } from '@/theme/colors';
+
+export const unstable_settings = {
+  anchor: '(tabs)',
+};
 
 SplashScreen.preventAutoHideAsync().catch(() => undefined);
 
@@ -41,7 +46,7 @@ export default function RootLayout() {
   }
 
   return (
-    <>
+    <CartProvider>
       <StatusBar style="dark" />
       <Stack
         screenOptions={{
@@ -52,8 +57,10 @@ export default function RootLayout() {
       >
         <Stack.Screen name="(tabs)" />
         <Stack.Screen name="product/[id]" />
+        <Stack.Screen name="category/[id]" />
+        <Stack.Screen name="mukhi/[count]" />
         <Stack.Screen name="cart" options={{ presentation: 'card' }} />
       </Stack>
-    </>
+    </CartProvider>
   );
 }

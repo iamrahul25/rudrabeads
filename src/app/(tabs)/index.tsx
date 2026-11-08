@@ -11,11 +11,13 @@ import {
   ScrollView,
   StyleSheet,
   Text,
+  useWindowDimensions,
   View,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { BrandHeader } from '@/components/BrandHeader';
+import { MukhiMarquee } from '@/components/MukhiMarquee';
 import { PrimaryButton } from '@/components/PrimaryButton';
 import { ProductCard } from '@/components/ProductCard';
 import { SectionHeader } from '@/components/SectionHeader';
@@ -27,6 +29,23 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 const HERO_SIDE_INSET = spacing.lg;
 const HERO_WIDTH = SCREEN_WIDTH - HERO_SIDE_INSET * 2;
 const HERO_AUTO_MS = 4000;
+const STYLE_GAP = spacing.md; // ≥8px touch spacing (ui-ux-pro-max)
+const STYLE_PAD = spacing.lg;
+
+/** Column count from the live viewport. Each row is a flex row, so tiles always fill it. */
+function getStyleColumns(width: number) {
+  if (width >= 900) return 4;
+  if (width >= 560) return 3;
+  return 2;
+}
+
+function chunkItems<T>(items: T[], size: number): T[][] {
+  const rows: T[][] = [];
+  for (let index = 0; index < items.length; index += size) {
+    rows.push(items.slice(index, index + size));
+  }
+  return rows;
+}
 
 type HeroSlide = {
   id: string;
@@ -62,16 +81,16 @@ const heroSlides: HeroSlide[] = [
   },
 ];
 
-const mukhiChips = products
-  .filter((p) => p.categoryId === 'nepali-rudraksha' && p.mukhi != null)
-  .slice(0, 6);
 const popular = getFeaturedProducts().slice(0, 4);
 
 export default function HomeScreen() {
+  const { width: windowWidth } = useWindowDimensions();
   const [heroIndex, setHeroIndex] = useState(0);
   const heroListRef = useRef<FlatList<HeroSlide>>(null);
   const heroIndexRef = useRef(0);
   const isDraggingRef = useRef(false);
+  const styleColumns = getStyleColumns(windowWidth);
+  const styleRows = chunkItems(categories, styleColumns);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -141,39 +160,31 @@ export default function HomeScreen() {
           </View>
         </View>
 
-        <SectionHeader title="Shop by Style" onAction={() => router.push('/(tabs)/categories')} />
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.hPad}
-        >
-          {categories.map((item) => (
-            <Pressable
-              key={item.id}
-              style={styles.circleItem}
-              onPress={() => router.push('/(tabs)/categories')}
-              accessibilityRole="button"
-              accessibilityLabel={item.name}
-            >
-              <View style={styles.circle}>
-                <Image source={item.image} style={styles.circleImage} contentFit="cover" />
-              </View>
-              <Text style={styles.circleLabel}>{item.name}</Text>
-            </Pressable>
-          ))}
-        </ScrollView>
-
         <SectionHeader title="Shop by Mukhi" onAction={() => router.push('/(tabs)/search')} />
-        <View style={styles.mukhiGrid}>
-          {mukhiChips.map((item) => (
-            <Pressable
-              key={item.id}
-              style={styles.mukhiCard}
-              onPress={() => router.push(`/product/${item.id}`)}
-            >
-              <Image source={item.image} style={styles.mukhiImage} contentFit="cover" />
-              <Text style={styles.mukhiLabel}>{item.mukhi} Mukhi</Text>
-            </Pressable>
+        <MukhiMarquee />
+
+        <SectionHeader title="Shop by Style" onAction={() => router.push('/(tabs)/categories')} />
+        <View style={styles.styleGrid}>
+          {styleRows.map((row, rowIndex) => (
+            <View key={row[0]?.id ?? rowIndex} style={styles.styleRow}>
+              {row.map((item) => (
+                <Pressable
+                  key={item.id}
+                  style={styles.styleCard}
+                  onPress={() => router.push(`/category/${item.id}`)}
+                  accessibilityRole="button"
+                  accessibilityLabel={item.name}
+                >
+                  <Image source={item.image} style={styles.styleImage} contentFit="cover" />
+                  <Text style={styles.styleLabel} numberOfLines={2}>
+                    {item.name}
+                  </Text>
+                </Pressable>
+              ))}
+              {Array.from({ length: styleColumns - row.length }).map((_, spacerIndex) => (
+                <View key={`spacer-${rowIndex}-${spacerIndex}`} style={styles.styleCard} />
+              ))}
+            </View>
           ))}
         </View>
 
@@ -255,53 +266,34 @@ const styles = StyleSheet.create({
     backgroundColor: colors.surface,
     width: 16,
   },
-  hPad: {
-    paddingHorizontal: spacing.lg,
-    gap: spacing.md,
+  styleGrid: {
+    paddingHorizontal: STYLE_PAD,
+    gap: STYLE_GAP,
   },
-  circleItem: {
-    width: 72,
-    alignItems: 'center',
-  },
-  circle: {
-    width: 64,
-    height: 64,
-    borderRadius: 32,
-    overflow: 'hidden',
-    borderWidth: 1,
-    borderColor: colors.border,
-    backgroundColor: colors.surface,
-  },
-  circleImage: { width: '100%', height: '100%' },
-  circleLabel: {
-    marginTop: spacing.xs,
-    fontFamily: 'DMSans_500Medium',
-    fontSize: 11,
-    color: colors.textSecondary,
-    textAlign: 'center',
-  },
-  mukhiGrid: {
-    paddingHorizontal: spacing.lg,
+  styleRow: {
     flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
+    width: '100%',
+    gap: STYLE_GAP,
   },
-  mukhiCard: {
-    width: '31%',
-    marginBottom: spacing.md,
+  styleCard: {
+    flex: 1,
+    minWidth: 0,
     alignItems: 'center',
   },
-  mukhiImage: {
+  styleImage: {
     width: '100%',
     aspectRatio: 1,
     borderRadius: radii.md,
     backgroundColor: colors.surface,
   },
-  mukhiLabel: {
+  styleLabel: {
     marginTop: spacing.xs,
     fontFamily: 'DMSans_500Medium',
     fontSize: 12,
+    lineHeight: 16,
     color: colors.text,
+    textAlign: 'center',
+    width: '100%',
   },
   trust: {
     marginHorizontal: spacing.lg,
