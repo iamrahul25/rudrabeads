@@ -61,10 +61,11 @@ function benefitsFromProduct(item: CatalogProduct): string[] {
 }
 
 function mapProduct(item: CatalogProduct): Product {
-  const gallery = ((item.images || []) as string[])
+  const resolved = ((item.images || []) as string[])
     .map((path) => resolveProductImage(path))
     .filter((value): value is number => value != null);
-  const primary = resolveProductImage(item.image) ?? gallery[0] ?? null;
+  const primary = resolveProductImage(item.image) ?? resolved[0] ?? null;
+  const gallery = primary != null ? [primary, ...resolved.filter((value) => value !== primary)] : resolved;
 
   return {
     id: item.id,
@@ -80,7 +81,7 @@ function mapProduct(item: CatalogProduct): Product {
     rating: 5,
     reviews: 0,
     image: primary,
-    images: gallery.length ? gallery : primary != null ? [primary] : [],
+    images: gallery,
     category: item.category,
     categoryId: item.categoryId,
     origin: item.origin,
@@ -121,6 +122,18 @@ export const categories: Category[] = catalog.categories.map((item) => {
     productIds: item.productIds,
   };
 });
+
+export type ShopByMukhiItem = {
+  mukhi: number;
+  name: string;
+  image: number | null;
+};
+
+export const shopByMukhi: ShopByMukhiItem[] = catalog.shopByMukhi.map((item) => ({
+  mukhi: item.mukhi,
+  name: item.name,
+  image: resolveProductImage(item.image) ?? null,
+}));
 
 export const mukhiFilters = [
   'All',

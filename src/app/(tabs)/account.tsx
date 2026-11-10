@@ -64,7 +64,9 @@ export default function AccountScreen() {
 
   const support: MenuItem[] = [
     { icon: 'help-circle-outline', label: 'Help & Support', href: '/info/help' },
-    { icon: 'information-circle-outline', label: 'About RudraBeads', href: '/info/about' },
+    { icon: 'chatbubbles-outline', label: 'Contact Us', href: '/info/contact' },
+    { icon: 'star-outline', label: 'Testimonials', href: '/info/testimonials' },
+    { icon: 'information-circle-outline', label: 'About Us', href: '/info/about' },
   ];
 
   const signOut = () => {

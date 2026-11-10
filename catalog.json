@@ -12,7 +12,10 @@
       "Prices are single list prices as shown on the site; no MRP/compare-at prices exist.",
       "4 products have no price on the site: 21 Mukhi Rudraksha, Divine Spiritual Pendants, Crystal Beads Bracelets, Gemstone Beads Bracelet.",
       "Images normalized to pure white square backgrounds for catalog consistency.",
-      "Products without seller photos use catalog-matched white-background fallbacks."
+      "Products without seller photos use catalog-matched white-background fallbacks.",
+      "image is the main product image (cards, cart and first gallery slide); images lists every product photo in gallery order.",
+      "Files ending in '-original.webp' are untouched site photos; the same name without the suffix is the white-background version.",
+      "shopByMukhi holds the home 'Shop by Mukhi' circles (mukhi, name, image) independently of product main images."
     ]
   },
   "business": {
@@ -22,7 +25,162 @@
     "phone": "08048250557",
     "gst": "09EEQPA4774B1ZE",
     "address": "B-139, Shalimar Garden Main, Sahibabad, Ghaziabad - 201005, Uttar Pradesh, India",
-    "established": 2025
+    "established": 2025,
+    "mobile": "+91 8130260949",
+    "whatsapp": "918130260949",
+    "location": {
+      "lat": 28.68744,
+      "lng": 77.33448
+    },
+    "about": {
+      "paragraphs": [
+        "Established in the year of 2025, We \"Rudra Beads\" Manufacturer of Rudraksha Mala, Rudraksha Bead, Sapphire Gemstone, Indonesian Rudraksha Etc. We direct all our activities to cater the expectations of customers by providing them excellent quality products as per their gratification. Moreover, we follow moral business policies and crystal pure transparency in all our transactions to keep healthy relations with the customers.",
+        "For our accomplishment story, we are grateful to Mr. Sahil Ahuja whose continual backing and direction have been useful to us for attaining exponential development in the current market."
+      ],
+      "factsheet": [
+        {
+          "title": "Basic Information",
+          "rows": [
+            [
+              "Nature of Business",
+              "Trader - Retailer"
+            ],
+            [
+              "Additional Business",
+              "Retail Business"
+            ],
+            [
+              "Company CEO",
+              "Sahil Ahuja"
+            ],
+            [
+              "Registered Address",
+              "B-139, Shalimar Garden Main, Sahibabad, Ghaziabad- 201005, Uttar Pradesh, India"
+            ],
+            [
+              "Total Number of Employees",
+              "Upto 10 People"
+            ],
+            [
+              "GST Registration Date",
+              "19-09-2025"
+            ],
+            [
+              "Legal Status of Firm",
+              "Proprietorship"
+            ],
+            [
+              "Annual Turnover",
+              "40 L - 1.5 Cr"
+            ],
+            [
+              "GST Partner Name",
+              "Sahil Ahuja"
+            ]
+          ]
+        },
+        {
+          "title": "Statutory Profile",
+          "rows": [
+            [
+              "Banker",
+              "Kotak Mahindra Bank"
+            ],
+            [
+              "GST No.",
+              "09EEQPA4774B1ZE"
+            ]
+          ]
+        },
+        {
+          "title": "Packaging/Payment and Shipment Details",
+          "rows": [
+            [
+              "Payment Mode",
+              "Cash, Credit Card, Online, Cheque"
+            ],
+            [
+              "Shipment Mode",
+              "By Road"
+            ]
+          ]
+        }
+      ],
+      "whyUs": {
+        "intro": "Our specialties, which make us a valuable business partner for our clients, include the following:",
+        "points": [
+          "Maintain strict adherence to the highest quality standards and parameters",
+          "Long and diverse domestic market experience",
+          "On-Time Delivery",
+          "Reasonable product Pricing",
+          "Excellent After-Sales Support"
+        ]
+      },
+      "photos": [
+        {
+          "section": "Our Warehouse",
+          "title": "Our Stock",
+          "image": "assets/company/stock.webp",
+          "width": 1000,
+          "height": 632
+        },
+        {
+          "section": "Our Infrastructure",
+          "title": "Our Signboard",
+          "image": "assets/company/signboard.webp",
+          "width": 1000,
+          "height": 750
+        },
+        {
+          "section": "Infrastructural Set-Up",
+          "title": "Our Office",
+          "image": "assets/company/office.webp",
+          "width": 800,
+          "height": 1000
+        }
+      ]
+    },
+    "testimonials": {
+      "rating": 5,
+      "outOf": 5,
+      "satisfaction": [
+        {
+          "label": "Response",
+          "percent": 100
+        },
+        {
+          "label": "Quality",
+          "percent": 100
+        },
+        {
+          "label": "Delivery",
+          "percent": 100
+        }
+      ],
+      "reviews": [
+        {
+          "name": "Abhishek Sharma",
+          "location": "Bharatpur, Rajasthan",
+          "rating": 5,
+          "date": "2026-07-06",
+          "product": "Rudraksha Beads",
+          "tags": [
+            "Response",
+            "Quality",
+            "Delivery"
+          ]
+        },
+        {
+          "name": "Sahil Ahuja",
+          "location": "Ghaziabad, Uttar Pradesh",
+          "rating": 5,
+          "date": "2025-10-24",
+          "product": "14 Mukhi Rudraksha",
+          "tags": []
+        }
+      ]
+    },
+    "city": "Ghaziabad, Uttar Pradesh"
   },
   "categories": [
     {
@@ -31,7 +189,7 @@
       "slug": "nepali-rudraksha",
       "intro": "Pioneers in the industry, we offer 8 mukhi, 5 mukhi, 7 mukhi, 6 mukhi, 4 mukhi and 10 mukhi nepali rudraksha from India.",
       "productCount": 17,
-      "image": "assets/products/catalog/5-mukhi-nepali-rudraksha-0.jpg",
+      "image": "assets/products/catalog/5-mukhi-nepali-rudraksha-0.webp",
       "productIds": [
         "5-mukhi-nepali-rudraksha",
         "7-mukhi-nepali-rudraksha",
@@ -58,7 +216,7 @@
       "slug": "rudraksha-beads",
       "intro": "Certified and natural Rudraksha beads for mala making, pendant and puja use.",
       "productCount": 8,
-      "image": "assets/products/catalog/7-mukhi-rudraksha-0.jpg",
+      "image": "assets/products/catalog/7-mukhi-rudraksha-0.webp",
       "productIds": [
         "7-mukhi-rudraksha",
         "5-mukhi-rudraksha-beads",
@@ -76,7 +234,7 @@
       "slug": "indonesian-rudraksha",
       "intro": "Indonesian Rudraksha beads in multiple mukhi counts for pendant, mala and bracelet use.",
       "productCount": 7,
-      "image": "assets/products/catalog/6-mukhi-indonesian-rudraksha-0.jpg",
+      "image": "assets/products/catalog/6-mukhi-indonesian-rudraksha-0.webp",
       "productIds": [
         "6-mukhi-indonesian-rudraksha",
         "5-mukhi-indonesian-rudraksha",
@@ -93,7 +251,7 @@
       "slug": "rudraksha-mala",
       "intro": "Rudraksha malas for japa, wearing and spiritual practice.",
       "productCount": 5,
-      "image": "assets/products/catalog/5-mukhi-nepali-ganesh-rudraksha-mala-0.jpg",
+      "image": "assets/products/catalog/5-mukhi-nepali-ganesh-rudraksha-mala-0.webp",
       "productIds": [
         "5-mukhi-nepali-ganesh-rudraksha-mala",
         "9-mukhi-indonesia-rudraksha-mala",
@@ -108,7 +266,7 @@
       "slug": "karungali-mala",
       "intro": "Karungali (ebony) malas with copper, silver capping and plain finishes.",
       "productCount": 4,
-      "image": "assets/products/catalog/6mm-copper-karungali-mala-0.jpg",
+      "image": "assets/products/catalog/6mm-copper-karungali-mala-0.webp",
       "productIds": [
         "6mm-copper-karungali-mala",
         "6mm-silver-capping-karungali-mala",
@@ -122,7 +280,7 @@
       "slug": "karungali-bracelet",
       "intro": "Karungali bracelets in ebony wood, silver cap and silver chain styles.",
       "productCount": 3,
-      "image": "assets/products/catalog/black-ebony-karungali-bracelet-0.jpg",
+      "image": "assets/products/catalog/black-ebony-karungali-bracelet-0.webp",
       "productIds": [
         "black-ebony-karungali-bracelet",
         "silver-cap-brace-karungali-bracelet",
@@ -135,7 +293,7 @@
       "slug": "rudraksha-fruit",
       "intro": "Premium grade Rudraksha fruit offered by the ounce.",
       "productCount": 2,
-      "image": "assets/products/catalog/2-mukhi-rudraksha-fruit-0.jpg",
+      "image": "assets/products/catalog/2-mukhi-rudraksha-fruit-0.webp",
       "productIds": [
         "2-mukhi-rudraksha-fruit",
         "3-mukhi-rudraksha-fruit"
@@ -147,7 +305,7 @@
       "slug": "rudraksha-bracelet",
       "intro": "Elastic Rudraksha bracelets for meditation and daily wear.",
       "productCount": 1,
-      "image": "assets/products/catalog/8mm-rudraksha-bracelet-0.jpg",
+      "image": "assets/products/catalog/8mm-rudraksha-bracelet-0.webp",
       "productIds": [
         "8mm-rudraksha-bracelet"
       ]
@@ -158,7 +316,7 @@
       "slug": "gauri-shankar-rudraksha",
       "intro": "Collector Gauri Shankar Rudraksha symbolizing the union of Shiva and Parvati.",
       "productCount": 1,
-      "image": "assets/products/catalog/gauri-shankar-rudraksha-0.jpg",
+      "image": "assets/products/catalog/gauri-shankar-rudraksha-0.webp",
       "productIds": [
         "gauri-shankar-rudraksha"
       ]
@@ -169,7 +327,7 @@
       "slug": "natural-hessonite-gomed-gemstone",
       "intro": "Natural Hessonite (Gomed) gemstones, unheated and faceted.",
       "productCount": 1,
-      "image": "assets/products/catalog/5-01-carats-natural-hessonite-gomed-gemstone-0.jpg",
+      "image": "assets/products/catalog/5-01-carats-natural-hessonite-gomed-gemstone-0.webp",
       "productIds": [
         "5-01-carats-natural-hessonite-gomed-gemstone"
       ]
@@ -180,7 +338,7 @@
       "slug": "new-items",
       "intro": "New spiritual pendants and crystal/gemstone bead bracelets.",
       "productCount": 3,
-      "image": "assets/products/catalog/new-items-category-0.jpg",
+      "image": "assets/products/catalog/new-items-category-0.webp",
       "productIds": [
         "divine-spiritual-pendants",
         "crystal-beads-bracelets",
@@ -224,10 +382,12 @@
         "Ruling Planet": "Jupiter"
       },
       "description": "We are engaged in offering 5 Mukhi Nepali Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
-      "image": "assets/products/catalog/5-mukhi-nepali-rudraksha-0.jpg",
+      "image": "assets/products/catalog/5-mukhi-nepali-rudraksha-0.webp",
       "images": [
-        "assets/products/catalog/5-mukhi-nepali-rudraksha-0.jpg",
-        "assets/products/catalog/5-mukhi-nepali-rudraksha-1.jpg"
+        "assets/products/catalog/5-mukhi-nepali-rudraksha-0.webp",
+        "assets/products/catalog/5-mukhi-nepali-rudraksha-1.webp",
+        "assets/products/catalog/5-mukhi-nepali-rudraksha-2.webp",
+        "assets/products/catalog/5-mukhi-nepali-rudraksha-2-original.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -268,9 +428,9 @@
         "Ruling Planet": "Saturn"
       },
       "description": "We are engaged in offering 7 Mukhi Nepali Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
-      "image": "assets/products/catalog/7-mukhi-nepali-rudraksha-0.jpg",
+      "image": "assets/products/catalog/7-mukhi-nepali-rudraksha-0.webp",
       "images": [
-        "assets/products/catalog/7-mukhi-nepali-rudraksha-0.jpg"
+        "assets/products/catalog/7-mukhi-nepali-rudraksha-0.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -312,9 +472,9 @@
         "Ruling Planet": "Venus"
       },
       "description": "We are engaged in offering 6 Mukhi Nepali Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
-      "image": "assets/products/catalog/6-mukhi-nepali-rudraksha-0.jpg",
+      "image": "assets/products/catalog/6-mukhi-nepali-rudraksha-0.webp",
       "images": [
-        "assets/products/catalog/6-mukhi-nepali-rudraksha-0.jpg"
+        "assets/products/catalog/6-mukhi-nepali-rudraksha-0.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -355,11 +515,11 @@
         "Ruling Planet": "All Planets"
       },
       "description": "We are engaged in offering 10 Mukhi Nepali Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
-      "image": "assets/products/catalog/10-mukhi-nepali-rudraksha-0.jpg",
+      "image": "assets/products/catalog/10-mukhi-nepali-rudraksha-0.webp",
       "images": [
-        "assets/products/catalog/10-mukhi-nepali-rudraksha-0.jpg",
-        "assets/products/catalog/10-mukhi-nepali-rudraksha-1.jpg",
-        "assets/products/catalog/10-mukhi-nepali-rudraksha-2.jpg"
+        "assets/products/catalog/10-mukhi-nepali-rudraksha-0.webp",
+        "assets/products/catalog/10-mukhi-nepali-rudraksha-1.webp",
+        "assets/products/catalog/10-mukhi-nepali-rudraksha-2.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -400,11 +560,11 @@
         "Ruling Planet": "Mars"
       },
       "description": "We are engaged in offering 11 Mukhi Nepali Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
-      "image": "assets/products/catalog/11-mukhi-nepali-rudraksha-0.jpg",
+      "image": "assets/products/catalog/11-mukhi-nepali-rudraksha-0.webp",
       "images": [
-        "assets/products/catalog/11-mukhi-nepali-rudraksha-0.jpg",
-        "assets/products/catalog/11-mukhi-nepali-rudraksha-1.jpg",
-        "assets/products/catalog/11-mukhi-nepali-rudraksha-2.jpg"
+        "assets/products/catalog/11-mukhi-nepali-rudraksha-0.webp",
+        "assets/products/catalog/11-mukhi-nepali-rudraksha-1.webp",
+        "assets/products/catalog/11-mukhi-nepali-rudraksha-2.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -445,11 +605,11 @@
         "Ruling Planet": "Mars"
       },
       "description": "We are engaged in offering 14 Mukhi Nepali Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
-      "image": "assets/products/catalog/14-mukhi-nepali-rudraksha-0.jpg",
+      "image": "assets/products/catalog/14-mukhi-nepali-rudraksha-0.webp",
       "images": [
-        "assets/products/catalog/14-mukhi-nepali-rudraksha-0.jpg",
-        "assets/products/catalog/14-mukhi-nepali-rudraksha-1.jpg",
-        "assets/products/catalog/14-mukhi-nepali-rudraksha-2.jpg"
+        "assets/products/catalog/14-mukhi-nepali-rudraksha-0.webp",
+        "assets/products/catalog/14-mukhi-nepali-rudraksha-1.webp",
+        "assets/products/catalog/14-mukhi-nepali-rudraksha-2.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -491,11 +651,11 @@
         "Ruling Planet": "Mercury"
       },
       "description": "We are engaged in offering 15 Mukhi Nepali Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
-      "image": "assets/products/catalog/15-mukhi-nepali-rudraksha-0.jpg",
+      "image": "assets/products/catalog/15-mukhi-nepali-rudraksha-0.webp",
       "images": [
-        "assets/products/catalog/15-mukhi-nepali-rudraksha-0.jpg",
-        "assets/products/catalog/15-mukhi-nepali-rudraksha-1.jpg",
-        "assets/products/catalog/15-mukhi-nepali-rudraksha-2.jpg"
+        "assets/products/catalog/15-mukhi-nepali-rudraksha-0.webp",
+        "assets/products/catalog/15-mukhi-nepali-rudraksha-1.webp",
+        "assets/products/catalog/15-mukhi-nepali-rudraksha-2.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -538,11 +698,11 @@
         "Ruling Planet": "Venus"
       },
       "description": "We are engaged in offering 13 Mukhi Nepali Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
-      "image": "assets/products/catalog/13-mukhi-nepali-rudraksha-0.jpg",
+      "image": "assets/products/catalog/13-mukhi-nepali-rudraksha-0.webp",
       "images": [
-        "assets/products/catalog/13-mukhi-nepali-rudraksha-0.jpg",
-        "assets/products/catalog/13-mukhi-nepali-rudraksha-1.jpg",
-        "assets/products/catalog/13-mukhi-nepali-rudraksha-2.jpg"
+        "assets/products/catalog/13-mukhi-nepali-rudraksha-0.webp",
+        "assets/products/catalog/13-mukhi-nepali-rudraksha-1.webp",
+        "assets/products/catalog/13-mukhi-nepali-rudraksha-2.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -584,11 +744,11 @@
         "Ruling Planet": "Mars"
       },
       "description": "We are engaged in offering 3 Mukhi Nepali Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
-      "image": "assets/products/catalog/3-mukhi-nepali-rudraksha-0.jpg",
+      "image": "assets/products/catalog/3-mukhi-nepali-rudraksha-0.webp",
       "images": [
-        "assets/products/catalog/3-mukhi-nepali-rudraksha-0.jpg",
-        "assets/products/catalog/3-mukhi-nepali-rudraksha-1.jpg",
-        "assets/products/catalog/3-mukhi-nepali-rudraksha-2.jpg"
+        "assets/products/catalog/3-mukhi-nepali-rudraksha-0.webp",
+        "assets/products/catalog/3-mukhi-nepali-rudraksha-1.webp",
+        "assets/products/catalog/3-mukhi-nepali-rudraksha-2.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -629,11 +789,11 @@
         "Ruling Planet": "Sun"
       },
       "description": "We are engaged in offering 12 Mukhi Nepali Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
-      "image": "assets/products/catalog/12-mukhi-nepali-rudraksha-0.jpg",
+      "image": "assets/products/catalog/12-mukhi-nepali-rudraksha-0.webp",
       "images": [
-        "assets/products/catalog/12-mukhi-nepali-rudraksha-0.jpg",
-        "assets/products/catalog/12-mukhi-nepali-rudraksha-1.jpg",
-        "assets/products/catalog/12-mukhi-nepali-rudraksha-2.jpg"
+        "assets/products/catalog/12-mukhi-nepali-rudraksha-0.webp",
+        "assets/products/catalog/12-mukhi-nepali-rudraksha-1.webp",
+        "assets/products/catalog/12-mukhi-nepali-rudraksha-2.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -674,11 +834,11 @@
         "Number Of Mukhi": "12 Mukhi"
       },
       "description": "12 Mukhi Rudraksha gives radiance, luster, brilliance, sharpness, youthfulness, and vitality. The wearer of Twelve Mukhi Rudraksha gets the power of sight and power of timely action. Twelve Mukhi Rudraksha pacifies the negative influence and afflictions of the Sun.",
-      "image": "assets/products/catalog/12-mukhi-nepali-rudraksha-beads-0.jpg",
+      "image": "assets/products/catalog/12-mukhi-nepali-rudraksha-beads-0.webp",
       "images": [
-        "assets/products/catalog/12-mukhi-nepali-rudraksha-beads-0.jpg",
-        "assets/products/catalog/12-mukhi-nepali-rudraksha-beads-1.jpg",
-        "assets/products/catalog/12-mukhi-nepali-rudraksha-beads-2.jpg"
+        "assets/products/catalog/12-mukhi-nepali-rudraksha-beads-0.webp",
+        "assets/products/catalog/12-mukhi-nepali-rudraksha-beads-1.webp",
+        "assets/products/catalog/12-mukhi-nepali-rudraksha-beads-2.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -719,10 +879,10 @@
         "Ruling Planet": "Moon"
       },
       "description": "We are engaged in offering 2 Mukhi Nepali Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
-      "image": "assets/products/catalog/2-mukhi-nepali-rudraksha-0.jpg",
+      "image": "assets/products/catalog/2-mukhi-nepali-rudraksha-0.webp",
       "images": [
-        "assets/products/catalog/2-mukhi-nepali-rudraksha-0.jpg",
-        "assets/products/catalog/2-mukhi-nepali-rudraksha-1.jpg"
+        "assets/products/catalog/2-mukhi-nepali-rudraksha-0.webp",
+        "assets/products/catalog/2-mukhi-nepali-rudraksha-1.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -764,10 +924,10 @@
         "Ruling Planet": "Rahu"
       },
       "description": "We are engaged in offering 8 Mukhi Nepali Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
-      "image": "assets/products/catalog/8-mukhi-nepali-rudraksha-0.jpg",
+      "image": "assets/products/catalog/8-mukhi-nepali-rudraksha-0.webp",
       "images": [
-        "assets/products/catalog/8-mukhi-nepali-rudraksha-0.jpg",
-        "assets/products/catalog/8-mukhi-nepali-rudraksha-1.jpg"
+        "assets/products/catalog/8-mukhi-nepali-rudraksha-0.webp",
+        "assets/products/catalog/8-mukhi-nepali-rudraksha-1.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -809,9 +969,9 @@
         "Ruling Planet": "Mercury"
       },
       "description": "We are engaged in offering 4 Mukhi Nepali Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
-      "image": "assets/products/catalog/4-mukhi-nepali-rudraksha-0.jpg",
+      "image": "assets/products/catalog/4-mukhi-nepali-rudraksha-0.webp",
       "images": [
-        "assets/products/catalog/4-mukhi-nepali-rudraksha-0.jpg"
+        "assets/products/catalog/4-mukhi-nepali-rudraksha-0.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -853,11 +1013,11 @@
         "Ruling Planet": "Moon"
       },
       "description": "We are engaged in offering 16 Mukhi Nepali Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
-      "image": "assets/products/catalog/16-mukhi-nepali-rudraksha-0.jpg",
+      "image": "assets/products/catalog/16-mukhi-nepali-rudraksha-0.webp",
       "images": [
-        "assets/products/catalog/16-mukhi-nepali-rudraksha-0.jpg",
-        "assets/products/catalog/16-mukhi-nepali-rudraksha-1.jpg",
-        "assets/products/catalog/16-mukhi-nepali-rudraksha-2.jpg"
+        "assets/products/catalog/16-mukhi-nepali-rudraksha-0.webp",
+        "assets/products/catalog/16-mukhi-nepali-rudraksha-1.webp",
+        "assets/products/catalog/16-mukhi-nepali-rudraksha-2.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -892,11 +1052,11 @@
         "Origin": "Nepal"
       },
       "description": "We are engaged in offering 1 Mukhi Nepali Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
-      "image": "assets/products/catalog/1-mukhi-nepali-rudraksha-0.jpg",
+      "image": "assets/products/catalog/1-mukhi-nepali-rudraksha-0.webp",
       "images": [
-        "assets/products/catalog/1-mukhi-nepali-rudraksha-0.jpg",
-        "assets/products/catalog/1-mukhi-nepali-rudraksha-1.jpg",
-        "assets/products/catalog/1-mukhi-nepali-rudraksha-2.jpg"
+        "assets/products/catalog/1-mukhi-nepali-rudraksha-0.webp",
+        "assets/products/catalog/1-mukhi-nepali-rudraksha-1.webp",
+        "assets/products/catalog/1-mukhi-nepali-rudraksha-2.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -938,9 +1098,9 @@
         "Ruling Planet": "Ketu"
       },
       "description": "We are engaged in offering 9 Mukhi Nepali Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
-      "image": "assets/products/catalog/9-mukhi-nepali-rudraksha-0.jpg",
+      "image": "assets/products/catalog/9-mukhi-nepali-rudraksha-0.webp",
       "images": [
-        "assets/products/catalog/9-mukhi-nepali-rudraksha-0.jpg"
+        "assets/products/catalog/9-mukhi-nepali-rudraksha-0.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -981,10 +1141,10 @@
         "Ruling Planet": "Saturn"
       },
       "description": "Powerful 7 Mukhi Rudraksha Benefits And Its Wearing Rules ...The 7 mukhi rudraksha is believed to offer benefits for financial growth, emotional stability, and spiritual awareness. It is said to bring wealth and prosperity, reduce negative effects from Saturn, and enhance career success. It is also associated with improved confidence, stress reduction, and protection from negative energies.",
-      "image": "assets/products/catalog/7-mukhi-rudraksha-0.jpg",
+      "image": "assets/products/catalog/7-mukhi-rudraksha-0.webp",
       "images": [
-        "assets/products/catalog/7-mukhi-rudraksha-0.jpg",
-        "assets/products/catalog/7-mukhi-rudraksha-1.jpg"
+        "assets/products/catalog/7-mukhi-rudraksha-0.webp",
+        "assets/products/catalog/7-mukhi-rudraksha-1.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -1026,9 +1186,9 @@
         "Number Of Mukhi": "5 Mukhi"
       },
       "description": "5 Mukhi Rudraksha gives radiance, luster, brilliance, sharpness, youthfulness, and vitality. The wearer of Twelve Mukhi Rudraksha gets the power of sight and power of timely action. 5 Mukhi Rudraksha pacifies the negative influence and afflictions of the Sun.",
-      "image": "assets/products/catalog/5-mukhi-rudraksha-beads-0.jpg",
+      "image": "assets/products/catalog/5-mukhi-rudraksha-beads-0.webp",
       "images": [
-        "assets/products/catalog/5-mukhi-rudraksha-beads-0.jpg"
+        "assets/products/catalog/5-mukhi-rudraksha-beads-0.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -1071,11 +1231,11 @@
         "Number Of Mukhi": "13 Mukhi"
       },
       "description": "9 Mukhi Rudraksha gives radiance, luster, brilliance, sharpness, youthfulness, and vitality. The wearer of Twelve Mukhi Rudraksha gets the power of sight and power of timely action. 9 Mukhi Rudraksha pacifies the negative influence and afflictions of the Sun.",
-      "image": "assets/products/catalog/13-mukhi-rudraksha-beads-0.jpg",
+      "image": "assets/products/catalog/13-mukhi-rudraksha-beads-0.webp",
       "images": [
-        "assets/products/catalog/13-mukhi-rudraksha-beads-0.jpg",
-        "assets/products/catalog/13-mukhi-rudraksha-beads-1.jpg",
-        "assets/products/catalog/13-mukhi-rudraksha-beads-2.jpg"
+        "assets/products/catalog/13-mukhi-rudraksha-beads-0.webp",
+        "assets/products/catalog/13-mukhi-rudraksha-beads-1.webp",
+        "assets/products/catalog/13-mukhi-rudraksha-beads-2.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -1115,9 +1275,9 @@
         "Ruling Planet": "Mercury"
       },
       "description": "We are engaged in offering 4 Mukhi Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
-      "image": "assets/products/catalog/4-mukhi-rudraksha-0.jpg",
+      "image": "assets/products/catalog/4-mukhi-rudraksha-0.webp",
       "images": [
-        "assets/products/catalog/4-mukhi-rudraksha-0.jpg"
+        "assets/products/catalog/4-mukhi-rudraksha-0.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -1157,10 +1317,10 @@
         "Fitting Type": "Loose Bead"
       },
       "description": "We are engaged in offering 2 Mukhi Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
-      "image": "assets/products/catalog/2-mukhi-rudraksha-0.jpg",
+      "image": "assets/products/catalog/2-mukhi-rudraksha-0.webp",
       "images": [
-        "assets/products/catalog/2-mukhi-rudraksha-0.jpg",
-        "assets/products/catalog/2-mukhi-rudraksha-1.jpg"
+        "assets/products/catalog/2-mukhi-rudraksha-0.webp",
+        "assets/products/catalog/2-mukhi-rudraksha-1.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -1203,9 +1363,9 @@
         "Number Of Mukhi": "8 Mukhi"
       },
       "description": "The 8 Mukhi Rudraksha, representing Lord Ganesha and said to be ruled by the planet Ketu, is believed to remove obstacles, enhance wisdom, and bring success and prosperity to the wearer, while also promoting emotional stability and mental clarity",
-      "image": "assets/products/catalog/8-mukhi-rudraksha-beads-0.jpg",
+      "image": "assets/products/catalog/8-mukhi-rudraksha-beads-0.webp",
       "images": [
-        "assets/products/catalog/8-mukhi-rudraksha-beads-0.jpg"
+        "assets/products/catalog/8-mukhi-rudraksha-beads-0.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -1238,9 +1398,9 @@
       "material": null,
       "specs": {},
       "description": "We are engaged in offering 21 Mukhi Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
-      "image": "assets/products/catalog/21-mukhi-rudraksha-0.jpg",
+      "image": "assets/products/catalog/21-mukhi-rudraksha-0.webp",
       "images": [
-        "assets/products/catalog/21-mukhi-rudraksha-0.jpg"
+        "assets/products/catalog/21-mukhi-rudraksha-0.webp"
       ],
       "imageSource": "fallback",
       "inStock": true,
@@ -1283,10 +1443,12 @@
         "Number Of Mukhi": "1"
       },
       "description": "The benefits of a 1 Mukhi Rudraksha include spiritual enlightenment, inner peace, and material success by strengthening the connection with Lord Shiva and enhancing mental clarity, focus, and concentration. It is also believed to provide protection from negative energies, reduce stress and anxiety, and help overcome fear and obstacles. The bead is associated with the Sahasrara Chakra and is said to aid in achieving salvation (\\(Moksha\\)) and breaking free from negative karmic cycles.",
-      "image": "assets/products/catalog/1-mukhi-rudraksha-0.jpg",
+      "image": "assets/products/catalog/1-mukhi-rudraksha-0.webp",
       "images": [
-        "assets/products/catalog/1-mukhi-rudraksha-0.jpg",
-        "assets/products/catalog/1-mukhi-rudraksha-1.jpg"
+        "assets/products/catalog/1-mukhi-rudraksha-0.webp",
+        "assets/products/catalog/1-mukhi-rudraksha-1.webp",
+        "assets/products/catalog/1-mukhi-rudraksha-2.webp",
+        "assets/products/catalog/1-mukhi-rudraksha-2-original.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -1327,11 +1489,11 @@
         "Ruling Planet": "Venus"
       },
       "description": "We are engaged in offering 6 Mukhi Indonesian Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
-      "image": "assets/products/catalog/6-mukhi-indonesian-rudraksha-0.jpg",
+      "image": "assets/products/catalog/6-mukhi-indonesian-rudraksha-0.webp",
       "images": [
-        "assets/products/catalog/6-mukhi-indonesian-rudraksha-0.jpg",
-        "assets/products/catalog/6-mukhi-indonesian-rudraksha-1.jpg",
-        "assets/products/catalog/6-mukhi-indonesian-rudraksha-2.jpg"
+        "assets/products/catalog/6-mukhi-indonesian-rudraksha-0.webp",
+        "assets/products/catalog/6-mukhi-indonesian-rudraksha-1.webp",
+        "assets/products/catalog/6-mukhi-indonesian-rudraksha-2.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -1369,11 +1531,11 @@
         "Usage": "Pendant, Mala Making, Bracelet"
       },
       "description": "The 5 Mukhi Rudraksha is the most universally accessible bead, representing Lord Kalagni Rudra and ruled by Jupiter. It is highly prized for its ability to lower stress, balance blood pressure, and enhance focus. By cultivating inner peace, it serves as an excellent foundational tool for both spiritual seekers and professionals.Key BenefitsPhysical Health: Traditionally believed to support heart health, regulate blood pressure, and alleviate symptoms of stress.Mental Clarity: Known to sharpen memory, boost cognitive abilities, and soothe overactive emotions like anger and anxiety.Spiritual Well-being: Creates a protective \"cocoon\" of energy, balances the throat chakra (Vishuddha), and deepens meditation.Astrological Harmony: Known to strengthen the positive influence of Jupiter while reducing malefic effects.",
-      "image": "assets/products/catalog/5-mukhi-indonesian-rudraksha-0.jpg",
+      "image": "assets/products/catalog/5-mukhi-indonesian-rudraksha-0.webp",
       "images": [
-        "assets/products/catalog/5-mukhi-indonesian-rudraksha-0.jpg",
-        "assets/products/catalog/5-mukhi-indonesian-rudraksha-1.jpg",
-        "assets/products/catalog/5-mukhi-indonesian-rudraksha-2.jpg"
+        "assets/products/catalog/5-mukhi-indonesian-rudraksha-0.webp",
+        "assets/products/catalog/5-mukhi-indonesian-rudraksha-1.webp",
+        "assets/products/catalog/5-mukhi-indonesian-rudraksha-2.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -1418,12 +1580,14 @@
         "Usage/Application": "Spiritual Use"
       },
       "description": "We are engaged in offering 14 Mukhi Indonesian Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
-      "image": "assets/products/catalog/14-mukhi-indonesian-rudraksha-0.jpg",
+      "image": "assets/products/catalog/14-mukhi-indonesian-rudraksha-0.webp",
       "images": [
-        "assets/products/catalog/14-mukhi-indonesian-rudraksha-0.jpg",
-        "assets/products/catalog/14-mukhi-indonesian-rudraksha-1.jpg",
-        "assets/products/catalog/14-mukhi-indonesian-rudraksha-2.jpg",
-        "assets/products/catalog/14-mukhi-indonesian-rudraksha-3.jpg"
+        "assets/products/catalog/14-mukhi-indonesian-rudraksha-0.webp",
+        "assets/products/catalog/14-mukhi-indonesian-rudraksha-1.webp",
+        "assets/products/catalog/14-mukhi-indonesian-rudraksha-2.webp",
+        "assets/products/catalog/14-mukhi-indonesian-rudraksha-3.webp",
+        "assets/products/catalog/14-mukhi-indonesian-rudraksha-4.webp",
+        "assets/products/catalog/14-mukhi-indonesian-rudraksha-4-original.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -1465,11 +1629,11 @@
         "Ruling Planet": "Mars"
       },
       "description": "We are engaged in offering 3 Mukhi Rudraksha Indonesian to our clients. Our range of all products is widely appreciated by our clients.",
-      "image": "assets/products/catalog/3-mukhi-rudraksha-indonesian-0.jpg",
+      "image": "assets/products/catalog/3-mukhi-rudraksha-indonesian-0.webp",
       "images": [
-        "assets/products/catalog/3-mukhi-rudraksha-indonesian-0.jpg",
-        "assets/products/catalog/3-mukhi-rudraksha-indonesian-1.jpg",
-        "assets/products/catalog/3-mukhi-rudraksha-indonesian-2.jpg"
+        "assets/products/catalog/3-mukhi-rudraksha-indonesian-0.webp",
+        "assets/products/catalog/3-mukhi-rudraksha-indonesian-1.webp",
+        "assets/products/catalog/3-mukhi-rudraksha-indonesian-2.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -1507,11 +1671,11 @@
         "Usage": "Pendant"
       },
       "description": "We are engaged in offering 2 Mukhi Indonesian Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
-      "image": "assets/products/catalog/2-mukhi-indonesian-rudraksha-0.jpg",
+      "image": "assets/products/catalog/2-mukhi-indonesian-rudraksha-0.webp",
       "images": [
-        "assets/products/catalog/2-mukhi-indonesian-rudraksha-0.jpg",
-        "assets/products/catalog/2-mukhi-indonesian-rudraksha-1.jpg",
-        "assets/products/catalog/2-mukhi-indonesian-rudraksha-2.jpg"
+        "assets/products/catalog/2-mukhi-indonesian-rudraksha-0.webp",
+        "assets/products/catalog/2-mukhi-indonesian-rudraksha-1.webp",
+        "assets/products/catalog/2-mukhi-indonesian-rudraksha-2.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -1549,10 +1713,10 @@
         "Bead Size": "10 mm"
       },
       "description": "We are engaged in offering 1 Mukhi Indonesian Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
-      "image": "assets/products/catalog/1-mukhi-indonesian-rudraksha-0.jpg",
+      "image": "assets/products/catalog/1-mukhi-indonesian-rudraksha-0.webp",
       "images": [
-        "assets/products/catalog/1-mukhi-indonesian-rudraksha-0.jpg",
-        "assets/products/catalog/1-mukhi-indonesian-rudraksha-1.jpg"
+        "assets/products/catalog/1-mukhi-indonesian-rudraksha-0.webp",
+        "assets/products/catalog/1-mukhi-indonesian-rudraksha-1.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -1595,9 +1759,9 @@
         "Number Of Mukhi": "16 Mukhi"
       },
       "description": "We are engaged in offering 16 Mukhi Indonesian Rudraksha to our clients. Our range of all products is widely appreciated by our clients.",
-      "image": "assets/products/catalog/16-mukhi-indonesian-rudraksha-0.jpg",
+      "image": "assets/products/catalog/16-mukhi-indonesian-rudraksha-0.webp",
       "images": [
-        "assets/products/catalog/16-mukhi-indonesian-rudraksha-0.jpg"
+        "assets/products/catalog/16-mukhi-indonesian-rudraksha-0.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -1643,11 +1807,11 @@
         "Packaging Type": "Box"
       },
       "description": "We are engaged in offering 5 Mukhi Nepali Ganesh Rudraksha Mala to our clients. Our range of all products is widely appreciated by our clients.",
-      "image": "assets/products/catalog/5-mukhi-nepali-ganesh-rudraksha-mala-0.jpg",
+      "image": "assets/products/catalog/5-mukhi-nepali-ganesh-rudraksha-mala-0.webp",
       "images": [
-        "assets/products/catalog/5-mukhi-nepali-ganesh-rudraksha-mala-0.jpg",
-        "assets/products/catalog/5-mukhi-nepali-ganesh-rudraksha-mala-1.jpg",
-        "assets/products/catalog/5-mukhi-nepali-ganesh-rudraksha-mala-2.jpg"
+        "assets/products/catalog/5-mukhi-nepali-ganesh-rudraksha-mala-0.webp",
+        "assets/products/catalog/5-mukhi-nepali-ganesh-rudraksha-mala-1.webp",
+        "assets/products/catalog/5-mukhi-nepali-ganesh-rudraksha-mala-2.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -1693,9 +1857,9 @@
         "Packaging Type": "Box"
       },
       "description": "We are engaged in offering 9 Mukhi Indonesia Rudraksha Mala to our clients. Our range of all products is widely appreciated by our clients.",
-      "image": "assets/products/catalog/9-mukhi-indonesia-rudraksha-mala-0.jpg",
+      "image": "assets/products/catalog/9-mukhi-indonesia-rudraksha-mala-0.webp",
       "images": [
-        "assets/products/catalog/9-mukhi-indonesia-rudraksha-mala-0.jpg"
+        "assets/products/catalog/9-mukhi-indonesia-rudraksha-mala-0.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -1740,9 +1904,9 @@
         "Color": "Brown"
       },
       "description": "We are engaged in offering 5 Mukhi Indonesian Ganesh Rudraksha Mala to our clients. Our range of all products is widely appreciated by our clients.",
-      "image": "assets/products/catalog/5-mukhi-indonesian-ganesh-rudraksha-mala-0.jpg",
+      "image": "assets/products/catalog/5-mukhi-indonesian-ganesh-rudraksha-mala-0.webp",
       "images": [
-        "assets/products/catalog/5-mukhi-indonesian-ganesh-rudraksha-mala-0.jpg"
+        "assets/products/catalog/5-mukhi-indonesian-ganesh-rudraksha-mala-0.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -1783,9 +1947,9 @@
         "Ruling Planet": "Jupiter"
       },
       "description": "We are engaged in offering 5 Mukhi Nepali Rudraksha Mala to our clients. Our range of all products is widely appreciated by our clients.",
-      "image": "assets/products/catalog/5-mukhi-nepali-rudraksha-mala-0.jpg",
+      "image": "assets/products/catalog/5-mukhi-nepali-rudraksha-mala-0.webp",
       "images": [
-        "assets/products/catalog/5-mukhi-nepali-rudraksha-mala-0.jpg"
+        "assets/products/catalog/5-mukhi-nepali-rudraksha-mala-0.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -1828,9 +1992,9 @@
         "Gender": "Unisex"
       },
       "description": "We are engaged in offering 5 Mukhi Gold Plated Rudraksha Mala to our clients. Our range of all products is widely appreciated by our clients.",
-      "image": "assets/products/catalog/5-mukhi-gold-plated-rudraksha-mala-0.jpg",
+      "image": "assets/products/catalog/5-mukhi-gold-plated-rudraksha-mala-0.webp",
       "images": [
-        "assets/products/catalog/5-mukhi-gold-plated-rudraksha-mala-0.jpg"
+        "assets/products/catalog/5-mukhi-gold-plated-rudraksha-mala-0.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -1872,12 +2036,12 @@
         "Color": "Black Golden"
       },
       "description": "We are engaged in offering 6mm Copper Karungali Mala to our clients. Our range of all products is widely appreciated by our clients.",
-      "image": "assets/products/catalog/6mm-copper-karungali-mala-0.jpg",
+      "image": "assets/products/catalog/6mm-copper-karungali-mala-0.webp",
       "images": [
-        "assets/products/catalog/6mm-copper-karungali-mala-0.jpg",
-        "assets/products/catalog/6mm-copper-karungali-mala-1.jpg",
-        "assets/products/catalog/6mm-copper-karungali-mala-2.jpg",
-        "assets/products/catalog/6mm-copper-karungali-mala-3.jpg"
+        "assets/products/catalog/6mm-copper-karungali-mala-0.webp",
+        "assets/products/catalog/6mm-copper-karungali-mala-1.webp",
+        "assets/products/catalog/6mm-copper-karungali-mala-2.webp",
+        "assets/products/catalog/6mm-copper-karungali-mala-3.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -1918,12 +2082,12 @@
         "Color": "Black And White"
       },
       "description": "We are engaged in offering 6mm Silver Capping Karungali Mala to our clients. Our range of all products is widely appreciated by our clients.",
-      "image": "assets/products/catalog/6mm-silver-capping-karungali-mala-0.jpg",
+      "image": "assets/products/catalog/6mm-silver-capping-karungali-mala-0.webp",
       "images": [
-        "assets/products/catalog/6mm-silver-capping-karungali-mala-0.jpg",
-        "assets/products/catalog/6mm-silver-capping-karungali-mala-1.jpg",
-        "assets/products/catalog/6mm-silver-capping-karungali-mala-2.jpg",
-        "assets/products/catalog/6mm-silver-capping-karungali-mala-3.jpg"
+        "assets/products/catalog/6mm-silver-capping-karungali-mala-0.webp",
+        "assets/products/catalog/6mm-silver-capping-karungali-mala-1.webp",
+        "assets/products/catalog/6mm-silver-capping-karungali-mala-2.webp",
+        "assets/products/catalog/6mm-silver-capping-karungali-mala-3.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -1965,12 +2129,14 @@
         "Type": "Box"
       },
       "description": "We are engaged in offering 8mm Simple Karungali Mala to our clients. Our range of all products is widely appreciated by our clients.",
-      "image": "assets/products/catalog/8mm-simple-karungali-mala-0.jpg",
+      "image": "assets/products/catalog/8mm-simple-karungali-mala-0.webp",
       "images": [
-        "assets/products/catalog/8mm-simple-karungali-mala-0.jpg",
-        "assets/products/catalog/8mm-simple-karungali-mala-1.jpg",
-        "assets/products/catalog/8mm-simple-karungali-mala-2.jpg",
-        "assets/products/catalog/8mm-simple-karungali-mala-3.jpg"
+        "assets/products/catalog/8mm-simple-karungali-mala-0.webp",
+        "assets/products/catalog/8mm-simple-karungali-mala-1.webp",
+        "assets/products/catalog/8mm-simple-karungali-mala-2.webp",
+        "assets/products/catalog/8mm-simple-karungali-mala-3.webp",
+        "assets/products/catalog/8mm-simple-karungali-mala-4.webp",
+        "assets/products/catalog/8mm-simple-karungali-mala-4-original.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -2011,11 +2177,11 @@
         "Brand": "Handmade"
       },
       "description": "We are engaged in offering 8mm Ebony Wood Karungali Mala to our clients. Our range of all products is widely appreciated by our clients.",
-      "image": "assets/products/catalog/8mm-ebony-wood-karungali-mala-0.jpg",
+      "image": "assets/products/catalog/8mm-ebony-wood-karungali-mala-0.webp",
       "images": [
-        "assets/products/catalog/8mm-ebony-wood-karungali-mala-0.jpg",
-        "assets/products/catalog/8mm-ebony-wood-karungali-mala-1.jpg",
-        "assets/products/catalog/8mm-ebony-wood-karungali-mala-2.jpg"
+        "assets/products/catalog/8mm-ebony-wood-karungali-mala-0.webp",
+        "assets/products/catalog/8mm-ebony-wood-karungali-mala-1.webp",
+        "assets/products/catalog/8mm-ebony-wood-karungali-mala-2.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -2059,12 +2225,12 @@
         "Packaging Type": "Box"
       },
       "description": "We are engaged in offering Black Ebony Karungali Bracelet to our clients. Our range of all products is widely appreciated by our clients.",
-      "image": "assets/products/catalog/black-ebony-karungali-bracelet-0.jpg",
+      "image": "assets/products/catalog/black-ebony-karungali-bracelet-0.webp",
       "images": [
-        "assets/products/catalog/black-ebony-karungali-bracelet-0.jpg",
-        "assets/products/catalog/black-ebony-karungali-bracelet-1.jpg",
-        "assets/products/catalog/black-ebony-karungali-bracelet-2.jpg",
-        "assets/products/catalog/black-ebony-karungali-bracelet-3.jpg"
+        "assets/products/catalog/black-ebony-karungali-bracelet-0.webp",
+        "assets/products/catalog/black-ebony-karungali-bracelet-1.webp",
+        "assets/products/catalog/black-ebony-karungali-bracelet-2.webp",
+        "assets/products/catalog/black-ebony-karungali-bracelet-3.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -2109,12 +2275,12 @@
         "Ideal For": "Men"
       },
       "description": "We are engaged in offering Silver Cap Brace Karungali Bracelet to our clients. Our range of all products is widely appreciated by our clients.",
-      "image": "assets/products/catalog/silver-cap-brace-karungali-bracelet-0.jpg",
+      "image": "assets/products/catalog/silver-cap-brace-karungali-bracelet-0.webp",
       "images": [
-        "assets/products/catalog/silver-cap-brace-karungali-bracelet-0.jpg",
-        "assets/products/catalog/silver-cap-brace-karungali-bracelet-1.jpg",
-        "assets/products/catalog/silver-cap-brace-karungali-bracelet-2.jpg",
-        "assets/products/catalog/silver-cap-brace-karungali-bracelet-3.jpg"
+        "assets/products/catalog/silver-cap-brace-karungali-bracelet-0.webp",
+        "assets/products/catalog/silver-cap-brace-karungali-bracelet-1.webp",
+        "assets/products/catalog/silver-cap-brace-karungali-bracelet-2.webp",
+        "assets/products/catalog/silver-cap-brace-karungali-bracelet-3.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -2159,12 +2325,12 @@
         "Color": "Black Silver"
       },
       "description": "We are engaged in offering Silver Chain Karungali Bracelet to our clients. Our range of all products is widely appreciated by our clients.",
-      "image": "assets/products/catalog/silver-chain-karungali-bracelet-0.jpg",
+      "image": "assets/products/catalog/silver-chain-karungali-bracelet-0.webp",
       "images": [
-        "assets/products/catalog/silver-chain-karungali-bracelet-0.jpg",
-        "assets/products/catalog/silver-chain-karungali-bracelet-1.jpg",
-        "assets/products/catalog/silver-chain-karungali-bracelet-2.jpg",
-        "assets/products/catalog/silver-chain-karungali-bracelet-3.jpg"
+        "assets/products/catalog/silver-chain-karungali-bracelet-0.webp",
+        "assets/products/catalog/silver-chain-karungali-bracelet-1.webp",
+        "assets/products/catalog/silver-chain-karungali-bracelet-2.webp",
+        "assets/products/catalog/silver-chain-karungali-bracelet-3.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -2206,11 +2372,11 @@
         "Grade": "Premium"
       },
       "description": "Rudraksha fruit—the bright blue outer berry enclosing the sacred seed—offers profound wellness and spiritual benefits. In Ayurvedic traditions, the fleshy pulp is used to treat neurological conditions, fevers, and stress. The revered seeds within promote meditation, stabilize heart rates, and protect against negative energy.Key Health & Spiritual BenefitsStress & Anxiety Relief: The fruit acts as a natural tranquilizer and sedative, traditionally used to help alleviate depression, calm the central nervous system, and improve sleep.Cardiovascular Health: The beads are believed to exhibit electromagnetic properties that stabilize heart palpitations, control blood pressure, and reduce hypertension.Meditation & Focus: Wearing the seeds is said to enhance spiritual growth, concentration, and bring mental clarity while shielding the body from negative external energies.Ayurvedic Remedies: The outer fruit and leaf extracts are used to treat headaches, colds, and skin diseases, and are known for their anti-inflammatory and antibacterial properties.",
-      "image": "assets/products/catalog/2-mukhi-rudraksha-fruit-0.jpg",
+      "image": "assets/products/catalog/2-mukhi-rudraksha-fruit-0.webp",
       "images": [
-        "assets/products/catalog/2-mukhi-rudraksha-fruit-0.jpg",
-        "assets/products/catalog/2-mukhi-rudraksha-fruit-1.jpg",
-        "assets/products/catalog/2-mukhi-rudraksha-fruit-2.jpg"
+        "assets/products/catalog/2-mukhi-rudraksha-fruit-0.webp",
+        "assets/products/catalog/2-mukhi-rudraksha-fruit-1.webp",
+        "assets/products/catalog/2-mukhi-rudraksha-fruit-2.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -2253,12 +2419,16 @@
         "Grade": "Premium"
       },
       "description": "Rudraksha beads are highly revered seeds known for their stabilizing and protective properties. Both Ayurvedic and yogic traditions highlight that wearing these beads regulates heart rate, balances blood pressure, and calms the nervous system by generating positive bioelectric energy",
-      "image": "assets/products/catalog/3-mukhi-rudraksha-fruit-0.jpg",
+      "image": "assets/products/catalog/3-mukhi-rudraksha-fruit-0.webp",
       "images": [
-        "assets/products/catalog/3-mukhi-rudraksha-fruit-0.jpg",
-        "assets/products/catalog/3-mukhi-rudraksha-fruit-1.jpg",
-        "assets/products/catalog/3-mukhi-rudraksha-fruit-2.jpg",
-        "assets/products/catalog/3-mukhi-rudraksha-fruit-3.jpg"
+        "assets/products/catalog/3-mukhi-rudraksha-fruit-0.webp",
+        "assets/products/catalog/3-mukhi-rudraksha-fruit-1.webp",
+        "assets/products/catalog/3-mukhi-rudraksha-fruit-2.webp",
+        "assets/products/catalog/3-mukhi-rudraksha-fruit-3.webp",
+        "assets/products/catalog/3-mukhi-rudraksha-fruit-4.webp",
+        "assets/products/catalog/3-mukhi-rudraksha-fruit-4-original.webp",
+        "assets/products/catalog/3-mukhi-rudraksha-fruit-5.webp",
+        "assets/products/catalog/3-mukhi-rudraksha-fruit-5-original.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -2299,12 +2469,14 @@
         "Purpose": "Meditation"
       },
       "description": "Wearing Rudraksha is said to help the wearer achieve a higher state of consciousness, making it a popular accessory for those who meditate or seek mental clarity. The beads are believed to absorb negative energy and offer a shield of protection, making them a powerful tool for enhancing spiritual well-being",
-      "image": "assets/products/catalog/8mm-rudraksha-bracelet-0.jpg",
+      "image": "assets/products/catalog/8mm-rudraksha-bracelet-0.webp",
       "images": [
-        "assets/products/catalog/8mm-rudraksha-bracelet-0.jpg",
-        "assets/products/catalog/8mm-rudraksha-bracelet-1.jpg",
-        "assets/products/catalog/8mm-rudraksha-bracelet-2.jpg",
-        "assets/products/catalog/8mm-rudraksha-bracelet-3.jpg"
+        "assets/products/catalog/8mm-rudraksha-bracelet-0.webp",
+        "assets/products/catalog/8mm-rudraksha-bracelet-1.webp",
+        "assets/products/catalog/8mm-rudraksha-bracelet-2.webp",
+        "assets/products/catalog/8mm-rudraksha-bracelet-3.webp",
+        "assets/products/catalog/8mm-rudraksha-bracelet-4.webp",
+        "assets/products/catalog/8mm-rudraksha-bracelet-4-original.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -2352,10 +2524,10 @@
         "Brand": "Rudra beads"
       },
       "description": "Collector Gauri Shankar Nepal Rudraksha - Energised Bead for ...The Gauri Shankar Rudraksha benefits include promoting marital harmony and strong relationships, enhancing spiritual growth, providing protection from negative energy, and alleviating stress and anxiety. This two-in-one bead, symbolizing the union of Lord Shiva and Goddess Parvati, is believed to bring balance and peace to the wearer's life by harmonizing relationships and balancing spiritual and mental energies.",
-      "image": "assets/products/catalog/gauri-shankar-rudraksha-0.jpg",
+      "image": "assets/products/catalog/gauri-shankar-rudraksha-0.webp",
       "images": [
-        "assets/products/catalog/gauri-shankar-rudraksha-0.jpg",
-        "assets/products/catalog/gauri-shankar-rudraksha-1.jpg"
+        "assets/products/catalog/gauri-shankar-rudraksha-0.webp",
+        "assets/products/catalog/gauri-shankar-rudraksha-1.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -2396,9 +2568,9 @@
         "Clarity": "Lightly Included"
       },
       "description": "We are engaged in offering Natural Hessonite Gomed Gemstone to our clients. Our range of all products is widely appreciated by our clients.",
-      "image": "assets/products/catalog/5-01-carats-natural-hessonite-gomed-gemstone-0.jpg",
+      "image": "assets/products/catalog/5-01-carats-natural-hessonite-gomed-gemstone-0.webp",
       "images": [
-        "assets/products/catalog/5-01-carats-natural-hessonite-gomed-gemstone-0.jpg"
+        "assets/products/catalog/5-01-carats-natural-hessonite-gomed-gemstone-0.webp"
       ],
       "imageSource": "seller",
       "inStock": true,
@@ -2503,6 +2675,93 @@
       "inStock": true,
       "featured": false,
       "order": 3
+    }
+  ],
+  "shopByMukhi": [
+    {
+      "mukhi": 1,
+      "name": "1 Mukhi",
+      "image": "assets/products/catalog/1-mukhi-rudraksha-0.webp"
+    },
+    {
+      "mukhi": 2,
+      "name": "2 Mukhi",
+      "image": "assets/products/catalog/2-mukhi-nepali-rudraksha-0.webp"
+    },
+    {
+      "mukhi": 3,
+      "name": "3 Mukhi",
+      "image": "assets/products/catalog/3-mukhi-nepali-rudraksha-0.webp"
+    },
+    {
+      "mukhi": 4,
+      "name": "4 Mukhi",
+      "image": "assets/products/catalog/4-mukhi-nepali-rudraksha-0.webp"
+    },
+    {
+      "mukhi": 5,
+      "name": "5 Mukhi",
+      "image": "assets/products/catalog/5-mukhi-nepali-rudraksha-0.webp"
+    },
+    {
+      "mukhi": 6,
+      "name": "6 Mukhi",
+      "image": "assets/products/catalog/6-mukhi-nepali-rudraksha-0.webp"
+    },
+    {
+      "mukhi": 7,
+      "name": "7 Mukhi",
+      "image": "assets/products/catalog/7-mukhi-nepali-rudraksha-0.webp"
+    },
+    {
+      "mukhi": 8,
+      "name": "8 Mukhi",
+      "image": "assets/products/catalog/8-mukhi-nepali-rudraksha-0.webp"
+    },
+    {
+      "mukhi": 9,
+      "name": "9 Mukhi",
+      "image": "assets/products/catalog/9-mukhi-nepali-rudraksha-0.webp"
+    },
+    {
+      "mukhi": 10,
+      "name": "10 Mukhi",
+      "image": "assets/products/catalog/10-mukhi-nepali-rudraksha-0.webp"
+    },
+    {
+      "mukhi": 11,
+      "name": "11 Mukhi",
+      "image": "assets/products/catalog/11-mukhi-nepali-rudraksha-0.webp"
+    },
+    {
+      "mukhi": 12,
+      "name": "12 Mukhi",
+      "image": "assets/products/catalog/12-mukhi-nepali-rudraksha-0.webp"
+    },
+    {
+      "mukhi": 13,
+      "name": "13 Mukhi",
+      "image": "assets/products/catalog/13-mukhi-nepali-rudraksha-0.webp"
+    },
+    {
+      "mukhi": 14,
+      "name": "14 Mukhi",
+      "image": "assets/products/catalog/14-mukhi-nepali-rudraksha-0.webp"
+    },
+    {
+      "mukhi": 15,
+      "name": "15 Mukhi",
+      "image": "assets/products/catalog/15-mukhi-nepali-rudraksha-0.webp"
+    },
+    {
+      "mukhi": 16,
+      "name": "16 Mukhi",
+      "image": "assets/products/catalog/16-mukhi-nepali-rudraksha-0.webp"
+    },
+    {
+      "mukhi": 21,
+      "name": "21 Mukhi",
+      "image": "assets/products/catalog/21-mukhi-rudraksha-0.webp"
     }
   ]
 }

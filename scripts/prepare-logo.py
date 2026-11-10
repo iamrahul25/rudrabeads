@@ -91,7 +91,7 @@ def main() -> None:
     cutout = tight_crop(remove_light_background(raw))
 
     ASSETS.mkdir(parents=True, exist_ok=True)
-    cutout.save(ASSETS / "logo.png", optimize=True)
+    cutout.save(ASSETS / "logo.webp", format="WEBP", lossless=True, method=6)
 
     icon = on_solid_bg(cutout, 1024, SPLASH_BG)
     icon.save(ASSETS / "icon.png", optimize=True)
@@ -112,7 +112,7 @@ def main() -> None:
     favicon.save(ASSETS / "favicon.png", optimize=True)
 
     print("Wrote logo assets to", ASSETS)
-    print("logo.png size:", cutout.size)
+    print("logo.webp size:", cutout.size)
 
 
 if __name__ == "__main__":

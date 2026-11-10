@@ -6,6 +6,7 @@ import {
   FlatList,
   NativeScrollEvent,
   NativeSyntheticEvent,
+  Pressable,
   ScrollView,
   StyleSheet,
   Text,
@@ -20,6 +21,7 @@ import { MukhiMarquee } from '@/components/MukhiMarquee';
 import { PrimaryButton } from '@/components/PrimaryButton';
 import { ProductGrid } from '@/components/ProductGrid';
 import { SectionHeader } from '@/components/SectionHeader';
+import { business } from '@/data/business';
 import { categories, getFeaturedProducts, products } from '@/data/products';
 import { useResponsive } from '@/hooks/useResponsive';
 import { colors } from '@/theme/colors';
@@ -59,25 +61,25 @@ type HeroSlide = {
 const heroSlides: HeroSlide[] = [
   {
     id: 'original',
-    image: require('../../../assets/hero/hero-0-rudraksha-bead.jpg'),
+    image: require('../../../assets/hero/hero-0-rudraksha-bead.webp'),
     title: 'Authentic\nRudraksha',
     subtitle: 'Certified • Energized • Natural',
   },
   {
     id: 'mala',
-    image: require('../../../assets/hero/hero-1-mala.jpg'),
+    image: require('../../../assets/hero/hero-1-mala.webp'),
     title: 'Sacred\nMalas',
     subtitle: 'Handpicked • Lab Tested • Blessed',
   },
   {
     id: 'prayer',
-    image: require('../../../assets/hero/hero-2-hands-mala.jpg'),
+    image: require('../../../assets/hero/hero-2-hands-mala.webp'),
     title: 'Prayer\nReady',
     subtitle: 'Worn with devotion every day',
   },
   {
     id: 'wear',
-    image: require('../../../assets/hero/hero-3-rudraksha-bracelet.jpg'),
+    image: require('../../../assets/hero/hero-3-rudraksha-bracelet.webp'),
     title: 'Wear Your\nEnergy',
     subtitle: 'Bracelets • Beads • Everyday Strength',
   },
@@ -203,6 +205,44 @@ export default function HomeScreen() {
 
         <SectionHeader title="Popular Products" onAction={() => router.push('/(tabs)/search')} />
         <ProductGrid products={popular} style={styles.productGrid} />
+
+        <View style={styles.welcome}>
+          <Text style={styles.welcomeKicker}>Welcome to</Text>
+          <Text style={styles.welcomeTitle}>{business.name}</Text>
+          <Text style={styles.welcomeBody} numberOfLines={3}>
+            {business.about.paragraphs[0]}
+          </Text>
+          <Pressable onPress={() => router.push('/info/about')} accessibilityRole="link" hitSlop={8}>
+            <Text style={styles.welcomeLink}>Read More…</Text>
+          </Pressable>
+          <Pressable
+            style={styles.welcomeRating}
+            onPress={() => router.push('/info/testimonials')}
+            accessibilityRole="link"
+            accessibilityLabel={`Rated ${business.testimonials.rating} out of ${business.testimonials.outOf}. See testimonials`}
+          >
+            <Ionicons name="star" size={14} color={colors.star} />
+            <Text style={styles.welcomeRatingText}>
+              {business.testimonials.rating}/{business.testimonials.outOf} ·{' '}
+              {business.testimonials.reviews.length} customer reviews
+            </Text>
+            <Ionicons name="chevron-forward" size={14} color={colors.textMuted} />
+          </Pressable>
+          <Text style={styles.welcomeTagline}>{business.tagline}</Text>
+          <View style={styles.welcomeActions}>
+            <PrimaryButton
+              label="About Us"
+              variant="outline"
+              style={styles.welcomeButton}
+              onPress={() => router.push('/info/about')}
+            />
+            <PrimaryButton
+              label="Contact Us"
+              style={styles.welcomeButton}
+              onPress={() => router.push('/info/contact')}
+            />
+          </View>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
@@ -308,5 +348,66 @@ const styles = StyleSheet.create({
   },
   productGrid: {
     paddingHorizontal: spacing.lg,
+  },
+  welcome: {
+    marginHorizontal: spacing.lg,
+    marginTop: spacing.xl,
+    padding: spacing.lg,
+    borderRadius: radii.xl,
+    borderWidth: 1,
+    borderColor: colors.border,
+    backgroundColor: colors.surface,
+    gap: spacing.xs,
+  },
+  welcomeKicker: {
+    fontFamily: 'DMSans_600SemiBold',
+    fontSize: 12,
+    letterSpacing: 1.2,
+    textTransform: 'uppercase',
+    color: colors.primarySoft,
+  },
+  welcomeTitle: {
+    fontFamily: 'PlayfairDisplay_700Bold',
+    fontSize: 28,
+    color: colors.text,
+  },
+  welcomeBody: {
+    marginTop: spacing.xs,
+    fontFamily: 'DMSans_400Regular',
+    fontSize: 14,
+    lineHeight: 21,
+    color: colors.textSecondary,
+  },
+  welcomeLink: {
+    fontFamily: 'DMSans_600SemiBold',
+    fontSize: 13,
+    color: colors.primary,
+  },
+  welcomeRating: {
+    marginTop: spacing.sm,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    minHeight: 32,
+  },
+  welcomeRatingText: {
+    fontFamily: 'DMSans_500Medium',
+    fontSize: 13,
+    color: colors.text,
+  },
+  welcomeTagline: {
+    marginTop: spacing.sm,
+    fontFamily: 'DMSans_700Bold',
+    fontSize: 13,
+    letterSpacing: 0.6,
+    color: colors.primary,
+  },
+  welcomeActions: {
+    marginTop: spacing.md,
+    flexDirection: 'row',
+    gap: spacing.sm,
+  },
+  welcomeButton: {
+    flex: 1,
   },
 });

@@ -26,7 +26,7 @@ type Props = {
   wishlistActive?: boolean;
 };
 
-const logoSource = require('../../assets/logo.png');
+const logoSource = require('../../assets/logo.webp');
 const brandTextSource = require('../../assets/brand-text.webp');
 
 /** Display width for wordmark from asset aspect ratio (991×232). */

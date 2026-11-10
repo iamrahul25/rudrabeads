@@ -6,7 +6,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { BrandHeader } from '@/components/BrandHeader';
 import { PrimaryButton } from '@/components/PrimaryButton';
-import { ProductImage } from '@/components/ProductImage';
+import { ProductGallery } from '@/components/ProductGallery';
 import { QuantityStepper } from '@/components/QuantityStepper';
 import { UnderlinedHeading } from '@/components/UnderlinedHeading';
 import { useCart } from '@/context/CartContext';
@@ -80,7 +80,12 @@ export default function ProductDetailScreen() {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={[styles.content, isTablet && styles.contentTablet]}
       >
-        <ProductImage source={product.image} style={[styles.hero, isTablet && styles.heroTablet]} />
+        <ProductGallery
+          key={product.id}
+          images={product.images}
+          style={[styles.gallery, isTablet && styles.galleryTablet]}
+          frameStyle={[styles.hero, isTablet && styles.heroTablet]}
+        />
 
         <View style={[styles.body, isTablet && styles.bodyTablet]}>
           <Text style={styles.name}>{product.name}</Text>
@@ -227,16 +232,20 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.xl,
     paddingTop: spacing.sm,
   },
-  hero: {
+  gallery: {
     marginHorizontal: spacing.lg,
+  },
+  galleryTablet: {
+    marginHorizontal: 0,
+    width: '45%',
+  },
+  hero: {
     height: 340,
     borderRadius: radii.xl,
     backgroundColor: colors.surface,
   },
   heroTablet: {
-    marginHorizontal: 0,
     height: undefined,
-    width: '45%',
     aspectRatio: 1,
   },
   body: { paddingHorizontal: spacing.lg, paddingTop: spacing.lg },

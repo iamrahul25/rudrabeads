@@ -21,7 +21,7 @@ export function TextField({ label, error, optional, style, ...input }: Props) {
         placeholderTextColor={colors.textMuted}
         accessibilityLabel={label}
         {...input}
-        style={[styles.input, error ? styles.inputError : null]}
+        style={[styles.input, input.multiline ? styles.multiline : null, error ? styles.inputError : null]}
       />
       {error ? (
         <Text style={styles.error} accessibilityLiveRegion="polite">
@@ -56,6 +56,11 @@ const styles = StyleSheet.create({
     fontFamily: 'DMSans_400Regular',
     fontSize: 15,
     color: colors.text,
+  },
+  multiline: {
+    minHeight: 104,
+    paddingTop: spacing.md,
+    paddingBottom: spacing.md,
   },
   inputError: {
     borderColor: colors.danger,

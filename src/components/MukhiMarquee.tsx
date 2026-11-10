@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 
 import { ProductImage } from '@/components/ProductImage';
-import { products, type Product } from '@/data/products';
+import { shopByMukhi as mukhiChips, type ShopByMukhiItem } from '@/data/products';
 import { colors } from '@/theme/colors';
 import { spacing } from '@/theme/spacing';
 
@@ -22,25 +22,6 @@ const STRIDE = ITEM_WIDTH + spacing.md;
 const IDLE_MS = 2500;
 const AUTO_PX_PER_SEC = 42;
 const LOOP_PAD = spacing.lg;
-
-const mukhiChips: Product[] = (() => {
-  const byMukhi = new Map<number, Product>();
-  for (const product of products) {
-    if (product.mukhi == null || product.mukhi < 1 || product.mukhi > 21) continue;
-    const existing = byMukhi.get(product.mukhi);
-    if (
-      !existing ||
-      (product.categoryId === 'nepali-rudraksha' && existing.categoryId !== 'nepali-rudraksha')
-    ) {
-      byMukhi.set(product.mukhi, product);
-    }
-  }
-  const oneMukhi = products.find((product) => product.id === '1-mukhi-rudraksha');
-  if (oneMukhi) {
-    byMukhi.set(1, oneMukhi);
-  }
-  return [...byMukhi.entries()].sort(([a], [b]) => a - b).map(([, product]) => product);
-})();
 
 const LOOP_WIDTH = mukhiChips.length * STRIDE;
 const LOOP_COPIES = 3;
@@ -72,18 +53,18 @@ function useAutoMotionAllowed() {
   return allowed;
 }
 
-function MukhiChip({ item }: { item: Product }) {
+function MukhiChip({ item }: { item: ShopByMukhiItem }) {
   return (
     <Pressable
       style={styles.circleItem}
       onPress={() => router.push(`/mukhi/${item.mukhi}`)}
       accessibilityRole="button"
-      accessibilityLabel={`${item.mukhi} Mukhi`}
+      accessibilityLabel={item.name}
     >
       <View style={styles.circle}>
         <ProductImage source={item.image} style={styles.circleImage} contentFit="cover" compact />
       </View>
-      <Text style={styles.circleLabel}>{item.mukhi} Mukhi</Text>
+      <Text style={styles.circleLabel}>{item.name}</Text>
     </Pressable>
   );
 }

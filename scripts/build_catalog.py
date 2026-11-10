@@ -92,7 +92,7 @@ INTROS = {
 }
 
 CATEGORY_IMAGES = {
-    "new-items": "assets/products/catalog/new-items-category-0.jpg",
+    "new-items": "assets/products/catalog/new-items-category-0.webp",
 }
 
 FEATURED = {
