@@ -180,7 +180,7 @@
       "slug": "new-items",
       "intro": "New spiritual pendants and crystal/gemstone bead bracelets.",
       "productCount": 3,
-      "image": "assets/products/catalog/divine-spiritual-pendants-0.jpg",
+      "image": "assets/products/catalog/new-items-category-0.jpg",
       "productIds": [
         "divine-spiritual-pendants",
         "crystal-beads-bracelets",
@@ -2431,11 +2431,9 @@
       "material": null,
       "specs": {},
       "description": "We are engaged in offering Divine Spiritual Pendants to our clients. Our range of all products is widely appreciated by our clients.",
-      "image": "assets/products/catalog/divine-spiritual-pendants-0.jpg",
-      "images": [
-        "assets/products/catalog/divine-spiritual-pendants-0.jpg"
-      ],
-      "imageSource": "fallback",
+      "image": null,
+      "images": [],
+      "imageSource": "none",
       "inStock": true,
       "featured": false,
       "order": 1
@@ -2466,11 +2464,9 @@
       "material": null,
       "specs": {},
       "description": "We are engaged in offering Crystal Beads Bracelets to our clients. Our range of all products is widely appreciated by our clients.",
-      "image": "assets/products/catalog/crystal-beads-bracelets-0.jpg",
-      "images": [
-        "assets/products/catalog/crystal-beads-bracelets-0.jpg"
-      ],
-      "imageSource": "fallback",
+      "image": null,
+      "images": [],
+      "imageSource": "none",
       "inStock": true,
       "featured": false,
       "order": 2
@@ -2501,11 +2497,9 @@
       "material": null,
       "specs": {},
       "description": "We are engaged in offering Gemstone Beads Bracelet to our clients. Our range of all products is widely appreciated by our clients.",
-      "image": "assets/products/catalog/gemstone-beads-bracelet-0.jpg",
-      "images": [
-        "assets/products/catalog/gemstone-beads-bracelet-0.jpg"
-      ],
-      "imageSource": "fallback",
+      "image": null,
+      "images": [],
+      "imageSource": "none",
       "inStock": true,
       "featured": false,
       "order": 3

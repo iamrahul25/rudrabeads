@@ -4,29 +4,40 @@ import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { BrandHeader } from '@/components/BrandHeader';
-import { ProductCard } from '@/components/ProductCard';
-import { mukhiFilters, products } from '@/data/products';
+import { Chip } from '@/components/Chip';
+import { FilterSheet } from '@/components/FilterSheet';
+import { PrimaryButton } from '@/components/PrimaryButton';
+import { ProductGrid } from '@/components/ProductGrid';
+import { SortSheet } from '@/components/SortSheet';
+import { getCategoryById, mukhiFilters, products } from '@/data/products';
+import {
+  countSheetFilters,
+  defaultFilters,
+  describeActiveFilters,
+  searchProducts,
+  sortOptions,
+  type SearchFilters,
+} from '@/lib/search';
 import { colors } from '@/theme/colors';
 import { radii, spacing } from '@/theme/spacing';
 
+const categoryName = (id: string) => getCategoryById(id)?.name ?? id;
+
 export default function SearchScreen() {
   const [query, setQuery] = useState('');
-  const [activeFilter, setActiveFilter] = useState('All');
+  const [filters, setFilters] = useState<SearchFilters>(defaultFilters);
+  const [sheet, setSheet] = useState<'filters' | 'sort' | null>(null);
 
-  const filtered = useMemo(() => {
-    const normalized = query.trim().toLowerCase();
-    return products.filter((item) => {
-      const matchesMukhi =
-        activeFilter === 'All' || item.mukhi === Number(activeFilter.split(' ')[0]);
-      if (!matchesMukhi) return false;
-      if (!normalized) return true;
-      return (
-        item.name.toLowerCase().includes(normalized) ||
-        item.category.toLowerCase().includes(normalized) ||
-        (item.origin?.toLowerCase().includes(normalized) ?? false)
-      );
-    });
-  }, [activeFilter, query]);
+  const results = useMemo(() => searchProducts(products, query, filters), [query, filters]);
+  const activeFilters = useMemo(() => describeActiveFilters(filters, categoryName), [filters]);
+  const sheetFilterCount = countSheetFilters(filters);
+  const sortLabel = sortOptions.find((option) => option.key === filters.sort)?.label ?? 'Relevance';
+  const isFiltered = sheetFilterCount > 0 || filters.mukhi != null;
+
+  const resetAll = () => {
+    setQuery('');
+    setFilters(defaultFilters);
+  };
 
   return (
     <SafeAreaView style={styles.safe} edges={['top']}>
@@ -41,6 +52,7 @@ export default function SearchScreen() {
           placeholderTextColor={colors.textMuted}
           style={styles.searchInput}
           returnKeyType="search"
+          autoCorrect={false}
           accessibilityLabel="Search products"
         />
         {query.length > 0 ? (
@@ -63,21 +75,82 @@ export default function SearchScreen() {
           contentContainerStyle={styles.filters}
         >
           {mukhiFilters.map((filter) => {
-            const active = filter === activeFilter;
+            const value = filter === 'All' ? null : Number(filter.split(' ')[0]);
             return (
-              <Pressable
+              <Chip
                 key={filter}
-                onPress={() => setActiveFilter(filter)}
-                style={[styles.chip, active && styles.chipActive]}
-                accessibilityRole="button"
-                accessibilityState={{ selected: active }}
-              >
-                <Text style={[styles.chipText, active && styles.chipTextActive]}>{filter}</Text>
-              </Pressable>
+                label={filter}
+                selected={filters.mukhi === value}
+                onPress={() => setFilters((prev) => ({ ...prev, mukhi: value }))}
+              />
             );
           })}
         </ScrollView>
       </View>
+
+      <View style={styles.toolbar}>
+        <Text style={styles.resultCount} accessibilityLiveRegion="polite">
+          {results.length} {results.length === 1 ? 'result' : 'results'}
+        </Text>
+        <View style={styles.toolbarActions}>
+          <Pressable
+            style={styles.toolBtn}
+            onPress={() => setSheet('sort')}
+            accessibilityRole="button"
+            accessibilityLabel={`Sort by, ${sortLabel}`}
+          >
+            <Ionicons name="swap-vertical" size={16} color={colors.text} />
+            <Text style={styles.toolText} numberOfLines={1}>
+              {filters.sort === 'relevance' ? 'Sort' : sortLabel}
+            </Text>
+          </Pressable>
+          <Pressable
+            style={[styles.toolBtn, sheetFilterCount > 0 && styles.toolBtnActive]}
+            onPress={() => setSheet('filters')}
+            accessibilityRole="button"
+            accessibilityLabel={
+              sheetFilterCount > 0 ? `Filters, ${sheetFilterCount} applied` : 'Filters'
+            }
+          >
+            <Ionicons
+              name="options-outline"
+              size={16}
+              color={sheetFilterCount > 0 ? colors.surface : colors.text}
+            />
+            <Text style={[styles.toolText, sheetFilterCount > 0 && styles.toolTextActive]}>
+              Filters{sheetFilterCount > 0 ? ` (${sheetFilterCount})` : ''}
+            </Text>
+          </Pressable>
+        </View>
+      </View>
+
+      {activeFilters.length > 0 ? (
+        <View style={styles.filtersWrap}>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            style={styles.filtersScroll}
+            contentContainerStyle={styles.filters}
+          >
+            {activeFilters.map((filter) => (
+              <Chip
+                key={filter.key}
+                label={filter.label}
+                selected
+                removable
+                onPress={() => setFilters(filter.clear)}
+              />
+            ))}
+            <Pressable
+              onPress={() => setFilters((prev) => ({ ...defaultFilters, mukhi: prev.mukhi, sort: prev.sort }))}
+              hitSlop={8}
+              accessibilityRole="button"
+            >
+              <Text style={styles.clearAll}>Clear all</Text>
+            </Pressable>
+          </ScrollView>
+        </View>
+      ) : null}
 
       <ScrollView
         style={styles.gridScroll}
@@ -85,15 +158,42 @@ export default function SearchScreen() {
         showsVerticalScrollIndicator={false}
         keyboardShouldPersistTaps="handled"
       >
-        <View style={styles.row}>
-          {filtered.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </View>
-        {filtered.length === 0 ? (
-          <Text style={styles.empty}>No products match your search.</Text>
+        <ProductGrid products={results} />
+        {results.length === 0 ? (
+          <View style={styles.empty}>
+            <Ionicons name="search-outline" size={36} color={colors.textMuted} />
+            <Text style={styles.emptyTitle}>No products found</Text>
+            <Text style={styles.emptyText}>
+              {query.trim()
+                ? `Nothing matches "${query.trim()}"${isFiltered ? ' with the current filters' : ''}.`
+                : 'No products match the current filters.'}
+            </Text>
+            <PrimaryButton label="Reset search" variant="outline" onPress={resetAll} />
+          </View>
         ) : null}
       </ScrollView>
+
+      {sheet === 'filters' ? (
+        <FilterSheet
+          query={query}
+          filters={filters}
+          onClose={() => setSheet(null)}
+          onApply={(next) => {
+            setFilters(next);
+            setSheet(null);
+          }}
+        />
+      ) : null}
+      {sheet === 'sort' ? (
+        <SortSheet
+          value={filters.sort}
+          onClose={() => setSheet(null)}
+          onChange={(sort) => {
+            setFilters((prev) => ({ ...prev, sort }));
+            setSheet(null);
+          }}
+        />
+      ) : null}
     </SafeAreaView>
   );
 }
@@ -133,28 +233,54 @@ const styles = StyleSheet.create({
     gap: spacing.sm,
     alignItems: 'center',
   },
-  chip: {
+  toolbar: {
+    paddingHorizontal: spacing.lg,
+    paddingBottom: spacing.md,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: spacing.sm,
+  },
+  resultCount: {
+    fontFamily: 'DMSans_600SemiBold',
+    fontSize: 13,
+    color: colors.textSecondary,
+  },
+  toolbarActions: {
+    flexDirection: 'row',
+    gap: spacing.sm,
+    flexShrink: 1,
+  },
+  toolBtn: {
     height: 36,
     paddingHorizontal: spacing.md,
     borderRadius: radii.pill,
-    backgroundColor: colors.surface,
     borderWidth: 1,
     borderColor: colors.border,
+    backgroundColor: colors.surface,
+    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    gap: spacing.xs,
+    flexShrink: 1,
   },
-  chipActive: {
+  toolBtnActive: {
     backgroundColor: colors.primary,
     borderColor: colors.primary,
   },
-  chipText: {
-    fontFamily: 'DMSans_500Medium',
+  toolText: {
+    fontFamily: 'DMSans_600SemiBold',
     fontSize: 13,
-    lineHeight: 16,
-    color: colors.textSecondary,
+    color: colors.text,
+    flexShrink: 1,
   },
-  chipTextActive: {
+  toolTextActive: {
     color: colors.surface,
+  },
+  clearAll: {
+    fontFamily: 'DMSans_600SemiBold',
+    fontSize: 13,
+    color: colors.primary,
+    paddingHorizontal: spacing.xs,
   },
   gridScroll: {
     flex: 1,
@@ -163,15 +289,22 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.lg,
     paddingBottom: spacing.xxxl,
   },
-  row: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
-  },
   empty: {
     marginTop: spacing.xl,
-    textAlign: 'center',
+    alignItems: 'center',
+    gap: spacing.sm,
+    paddingHorizontal: spacing.lg,
+  },
+  emptyTitle: {
+    fontFamily: 'PlayfairDisplay_700Bold',
+    fontSize: 22,
+    color: colors.text,
+  },
+  emptyText: {
+    marginBottom: spacing.sm,
     fontFamily: 'DMSans_400Regular',
-    color: colors.textMuted,
+    fontSize: 14,
+    textAlign: 'center',
+    color: colors.textSecondary,
   },
 });

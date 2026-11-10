@@ -8,7 +8,9 @@ export const colors = {
   textSecondary: '#6E5648',
   textMuted: '#9A8578',
   border: '#EADFD6',
+  placeholder: '#F4EAE2',
   success: '#2F6B4F',
+  danger: '#B3261E',
   star: '#C9973A',
   overlay: 'rgba(44, 24, 16, 0.45)',
 } as const;

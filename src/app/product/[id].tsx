@@ -1,16 +1,21 @@
 import { Ionicons } from '@expo/vector-icons';
-import { Image } from 'expo-image';
 import { router, useLocalSearchParams } from 'expo-router';
-import { useCart } from '@/context/CartContext';
-import { useGoBack } from '@/hooks/useGoBack';
 import { useEffect, useState } from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Linking, ScrollView, Share, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { BrandHeader } from '@/components/BrandHeader';
 import { PrimaryButton } from '@/components/PrimaryButton';
+import { ProductImage } from '@/components/ProductImage';
+import { QuantityStepper } from '@/components/QuantityStepper';
 import { UnderlinedHeading } from '@/components/UnderlinedHeading';
+import { useCart } from '@/context/CartContext';
+import { useWishlist } from '@/context/WishlistContext';
+import { business } from '@/data/business';
 import { formatINR, getProductById } from '@/data/products';
+import { useGoBack } from '@/hooks/useGoBack';
+import { useResponsive } from '@/hooks/useResponsive';
+import { isPurchasable, minOrderQty } from '@/lib/cart';
 import { colors } from '@/theme/colors';
 import { radii, spacing } from '@/theme/spacing';
 
@@ -24,10 +29,12 @@ const trustItems = [
 export default function ProductDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const goBack = useGoBack('/');
+  const { isTablet } = useResponsive();
   const product = getProductById(String(id));
-  const { addItem } = useCart();
-  const [qty, setQty] = useState(1);
-  const [wishlisted, setWishlisted] = useState(false);
+  const { addItem, setQty: setCartQty, getQty } = useCart();
+  const wishlist = useWishlist();
+  const moq = product ? minOrderQty(product) : 1;
+  const [qty, setQty] = useState(moq);
   const [added, setAdded] = useState(false);
 
   useEffect(() => {
@@ -45,6 +52,18 @@ export default function ProductDetailScreen() {
     );
   }
 
+  const purchasable = isPurchasable(product);
+  const inCart = getQty(product.id);
+
+  const share = async () => {
+    const price = product.price != null ? ` – ${formatINR(product.price)}` : '';
+    try {
+      await Share.share({ message: `${product.name}${price} from ${business.name}` });
+    } catch {
+      // Share sheet unavailable or dismissed.
+    }
+  };
+
   return (
     <SafeAreaView style={styles.safe} edges={['top', 'bottom']}>
       <BrandHeader
@@ -52,14 +71,18 @@ export default function ProductDetailScreen() {
         showShare
         showWishlist
         showCart
-        wishlistActive={wishlisted}
-        onWishlist={() => setWishlisted((v) => !v)}
+        onShare={share}
+        wishlistActive={wishlist.has(product.id)}
+        onWishlist={() => wishlist.toggle(product.id)}
       />
 
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.content}>
-        <Image source={product.image} style={styles.hero} contentFit="cover" />
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={[styles.content, isTablet && styles.contentTablet]}
+      >
+        <ProductImage source={product.image} style={[styles.hero, isTablet && styles.heroTablet]} />
 
-        <View style={styles.body}>
+        <View style={[styles.body, isTablet && styles.bodyTablet]}>
           <Text style={styles.name}>{product.name}</Text>
           <View style={styles.ratingRow}>
             <Text style={styles.rating}>
@@ -139,49 +162,56 @@ export default function ProductDetailScreen() {
           </UnderlinedHeading>
           <Text style={styles.description}>{product.description}</Text>
 
-          <View style={styles.qtyRow}>
-            <Text style={styles.qtyLabel}>Quantity</Text>
-            <View style={styles.qtyControls}>
-              <Pressable
-                style={styles.qtyBtn}
-                onPress={() => setQty((q) => Math.max(1, q - 1))}
-                accessibilityRole="button"
-                accessibilityLabel="Decrease quantity"
-              >
-                <Ionicons name="remove" size={16} color={colors.text} />
-              </Pressable>
-              <Text style={styles.qtyValue}>{qty}</Text>
-              <Pressable
-                style={styles.qtyBtn}
-                onPress={() => setQty((q) => q + 1)}
-                accessibilityRole="button"
-                accessibilityLabel="Increase quantity"
-              >
-                <Ionicons name="add" size={16} color={colors.text} />
-              </Pressable>
+          {purchasable ? (
+            <View style={styles.qtyRow}>
+              <View>
+                <Text style={styles.qtyLabel}>Quantity</Text>
+                {moq > 1 ? (
+                  <Text style={styles.qtyHint}>
+                    Minimum order {moq} {product.minOrderUnit || 'units'}
+                  </Text>
+                ) : null}
+                {inCart > 0 ? <Text style={styles.qtyHint}>{inCart} already in cart</Text> : null}
+              </View>
+              <QuantityStepper value={qty} min={moq} onChange={setQty} />
             </View>
-          </View>
+          ) : (
+            <Text style={styles.onRequest}>
+              Price for this item is shared on request. Call us and we will get back with the best
+              quote.
+            </Text>
+          )}
         </View>
       </ScrollView>
 
-      <View style={styles.footer}>
-        <PrimaryButton
-          label={added ? 'Added' : 'Add to Cart'}
-          variant="outline"
-          style={styles.footerBtn}
-          onPress={() => {
-            addItem(product.id, qty);
-            setAdded(true);
-          }}
-        />
-        <PrimaryButton
-          label="Buy Now"
-          style={styles.footerBtn}
-          onPress={() => {
-            addItem(product.id, qty);
-            router.push('/cart');
-          }}
-        />
+      <View style={[styles.footer, isTablet && styles.footerTablet]}>
+        {purchasable ? (
+          <>
+            <PrimaryButton
+              label={added ? 'Added ✓' : 'Add to Cart'}
+              variant="outline"
+              style={[styles.footerBtn, isTablet && styles.footerBtnTablet]}
+              onPress={() => {
+                addItem(product.id, qty);
+                setAdded(true);
+              }}
+            />
+            <PrimaryButton
+              label="Buy Now"
+              style={[styles.footerBtn, isTablet && styles.footerBtnTablet]}
+              onPress={() => {
+                setCartQty(product.id, Math.max(qty, inCart));
+                router.push('/cart');
+              }}
+            />
+          </>
+        ) : (
+          <PrimaryButton
+            label="Call for Price"
+            style={[styles.footerBtn, isTablet && styles.footerBtnTablet]}
+            onPress={() => Linking.openURL(`tel:${business.phone}`).catch(() => undefined)}
+          />
+        )}
       </View>
     </SafeAreaView>
   );
@@ -190,13 +220,27 @@ export default function ProductDetailScreen() {
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: colors.background },
   content: { paddingBottom: spacing.xl },
+  contentTablet: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: spacing.xxl,
+    paddingHorizontal: spacing.xl,
+    paddingTop: spacing.sm,
+  },
   hero: {
     marginHorizontal: spacing.lg,
-    height: 280,
+    height: 340,
     borderRadius: radii.xl,
     backgroundColor: colors.surface,
   },
+  heroTablet: {
+    marginHorizontal: 0,
+    height: undefined,
+    width: '45%',
+    aspectRatio: 1,
+  },
   body: { paddingHorizontal: spacing.lg, paddingTop: spacing.lg },
+  bodyTablet: { flex: 1, paddingHorizontal: 0, paddingTop: 0 },
   name: {
     fontFamily: 'PlayfairDisplay_700Bold',
     fontSize: 30,
@@ -306,27 +350,21 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: colors.text,
   },
-  qtyControls: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.md,
+  qtyHint: {
+    marginTop: 2,
+    fontFamily: 'DMSans_400Regular',
+    fontSize: 12,
+    color: colors.textMuted,
   },
-  qtyBtn: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
-    borderWidth: 1,
-    borderColor: colors.border,
-    backgroundColor: colors.surface,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  qtyValue: {
-    fontFamily: 'DMSans_700Bold',
-    fontSize: 16,
-    color: colors.text,
-    minWidth: 20,
-    textAlign: 'center',
+  onRequest: {
+    marginTop: spacing.xl,
+    padding: spacing.md,
+    borderRadius: radii.md,
+    backgroundColor: colors.primaryMuted,
+    fontFamily: 'DMSans_500Medium',
+    fontSize: 13,
+    lineHeight: 19,
+    color: colors.primary,
   },
   footer: {
     flexDirection: 'row',
@@ -337,7 +375,9 @@ const styles = StyleSheet.create({
     borderTopColor: colors.border,
     backgroundColor: colors.surface,
   },
+  footerTablet: { justifyContent: 'flex-end', paddingHorizontal: spacing.xl },
   footerBtn: { flex: 1 },
+  footerBtnTablet: { flex: 0, minWidth: 200 },
   missing: {
     margin: spacing.xl,
     fontFamily: 'DMSans_500Medium',

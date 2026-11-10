@@ -86,7 +86,7 @@
       "slug": "new-items",
       "intro": "",
       "productCount": 3,
-      "image": "assets/products/catalog/divine-spiritual-pendants-0.jpg"
+      "image": "assets/products/catalog/new-items-category-0.jpg"
     }
   ],
   "products": [
@@ -1760,12 +1760,10 @@
         "https://tdw.imimg.com/template-tdw/n_image_t.png"
       ],
       "order": 1,
-      "imageSource": "fallback",
+      "imageSource": "none",
       "id": "divine-spiritual-pendants",
-      "images": [
-        "assets/products/catalog/divine-spiritual-pendants-0.jpg"
-      ],
-      "image": "assets/products/catalog/divine-spiritual-pendants-0.jpg"
+      "images": [],
+      "image": null
     },
     {
       "name": "Crystal Beads Bracelets",
@@ -1782,12 +1780,10 @@
         "https://tdw.imimg.com/template-tdw/n_image_t.png"
       ],
       "order": 2,
-      "imageSource": "fallback",
+      "imageSource": "none",
       "id": "crystal-beads-bracelets",
-      "images": [
-        "assets/products/catalog/crystal-beads-bracelets-0.jpg"
-      ],
-      "image": "assets/products/catalog/crystal-beads-bracelets-0.jpg"
+      "images": [],
+      "image": null
     },
     {
       "name": "Gemstone Beads Bracelet",
@@ -1804,12 +1800,10 @@
         "https://tdw.imimg.com/template-tdw/n_image_t.png"
       ],
       "order": 3,
-      "imageSource": "fallback",
+      "imageSource": "none",
       "id": "gemstone-beads-bracelet",
-      "images": [
-        "assets/products/catalog/gemstone-beads-bracelet-0.jpg"
-      ],
-      "image": "assets/products/catalog/gemstone-beads-bracelet-0.jpg"
+      "images": [],
+      "image": null
     }
   ]
 }

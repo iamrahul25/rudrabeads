@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, ViewStyle } from 'react-native';
+import { Pressable, StyleProp, StyleSheet, Text, ViewStyle } from 'react-native';
 
 import { colors } from '@/theme/colors';
 import { radii, spacing } from '@/theme/spacing';
@@ -7,20 +7,24 @@ type Props = {
   label: string;
   onPress?: () => void;
   variant?: 'solid' | 'outline';
-  style?: ViewStyle;
+  disabled?: boolean;
+  style?: StyleProp<ViewStyle>;
 };
 
-export function PrimaryButton({ label, onPress, variant = 'solid', style }: Props) {
+export function PrimaryButton({ label, onPress, variant = 'solid', disabled = false, style }: Props) {
   const outline = variant === 'outline';
   return (
     <Pressable
       onPress={onPress}
+      disabled={disabled}
       accessibilityRole="button"
       accessibilityLabel={label}
+      accessibilityState={{ disabled }}
       style={({ pressed }) => [
         styles.base,
         outline ? styles.outline : styles.solid,
-        pressed && { opacity: 0.88 },
+        pressed && !disabled && { opacity: 0.88 },
+        disabled && styles.disabled,
         style,
       ]}
     >
@@ -44,6 +48,9 @@ const styles = StyleSheet.create({
     backgroundColor: colors.surface,
     borderWidth: 1.5,
     borderColor: colors.primary,
+  },
+  disabled: {
+    opacity: 0.45,
   },
   label: {
     fontFamily: 'DMSans_700Bold',

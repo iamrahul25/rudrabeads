@@ -1,32 +1,53 @@
 import { Ionicons } from '@expo/vector-icons';
-import { Image } from 'expo-image';
 import { router } from 'expo-router';
+import { useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { BrandHeader } from '@/components/BrandHeader';
 import { PrimaryButton } from '@/components/PrimaryButton';
+import { ProductImage } from '@/components/ProductImage';
+import { QuantityStepper } from '@/components/QuantityStepper';
 import { UnderlinedHeading } from '@/components/UnderlinedHeading';
 import { useCart } from '@/context/CartContext';
 import { formatINR } from '@/data/products';
 import { useGoBack } from '@/hooks/useGoBack';
+import { minOrderQty } from '@/lib/cart';
+import { couponsEnabled } from '@/lib/coupons';
 import { colors } from '@/theme/colors';
 import { radii, spacing } from '@/theme/spacing';
 
 export default function CartScreen() {
   const goBack = useGoBack('/');
-  const { items, count, setQty, removeItem } = useCart();
+  const {
+    items,
+    lineCount,
+    subtotal,
+    discount,
+    total,
+    coupon,
+    couponCode,
+    setQty,
+    removeItem,
+    applyCoupon,
+    removeCoupon,
+  } = useCart();
+  const [couponInput, setCouponInput] = useState('');
+  const [couponError, setCouponError] = useState<string | null>(null);
 
-  const itemTotal = items.reduce((sum, item) => sum + (item.price ?? 0) * item.qty, 0);
-
-  const updateQty = (id: string, delta: number) => {
-    const current = items.find((item) => item.id === id)?.qty ?? 0;
-    setQty(id, current + delta);
+  const submitCoupon = () => {
+    const result = applyCoupon(couponInput);
+    if (!result.ok && !result.coupon) {
+      setCouponError(result.message);
+      return;
+    }
+    setCouponError(null);
+    setCouponInput('');
   };
 
   return (
     <SafeAreaView style={styles.safe} edges={['top', 'bottom']}>
-      <BrandHeader title={count > 0 ? `Your Cart (${count})` : 'Your Cart'} onBack={goBack} />
+      <BrandHeader title={lineCount > 0 ? `Your Cart (${lineCount})` : 'Your Cart'} onBack={goBack} />
 
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         {items.length === 0 ? (
@@ -38,62 +59,118 @@ export default function CartScreen() {
           </View>
         ) : null}
 
-        {items.map((item) => (
-          <View key={item.id} style={styles.card}>
-            <Image source={item.image} style={styles.thumb} contentFit="cover" />
-            <View style={styles.meta}>
-              <Text style={styles.name} numberOfLines={2}>
-                {item.name}
-              </Text>
-              <Text style={styles.price}>
-                {formatINR(item.price)}
-                {item.qty > 1 && item.price != null ? ` · ${formatINR(item.price * item.qty)}` : ''}
-              </Text>
-              <View style={styles.qtyControls}>
-                <Pressable
-                  style={styles.qtyBtn}
-                  onPress={() => updateQty(item.id, -1)}
-                  accessibilityRole="button"
-                  accessibilityLabel="Decrease quantity"
-                >
-                  <Ionicons name="remove" size={14} color={colors.text} />
-                </Pressable>
-                <Text style={styles.qty}>{item.qty}</Text>
-                <Pressable
-                  style={styles.qtyBtn}
-                  onPress={() => updateQty(item.id, 1)}
-                  accessibilityRole="button"
-                  accessibilityLabel="Increase quantity"
-                >
-                  <Ionicons name="add" size={14} color={colors.text} />
-                </Pressable>
-                <Pressable
-                  onPress={() => removeItem(item.id)}
-                  hitSlop={8}
-                  accessibilityRole="button"
-                  accessibilityLabel={`Remove ${item.name}`}
-                  style={styles.removeBtn}
-                >
-                  <Ionicons name="trash-outline" size={16} color={colors.textMuted} />
-                </Pressable>
+        {items.map((item) => {
+          const moq = minOrderQty(item);
+          return (
+            <View key={item.id} style={styles.card}>
+              <Pressable
+                onPress={() => router.push(`/product/${item.id}`)}
+                accessibilityRole="button"
+                accessibilityLabel={`View ${item.name}`}
+              >
+                <ProductImage source={item.image} style={styles.thumb} compact />
+              </Pressable>
+              <View style={styles.meta}>
+                <Text style={styles.name} numberOfLines={2}>
+                  {item.name}
+                </Text>
+                <Text style={styles.price}>
+                  {formatINR((item.price ?? 0) * item.qty)}
+                  <Text style={styles.unitPrice}>
+                    {'  '}
+                    {formatINR(item.price)}
+                    {item.priceUnit ? `/${item.priceUnit}` : ''}
+                  </Text>
+                </Text>
+                {moq > 1 ? <Text style={styles.moq}>Minimum order {moq}</Text> : null}
+                <View style={styles.qtyControls}>
+                  <QuantityStepper
+                    value={item.qty}
+                    min={moq}
+                    onChange={(next) => setQty(item.id, next)}
+                    label={`${item.name} quantity`}
+                    style={styles.stepper}
+                  />
+                  <Pressable
+                    onPress={() => removeItem(item.id)}
+                    hitSlop={8}
+                    accessibilityRole="button"
+                    accessibilityLabel={`Remove ${item.name}`}
+                    style={styles.removeBtn}
+                  >
+                    <Ionicons name="trash-outline" size={18} color={colors.textMuted} />
+                  </Pressable>
+                </View>
               </View>
             </View>
-          </View>
-        ))}
+          );
+        })}
 
         {items.length > 0 ? (
         <>
-        <View style={styles.coupon}>
-          <Ionicons name="pricetag-outline" size={18} color={colors.primary} />
-          <TextInput
-            placeholder="Apply Coupon"
-            placeholderTextColor={colors.textMuted}
-            style={styles.couponInput}
-          />
-          <Pressable accessibilityRole="button">
-            <Text style={styles.apply}>APPLY</Text>
+        {!couponsEnabled ? (
+          <View
+            style={[styles.coupon, styles.couponSoon]}
+            accessible
+            accessibilityLabel="Coupons and offers coming soon"
+          >
+            <Ionicons name="pricetag-outline" size={18} color={colors.textMuted} />
+            <Text style={styles.couponSoonLabel}>Coupons & Offers</Text>
+            <View style={styles.soonPill}>
+              <Text style={styles.soonText}>Coming soon</Text>
+            </View>
+          </View>
+        ) : couponCode ? (
+          <View style={[styles.coupon, styles.couponApplied]}>
+            <Ionicons
+              name={coupon?.ok ? 'checkmark-circle' : 'alert-circle-outline'}
+              size={18}
+              color={coupon?.ok ? colors.success : colors.primary}
+            />
+            <View style={styles.couponMeta}>
+              <Text style={styles.couponCode}>{couponCode}</Text>
+              <Text style={styles.couponNote}>
+                {coupon?.ok ? `You save ${formatINR(coupon.discount)}` : coupon?.message}
+              </Text>
+            </View>
+            <Pressable onPress={removeCoupon} hitSlop={8} accessibilityRole="button">
+              <Text style={styles.apply}>REMOVE</Text>
+            </Pressable>
+          </View>
+        ) : (
+          <View style={styles.coupon}>
+            <Ionicons name="pricetag-outline" size={18} color={colors.primary} />
+            <TextInput
+              value={couponInput}
+              onChangeText={(text) => {
+                setCouponInput(text);
+                setCouponError(null);
+              }}
+              onSubmitEditing={submitCoupon}
+              placeholder="Apply Coupon"
+              placeholderTextColor={colors.textMuted}
+              autoCapitalize="characters"
+              autoCorrect={false}
+              returnKeyType="done"
+              accessibilityLabel="Coupon code"
+              style={styles.couponInput}
+            />
+            <Pressable
+              onPress={submitCoupon}
+              disabled={!couponInput.trim()}
+              hitSlop={8}
+              accessibilityRole="button"
+            >
+              <Text style={[styles.apply, !couponInput.trim() && styles.applyDisabled]}>APPLY</Text>
+            </Pressable>
+          </View>
+        )}
+        {couponError ? <Text style={styles.couponError}>{couponError}</Text> : null}
+        {couponsEnabled && !couponCode ? (
+          <Pressable onPress={() => router.push('/info/offers')} accessibilityRole="link">
+            <Text style={styles.viewOffers}>View available offers</Text>
           </Pressable>
-        </View>
+        ) : null}
 
         <View style={styles.summary}>
           <UnderlinedHeading
@@ -105,15 +182,23 @@ export default function CartScreen() {
           </UnderlinedHeading>
           <View style={styles.summaryRow}>
             <Text style={styles.summaryLabel}>Total Item Price</Text>
-            <Text style={styles.summaryValue}>{formatINR(itemTotal)}</Text>
+            <Text style={styles.summaryValue}>{formatINR(subtotal)}</Text>
           </View>
+          {discount > 0 ? (
+            <View style={styles.summaryRow}>
+              <Text style={styles.summaryLabel}>Coupon ({couponCode})</Text>
+              <Text style={[styles.summaryValue, { color: colors.success }]}>
+                −{formatINR(discount)}
+              </Text>
+            </View>
+          ) : null}
           <View style={styles.summaryRow}>
             <Text style={styles.summaryLabel}>Delivery</Text>
             <Text style={[styles.summaryValue, { color: colors.success }]}>FREE</Text>
           </View>
           <View style={[styles.summaryRow, styles.totalRow]}>
             <Text style={styles.totalLabel}>Total Amount</Text>
-            <Text style={styles.totalValue}>{formatINR(itemTotal)}</Text>
+            <Text style={styles.totalValue}>{formatINR(total)}</Text>
           </View>
         </View>
 
@@ -127,7 +212,10 @@ export default function CartScreen() {
 
       {items.length > 0 ? (
         <View style={styles.footer}>
-          <PrimaryButton label="Proceed to Checkout" onPress={() => undefined} />
+          <PrimaryButton
+            label={`Proceed to Checkout · ${formatINR(total)}`}
+            onPress={() => router.push('/checkout')}
+          />
         </View>
       ) : null}
     </SafeAreaView>
@@ -174,6 +262,7 @@ const styles = StyleSheet.create({
     width: 88,
     height: 88,
     borderRadius: radii.md,
+    backgroundColor: colors.surface,
   },
   meta: { flex: 1, justifyContent: 'space-between' },
   name: {
@@ -186,33 +275,82 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: colors.primary,
   },
+  unitPrice: {
+    fontFamily: 'DMSans_400Regular',
+    fontSize: 12,
+    color: colors.textMuted,
+  },
+  moq: {
+    fontFamily: 'DMSans_400Regular',
+    fontSize: 11,
+    color: colors.textMuted,
+  },
   qtyControls: {
+    marginTop: spacing.xs,
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  stepper: {
     gap: spacing.sm,
-  },
-  qtyBtn: {
-    width: 28,
-    height: 28,
-    borderRadius: 14,
-    borderWidth: 1,
-    borderColor: colors.border,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  qty: {
-    fontFamily: 'DMSans_600SemiBold',
-    fontSize: 14,
-    color: colors.text,
-    minWidth: 16,
-    textAlign: 'center',
   },
   removeBtn: {
     marginLeft: 'auto',
-    width: 28,
-    height: 28,
+    width: 36,
+    height: 36,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  couponApplied: {
+    borderColor: colors.success,
+    paddingVertical: spacing.sm,
+  },
+  couponSoon: {
+    backgroundColor: colors.background,
+  },
+  couponSoonLabel: {
+    flex: 1,
+    fontFamily: 'DMSans_500Medium',
+    fontSize: 14,
+    color: colors.textMuted,
+  },
+  soonPill: {
+    backgroundColor: colors.primaryMuted,
+    borderRadius: radii.pill,
+    paddingHorizontal: spacing.sm,
+    paddingVertical: 4,
+  },
+  soonText: {
+    fontFamily: 'DMSans_600SemiBold',
+    fontSize: 11,
+    color: colors.primary,
+  },
+  couponMeta: { flex: 1 },
+  couponCode: {
+    fontFamily: 'DMSans_700Bold',
+    fontSize: 13,
+    letterSpacing: 0.5,
+    color: colors.text,
+  },
+  couponNote: {
+    fontFamily: 'DMSans_400Regular',
+    fontSize: 12,
+    color: colors.textSecondary,
+  },
+  applyDisabled: {
+    opacity: 0.4,
+  },
+  couponError: {
+    marginTop: spacing.xs,
+    fontFamily: 'DMSans_500Medium',
+    fontSize: 12,
+    color: colors.danger,
+  },
+  viewOffers: {
+    marginTop: spacing.sm,
+    fontFamily: 'DMSans_500Medium',
+    fontSize: 12,
+    color: colors.primary,
+    textDecorationLine: 'underline',
   },
   coupon: {
     marginTop: spacing.sm,

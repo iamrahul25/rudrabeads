@@ -17,7 +17,7 @@ export type Product = {
   minOrderUnit: string | null;
   rating: number;
   reviews: number;
-  image: number;
+  image: number | null;
   images: number[];
   category: string;
   categoryId: string;
@@ -42,7 +42,7 @@ export type Product = {
 export type Category = {
   id: string;
   name: string;
-  image: number;
+  image: number | null;
   count: number;
   intro: string;
   productIds: string[];
@@ -61,16 +61,10 @@ function benefitsFromProduct(item: CatalogProduct): string[] {
 }
 
 function mapProduct(item: CatalogProduct): Product {
-  const imagePath = item.image;
-  const fallback = resolveProductImage(catalog.products[0]?.image);
-  const primary = resolveProductImage(imagePath) ?? fallback;
-  if (primary == null) {
-    throw new Error(`Missing image asset for ${item.id}`);
-  }
-
-  const gallery = (item.images || [])
+  const gallery = ((item.images || []) as string[])
     .map((path) => resolveProductImage(path))
     .filter((value): value is number => value != null);
+  const primary = resolveProductImage(item.image) ?? gallery[0] ?? null;
 
   return {
     id: item.id,
@@ -86,7 +80,7 @@ function mapProduct(item: CatalogProduct): Product {
     rating: 5,
     reviews: 0,
     image: primary,
-    images: gallery.length ? gallery : [primary],
+    images: gallery.length ? gallery : primary != null ? [primary] : [],
     category: item.category,
     categoryId: item.categoryId,
     origin: item.origin,
@@ -115,8 +109,8 @@ export const products: Product[] = catalog.products.map(mapProduct);
 export const categories: Category[] = catalog.categories.map((item) => {
   const image =
     resolveProductImage(item.image) ??
-    resolveProductImage(catalog.products.find((p) => p.categoryId === item.id)?.image) ??
-    products[0].image;
+    products.find((p) => p.categoryId === item.id && p.image != null)?.image ??
+    null;
 
   return {
     id: item.id,

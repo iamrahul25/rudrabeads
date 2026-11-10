@@ -3,11 +3,9 @@ import { Image } from 'expo-image';
 import { router } from 'expo-router';
 import { useEffect, useRef, useState } from 'react';
 import {
-  Dimensions,
   FlatList,
   NativeScrollEvent,
   NativeSyntheticEvent,
-  Pressable,
   ScrollView,
   StyleSheet,
   Text,
@@ -17,18 +15,22 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { BrandHeader } from '@/components/BrandHeader';
+import { CategoryCard } from '@/components/CategoryCard';
 import { MukhiMarquee } from '@/components/MukhiMarquee';
 import { PrimaryButton } from '@/components/PrimaryButton';
-import { ProductCard } from '@/components/ProductCard';
+import { ProductGrid } from '@/components/ProductGrid';
 import { SectionHeader } from '@/components/SectionHeader';
 import { categories, getFeaturedProducts, products } from '@/data/products';
+import { useResponsive } from '@/hooks/useResponsive';
 import { colors } from '@/theme/colors';
 import { radii, spacing } from '@/theme/spacing';
 
-const SCREEN_WIDTH = Dimensions.get('window').width;
 const HERO_SIDE_INSET = spacing.lg;
-const HERO_WIDTH = SCREEN_WIDTH - HERO_SIDE_INSET * 2;
 const HERO_AUTO_MS = 4000;
+
+function getHeroHeight(heroWidth: number) {
+  return Math.round(Math.min(380, Math.max(210, heroWidth * 0.36)));
+}
 const STYLE_GAP = spacing.md; // ≥8px touch spacing (ui-ux-pro-max)
 const STYLE_PAD = spacing.lg;
 
@@ -81,16 +83,28 @@ const heroSlides: HeroSlide[] = [
   },
 ];
 
-const popular = getFeaturedProducts().slice(0, 4);
+const featured = getFeaturedProducts();
+const popularPool = [...featured, ...products.filter((item) => !item.featured)];
 
 export default function HomeScreen() {
   const { width: windowWidth } = useWindowDimensions();
+  const { productColumns, isTablet } = useResponsive();
   const [heroIndex, setHeroIndex] = useState(0);
   const heroListRef = useRef<FlatList<HeroSlide>>(null);
   const heroIndexRef = useRef(0);
   const isDraggingRef = useRef(false);
   const styleColumns = getStyleColumns(windowWidth);
   const styleRows = chunkItems(categories, styleColumns);
+  const heroWidth = windowWidth - HERO_SIDE_INSET * 2;
+  const heroHeight = getHeroHeight(heroWidth);
+  const popular = popularPool.slice(0, productColumns * 2);
+
+  useEffect(() => {
+    heroListRef.current?.scrollToOffset({
+      offset: heroIndexRef.current * heroWidth,
+      animated: false,
+    });
+  }, [heroWidth]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -108,7 +122,7 @@ export default function HomeScreen() {
     <SafeAreaView style={styles.safe} edges={['top']}>
       <BrandHeader showBrand showNotifications showCart />
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.content}>
-        <View style={styles.hero}>
+        <View style={[styles.hero, { height: heroHeight }]}>
           <FlatList
             ref={heroListRef}
             data={heroSlides}
@@ -118,9 +132,10 @@ export default function HomeScreen() {
             showsHorizontalScrollIndicator={false}
             decelerationRate="fast"
             style={styles.heroPager}
+            extraData={heroWidth}
             getItemLayout={(_, index) => ({
-              length: HERO_WIDTH,
-              offset: HERO_WIDTH * index,
+              length: heroWidth,
+              offset: heroWidth * index,
               index,
             })}
             onScrollBeginDrag={() => {
@@ -128,18 +143,22 @@ export default function HomeScreen() {
             }}
             onMomentumScrollEnd={(event: NativeSyntheticEvent<NativeScrollEvent>) => {
               isDraggingRef.current = false;
-              const nextIndex = Math.round(event.nativeEvent.contentOffset.x / HERO_WIDTH);
+              const nextIndex = Math.round(event.nativeEvent.contentOffset.x / heroWidth);
               if (nextIndex >= 0 && nextIndex < heroSlides.length) {
                 heroIndexRef.current = nextIndex;
                 setHeroIndex(nextIndex);
               }
             }}
             renderItem={({ item }) => (
-              <View style={styles.heroSlide}>
+              <View style={{ width: heroWidth, height: heroHeight }}>
                 <Image source={item.image} style={styles.heroImage} contentFit="cover" />
-                <View style={styles.heroOverlay}>
-                  <Text style={styles.heroTitle}>{item.title}</Text>
-                  <Text style={styles.heroSubtitle}>{item.subtitle}</Text>
+                <View style={[styles.heroOverlay, isTablet && styles.heroOverlayTablet]}>
+                  <Text style={[styles.heroTitle, isTablet && styles.heroTitleTablet]}>
+                    {item.title}
+                  </Text>
+                  <Text style={[styles.heroSubtitle, isTablet && styles.heroSubtitleTablet]}>
+                    {item.subtitle}
+                  </Text>
                   <PrimaryButton
                     label="Shop Now"
                     style={styles.heroCta}
@@ -168,21 +187,10 @@ export default function HomeScreen() {
           {styleRows.map((row, rowIndex) => (
             <View key={row[0]?.id ?? rowIndex} style={styles.styleRow}>
               {row.map((item) => (
-                <Pressable
-                  key={item.id}
-                  style={styles.styleCard}
-                  onPress={() => router.push(`/category/${item.id}`)}
-                  accessibilityRole="button"
-                  accessibilityLabel={item.name}
-                >
-                  <Image source={item.image} style={styles.styleImage} contentFit="cover" />
-                  <Text style={styles.styleLabel} numberOfLines={2}>
-                    {item.name}
-                  </Text>
-                </Pressable>
+                <CategoryCard key={item.id} category={item} />
               ))}
               {Array.from({ length: styleColumns - row.length }).map((_, spacerIndex) => (
-                <View key={`spacer-${rowIndex}-${spacerIndex}`} style={styles.styleCard} />
+                <View key={`spacer-${rowIndex}-${spacerIndex}`} style={styles.styleSpacer} />
               ))}
             </View>
           ))}
@@ -194,11 +202,7 @@ export default function HomeScreen() {
         </View>
 
         <SectionHeader title="Popular Products" onAction={() => router.push('/(tabs)/search')} />
-        <View style={styles.productGrid}>
-          {(popular.length ? popular : products.slice(0, 4)).map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </View>
+        <ProductGrid products={popular} style={styles.productGrid} />
       </ScrollView>
     </SafeAreaView>
   );
@@ -209,7 +213,6 @@ const styles = StyleSheet.create({
   content: { paddingBottom: spacing.xxxl },
   hero: {
     marginHorizontal: HERO_SIDE_INSET,
-    height: 210,
     borderRadius: radii.xl,
     overflow: 'hidden',
     backgroundColor: '#5C2E1A',
@@ -217,16 +220,24 @@ const styles = StyleSheet.create({
   heroPager: {
     flex: 1,
   },
-  heroSlide: {
-    width: HERO_WIDTH,
-    height: 210,
-  },
   heroImage: { ...StyleSheet.absoluteFill },
   heroOverlay: {
     flex: 1,
     justifyContent: 'center',
     paddingHorizontal: spacing.xl,
     backgroundColor: 'rgba(44, 24, 16, 0.42)',
+  },
+  heroOverlayTablet: {
+    paddingHorizontal: spacing.xxxl * 1.5,
+  },
+  heroTitleTablet: {
+    fontSize: 48,
+    lineHeight: 52,
+    marginBottom: spacing.sm,
+  },
+  heroSubtitleTablet: {
+    fontSize: 15,
+    marginBottom: spacing.lg,
   },
   heroTitle: {
     fontFamily: 'PlayfairDisplay_700Bold',
@@ -275,25 +286,9 @@ const styles = StyleSheet.create({
     width: '100%',
     gap: STYLE_GAP,
   },
-  styleCard: {
+  styleSpacer: {
     flex: 1,
     minWidth: 0,
-    alignItems: 'center',
-  },
-  styleImage: {
-    width: '100%',
-    aspectRatio: 1,
-    borderRadius: radii.md,
-    backgroundColor: colors.surface,
-  },
-  styleLabel: {
-    marginTop: spacing.xs,
-    fontFamily: 'DMSans_500Medium',
-    fontSize: 12,
-    lineHeight: 16,
-    color: colors.text,
-    textAlign: 'center',
-    width: '100%',
   },
   trust: {
     marginHorizontal: spacing.lg,
@@ -313,8 +308,5 @@ const styles = StyleSheet.create({
   },
   productGrid: {
     paddingHorizontal: spacing.lg,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
   },
 });

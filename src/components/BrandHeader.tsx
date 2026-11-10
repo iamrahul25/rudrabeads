@@ -67,8 +67,8 @@ export function BrandHeader({
   onSettings,
   wishlistActive = false,
 }: Props) {
-  const { count } = useCart();
-  const badgeCount = cartCount ?? count;
+  const { lineCount } = useCart();
+  const badgeCount = cartCount ?? lineCount;
   const left = onBack ? (
     <View style={styles.leftGroup}>
       <Pressable
@@ -104,6 +104,7 @@ export function BrandHeader({
       <View style={styles.actions}>
         {showNotifications ? (
           <Pressable
+            onPress={() => router.push('/notifications')}
             hitSlop={10}
             accessibilityRole="button"
             accessibilityLabel="Notifications"
@@ -165,7 +166,9 @@ export function BrandHeader({
             onPress={() => router.push('/cart')}
             hitSlop={10}
             accessibilityRole="button"
-            accessibilityLabel={badgeCount > 0 ? `Cart, ${badgeCount} items` : 'Cart'}
+            accessibilityLabel={
+              badgeCount > 0 ? `Cart, ${badgeCount} ${badgeCount === 1 ? 'item' : 'items'}` : 'Cart'
+            }
             style={styles.iconBtn}
           >
             <Ionicons name="bag-handle-outline" size={22} color={colors.text} />

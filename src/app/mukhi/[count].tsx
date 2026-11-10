@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { BrandHeader } from '@/components/BrandHeader';
 import { PrimaryButton } from '@/components/PrimaryButton';
-import { ProductCard } from '@/components/ProductCard';
+import { ProductGrid } from '@/components/ProductGrid';
 import { UnderlinedHeading } from '@/components/UnderlinedHeading';
 import { useGoBack } from '@/hooks/useGoBack';
 import { getProductsByMukhi } from '@/data/products';
@@ -54,11 +54,7 @@ export default function MukhiScreen() {
           </Text>
         </View>
 
-        <View style={styles.grid}>
-          {items.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </View>
+        <ProductGrid products={items} style={styles.grid} />
         {items.length === 0 ? (
           <Text style={styles.empty}>No {mukhi} Mukhi products in the catalogue yet.</Text>
         ) : null}
@@ -95,9 +91,6 @@ const styles = StyleSheet.create({
   },
   grid: {
     paddingHorizontal: spacing.lg,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
   },
   empty: {
     marginTop: spacing.xl,

@@ -91,6 +91,10 @@ INTROS = {
     "new-items": "New spiritual pendants and crystal/gemstone bead bracelets.",
 }
 
+CATEGORY_IMAGES = {
+    "new-items": "assets/products/catalog/new-items-category-0.jpg",
+}
+
 FEATURED = {
     "2-mukhi-rudraksha-fruit",
     "5-mukhi-nepali-ganesh-rudraksha-mala",
@@ -218,7 +222,8 @@ def build_categories(products: list[dict]) -> list[dict]:
                 "slug": cid,
                 "intro": INTROS.get(cid, ""),
                 "productCount": len(cat_products),
-                "image": cat_products[0]["image"] if cat_products else None,
+                "image": CATEGORY_IMAGES.get(cid)
+                or next((p["image"] for p in cat_products if p["image"]), None),
                 "productIds": [p["id"] for p in cat_products],
             }
         )
@@ -243,7 +248,7 @@ def main() -> None:
                 "Prices are single list prices as shown on the site; no MRP/compare-at prices exist.",
                 "4 products have no price on the site: 21 Mukhi Rudraksha, Divine Spiritual Pendants, Crystal Beads Bracelets, Gemstone Beads Bracelet.",
                 "Images normalized to pure white square backgrounds for catalog consistency.",
-                "Products without seller photos use catalog-matched white-background fallbacks.",
+                "Products with imageSource 'none' have no photo and render an in-app placeholder.",
             ],
         },
         "business": {

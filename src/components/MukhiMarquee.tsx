@@ -1,4 +1,3 @@
-import { Image } from 'expo-image';
 import { router } from 'expo-router';
 import { useCallback, useEffect, useRef, useState, type ComponentRef } from 'react';
 import {
@@ -13,6 +12,7 @@ import {
   View,
 } from 'react-native';
 
+import { ProductImage } from '@/components/ProductImage';
 import { products, type Product } from '@/data/products';
 import { colors } from '@/theme/colors';
 import { spacing } from '@/theme/spacing';
@@ -81,7 +81,7 @@ function MukhiChip({ item }: { item: Product }) {
       accessibilityLabel={`${item.mukhi} Mukhi`}
     >
       <View style={styles.circle}>
-        <Image source={item.image} style={styles.circleImage} contentFit="cover" />
+        <ProductImage source={item.image} style={styles.circleImage} contentFit="cover" compact />
       </View>
       <Text style={styles.circleLabel}>{item.mukhi} Mukhi</Text>
     </Pressable>

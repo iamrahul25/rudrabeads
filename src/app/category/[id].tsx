@@ -5,7 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { BrandHeader } from '@/components/BrandHeader';
 import { PrimaryButton } from '@/components/PrimaryButton';
-import { ProductCard } from '@/components/ProductCard';
+import { ProductGrid } from '@/components/ProductGrid';
 import { UnderlinedHeading } from '@/components/UnderlinedHeading';
 import { getCategoryById, getProductsByCategory } from '@/data/products';
 import { colors } from '@/theme/colors';
@@ -44,11 +44,7 @@ export default function CategoryScreen() {
           {category.intro ? <Text style={styles.intro}>{category.intro}</Text> : null}
         </View>
 
-        <View style={styles.grid}>
-          {items.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </View>
+        <ProductGrid products={items} style={styles.grid} />
         {items.length === 0 ? <Text style={styles.empty}>No products in this category yet.</Text> : null}
       </ScrollView>
     </SafeAreaView>
@@ -83,9 +79,6 @@ const styles = StyleSheet.create({
   },
   grid: {
     paddingHorizontal: spacing.lg,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
   },
   empty: {
     marginTop: spacing.xl,
