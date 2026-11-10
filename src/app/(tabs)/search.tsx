@@ -9,7 +9,7 @@ import { FilterSheet } from '@/components/FilterSheet';
 import { PrimaryButton } from '@/components/PrimaryButton';
 import { ProductGrid } from '@/components/ProductGrid';
 import { SortSheet } from '@/components/SortSheet';
-import { getCategoryById, mukhiFilters, products } from '@/data/products';
+import { useCatalog } from '@/context/CatalogContext';
 import {
   countSheetFilters,
   defaultFilters,
@@ -21,15 +21,17 @@ import {
 import { colors } from '@/theme/colors';
 import { radii, spacing } from '@/theme/spacing';
 
-const categoryName = (id: string) => getCategoryById(id)?.name ?? id;
-
 export default function SearchScreen() {
+  const { products, mukhiFilters, getCategoryById } = useCatalog();
   const [query, setQuery] = useState('');
   const [filters, setFilters] = useState<SearchFilters>(defaultFilters);
   const [sheet, setSheet] = useState<'filters' | 'sort' | null>(null);
 
-  const results = useMemo(() => searchProducts(products, query, filters), [query, filters]);
-  const activeFilters = useMemo(() => describeActiveFilters(filters, categoryName), [filters]);
+  const results = useMemo(() => searchProducts(products, query, filters), [products, query, filters]);
+  const activeFilters = useMemo(
+    () => describeActiveFilters(filters, (id) => getCategoryById(id)?.name ?? id),
+    [filters, getCategoryById],
+  );
   const sheetFilterCount = countSheetFilters(filters);
   const sortLabel = sortOptions.find((option) => option.key === filters.sort)?.label ?? 'Relevance';
   const isFiltered = sheetFilterCount > 0 || filters.mukhi != null;

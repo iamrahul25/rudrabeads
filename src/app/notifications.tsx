@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
-import { router, type Href } from 'expo-router';
-import { useMemo } from 'react';
+import { router, useFocusEffect, type Href } from 'expo-router';
+import { useCallback, useMemo } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -9,9 +9,53 @@ import { PrimaryButton } from '@/components/PrimaryButton';
 import { useAccount } from '@/context/AccountContext';
 import { formatINR } from '@/data/products';
 import { useGoBack } from '@/hooks/useGoBack';
-import { formatOrderDate } from '@/lib/orders';
+import { formatOrderDate, type Order, type OrderStatus } from '@/lib/orders';
 import { colors } from '@/theme/colors';
 import { radii, spacing } from '@/theme/spacing';
+
+const statusNotice: Record<
+  OrderStatus,
+  { icon: keyof typeof Ionicons.glyphMap; title: (id: string) => string; body: (order: Order) => string }
+> = {
+  pending: {
+    icon: 'time-outline',
+    title: (id) => `Order #${id} placed`,
+    body: (order) => `Payment of ${formatINR(order.total)} is pending. We'll call you to confirm.`,
+  },
+  confirmed: {
+    icon: 'checkmark-circle-outline',
+    title: (id) => `Order #${id} confirmed`,
+    body: () => 'Your order is confirmed and will be packed soon.',
+  },
+  packed: {
+    icon: 'cube-outline',
+    title: (id) => `Order #${id} packed`,
+    body: () => 'Your order is packed and ready to ship.',
+  },
+  shipped: {
+    icon: 'airplane-outline',
+    title: (id) => `Order #${id} shipped`,
+    body: (order) =>
+      order.trackingNumber
+        ? `On its way${order.courier ? ` with ${order.courier}` : ''}. Tracking no. ${order.trackingNumber}.`
+        : 'Your order is on its way.',
+  },
+  out_for_delivery: {
+    icon: 'bicycle-outline',
+    title: (id) => `Order #${id} out for delivery`,
+    body: () => 'Your order will be delivered today.',
+  },
+  delivered: {
+    icon: 'gift-outline',
+    title: (id) => `Order #${id} delivered`,
+    body: () => 'Thank you for shopping with us!',
+  },
+  cancelled: {
+    icon: 'close-circle-outline',
+    title: (id) => `Order #${id} cancelled`,
+    body: () => 'This order was cancelled. Reach out to us if this was a mistake.',
+  },
+};
 
 type Notice = {
   key: string;
@@ -24,24 +68,29 @@ type Notice = {
 
 export default function NotificationsScreen() {
   const goBack = useGoBack('/');
-  const { orders } = useAccount();
+  const { orders, refreshOrders } = useAccount();
+
+  useFocusEffect(
+    useCallback(() => {
+      refreshOrders();
+    }, [refreshOrders]),
+  );
 
   const notices = useMemo<Notice[]>(
     () =>
       [...orders]
-        .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
-        .map((order) => ({
-          key: `order-${order.id}`,
-          icon: order.status === 'cancelled' ? 'close-circle-outline' : 'time-outline',
-          title:
-            order.status === 'cancelled' ? `Order #${order.id} cancelled` : `Order #${order.id} placed`,
-          body:
-            order.status === 'cancelled'
-              ? 'This order was cancelled. Reach out to us if this was a mistake.'
-              : `Payment of ${formatINR(order.total)} is pending. We'll confirm once it's received.`,
-          meta: formatOrderDate(order.createdAt),
-          href: { pathname: '/order/[id]', params: { id: order.id } },
-        })),
+        .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt))
+        .map((order) => {
+          const notice = statusNotice[order.status];
+          return {
+            key: `order-${order.id}`,
+            icon: notice.icon,
+            title: notice.title(order.id),
+            body: notice.body(order),
+            meta: formatOrderDate(order.updatedAt),
+            href: { pathname: '/order/[id]', params: { id: order.id } },
+          };
+        }),
     [orders],
   );
 

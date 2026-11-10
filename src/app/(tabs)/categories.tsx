@@ -5,13 +5,14 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { BrandHeader } from '@/components/BrandHeader';
 import { ProductImage } from '@/components/ProductImage';
-import { categories } from '@/data/products';
+import { useCatalog } from '@/context/CatalogContext';
 import { useResponsive } from '@/hooks/useResponsive';
 import { colors } from '@/theme/colors';
 import { radii, spacing } from '@/theme/spacing';
 
 export default function CategoriesScreen() {
   const { productColumns, isTablet } = useResponsive();
+  const { categories } = useCatalog();
   const featured = categories[0];
   const rest = categories.slice(1);
   const rows: (typeof rest)[] = [];
@@ -33,18 +34,20 @@ export default function CategoriesScreen() {
           <Text style={styles.searchInput}>Search categories</Text>
         </Pressable>
 
-        <Pressable
-          style={[styles.featured, isTablet && styles.featuredTablet]}
-          onPress={() => router.push(`/category/${featured.id}`)}
-          accessibilityRole="button"
-          accessibilityLabel={featured.name}
-        >
-          <ProductImage source={featured.image} style={styles.featuredImage} contentFit="cover" />
-          <View style={styles.featuredOverlay}>
-            <Text style={styles.featuredTitle}>{featured.name}</Text>
-            <Text style={styles.featuredCount}>{featured.count} products</Text>
-          </View>
-        </Pressable>
+        {featured ? (
+          <Pressable
+            style={[styles.featured, isTablet && styles.featuredTablet]}
+            onPress={() => router.push(`/category/${featured.id}`)}
+            accessibilityRole="button"
+            accessibilityLabel={featured.name}
+          >
+            <ProductImage source={featured.image} style={styles.featuredImage} contentFit="cover" />
+            <View style={styles.featuredOverlay}>
+              <Text style={styles.featuredTitle}>{featured.name}</Text>
+              <Text style={styles.featuredCount}>{featured.count} products</Text>
+            </View>
+          </Pressable>
+        ) : null}
 
         <View style={styles.grid}>
           {rows.map((row, rowIndex) => (

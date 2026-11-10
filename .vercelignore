@@ -1,0 +1,10 @@
+node_modules
+dist
+.expo
+.env*.local
+worker
+tmp_scrape
+.fig-extract
+scripts
+app.py
+rudrabeads_app_spec.md

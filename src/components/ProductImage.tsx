@@ -3,10 +3,11 @@ import { Image, type ImageContentFit, type ImageStyle } from 'expo-image';
 import { useState } from 'react';
 import { StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
 
+import type { ImageRef } from '@/data/products';
 import { colors } from '@/theme/colors';
 
 type Props = {
-  source: number | null | undefined;
+  source: ImageRef | null | undefined;
   style?: StyleProp<ImageStyle>;
   contentFit?: ImageContentFit;
   /** Hides the caption for small thumbnails where only the icon fits. */
@@ -15,6 +16,13 @@ type Props = {
 
 export function ProductImage({ source, style, contentFit = 'contain', compact = false }: Props) {
   const [failed, setFailed] = useState(false);
+  const [lastSource, setLastSource] = useState(source);
+
+  // The catalogue can swap bundled images for remote ones, so a new source gets a fresh attempt.
+  if (lastSource !== source) {
+    setLastSource(source);
+    setFailed(false);
+  }
 
   if (source == null || failed) {
     return (

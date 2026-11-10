@@ -1,8 +1,9 @@
 import { createContext, useCallback, useContext, useMemo, type ReactNode } from 'react';
 
-import { getProductById, type Product } from '@/data/products';
+import { useCatalog } from '@/context/CatalogContext';
+import type { Product } from '@/data/products';
 import { usePersistentState } from '@/hooks/usePersistentState';
-import { addToLines, lineSubtotal, setLineQty, type CartLine } from '@/lib/cart';
+import { addToLines, isPurchasable, lineSubtotal, setLineQty, type CartLine } from '@/lib/cart';
 import { couponsEnabled, evaluateCoupon, findCoupon, type CouponResult } from '@/lib/coupons';
 
 export type { CartLine };
@@ -13,17 +14,17 @@ type StoredCart = { lines: CartLine[]; couponCode: string | null };
 
 const emptyCart: StoredCart = { lines: [], couponCode: null };
 
+/**
+ * Lines are kept even when their product isn't in the current catalogue (it may still be loading,
+ * or be out of stock for now); `items` only shows the ones that can be bought.
+ */
 function sanitizeCart(stored: unknown): StoredCart {
   if (!stored || typeof stored !== 'object') return emptyCart;
   const raw = stored as Partial<StoredCart>;
   const lines = Array.isArray(raw.lines)
     ? raw.lines.filter(
         (line): line is CartLine =>
-          !!line &&
-          typeof line.id === 'string' &&
-          typeof line.qty === 'number' &&
-          line.qty > 0 &&
-          getProductById(line.id) != null,
+          !!line && typeof line.id === 'string' && typeof line.qty === 'number' && line.qty > 0,
       )
     : [];
   const couponCode = typeof raw.couponCode === 'string' && findCoupon(raw.couponCode) ? raw.couponCode : null;
@@ -55,6 +56,7 @@ type CartContextValue = {
 const CartContext = createContext<CartContextValue | null>(null);
 
 export function CartProvider({ children }: { children: ReactNode }) {
+  const { getProductById } = useCatalog();
   const [cart, setCart, hydrated] = usePersistentState<StoredCart>('cart', emptyCart, sanitizeCart);
   const { lines } = cart;
   const couponCode = couponsEnabled ? cart.couponCode : null;
@@ -65,7 +67,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       if (!product) return;
       setCart((prev) => ({ ...prev, lines: addToLines(prev.lines, product, qty) }));
     },
-    [setCart],
+    [getProductById, setCart],
   );
 
   const setQty = useCallback(
@@ -74,7 +76,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       if (!product) return;
       setCart((prev) => ({ ...prev, lines: setLineQty(prev.lines, product, qty) }));
     },
-    [setCart],
+    [getProductById, setCart],
   );
 
   const removeItem = useCallback(
@@ -88,9 +90,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
     () =>
       lines.flatMap((line) => {
         const product = getProductById(line.id);
-        return product ? [{ ...product, qty: line.qty }] : [];
+        return product && isPurchasable(product) ? [{ ...product, qty: line.qty }] : [];
       }),
-    [lines],
+    [getProductById, lines],
   );
 
   const subtotal = useMemo(() => lineSubtotal(items), [items]);
@@ -121,11 +123,11 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const clear = useCallback(() => setCart(emptyCart), [setCart]);
 
   const getQty = useCallback(
-    (id: string) => lines.find((line) => line.id === id)?.qty ?? 0,
-    [lines],
+    (id: string) => items.find((item) => item.id === id)?.qty ?? 0,
+    [items],
   );
 
-  const count = useMemo(() => lines.reduce((sum, line) => sum + line.qty, 0), [lines]);
+  const count = useMemo(() => items.reduce((sum, item) => sum + item.qty, 0), [items]);
 
   const value = useMemo(
     () => ({
@@ -133,7 +135,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       lines,
       items,
       count,
-      lineCount: lines.length,
+      lineCount: items.length,
       subtotal,
       discount,
       total: Math.max(0, subtotal - discount),

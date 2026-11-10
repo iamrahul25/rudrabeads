@@ -1,4 +1,4 @@
-import { products } from '@/data/products';
+import { bundledCatalog } from '@/data/products';
 import {
   countSheetFilters,
   defaultFilters,
@@ -11,6 +11,8 @@ import {
   tokenize,
   type SearchFilters,
 } from '@/lib/search';
+
+const { products } = bundledCatalog;
 
 const run = (query: string, filters: Partial<SearchFilters> = {}) =>
   searchProducts(products, query, { ...defaultFilters, ...filters });

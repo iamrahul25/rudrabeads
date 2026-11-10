@@ -1,9 +1,9 @@
-import { getProductById, type Product } from '@/data/products';
+import { bundledCatalog, findProduct, type Product } from '@/data/products';
 import { addToLines, lineSubtotal, MAX_LINE_QTY, setLineQty, type CartLine } from '@/lib/cart';
 import { evaluateCoupon } from '@/lib/coupons';
 
 const product = (id: string) => {
-  const found = getProductById(id);
+  const found = findProduct(bundledCatalog, id);
   if (!found) throw new Error(`missing fixture ${id}`);
   return found as Product;
 };

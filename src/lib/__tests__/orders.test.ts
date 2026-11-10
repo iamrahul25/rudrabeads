@@ -1,4 +1,10 @@
-import { createOrderId, emptyAddress, isValidPhone, validateAddress, type Address } from '@/lib/orders';
+import {
+  emptyAddress,
+  isValidPhone,
+  normalizeStoredOrder,
+  validateAddress,
+  type Address,
+} from '@/lib/orders';
 
 const valid: Address = {
   ...emptyAddress,
@@ -36,11 +42,38 @@ describe('address validation', () => {
   });
 });
 
-describe('order ids', () => {
-  it('creates unique uppercase ids', () => {
-    const a = createOrderId(1);
-    expect(a).toMatch(/^RB[0-9A-Z]+$/);
-    const seen = new Set(Array.from({ length: 50 }, () => createOrderId()));
-    expect(seen.size).toBeGreaterThan(45);
+describe('stored orders', () => {
+  const legacy = {
+    id: 'RBLOCAL1',
+    createdAt: '2026-01-02T03:04:05.000Z',
+    lines: [{ productId: 'p', name: 'P', price: 50, priceUnit: null, qty: 2 }],
+    subtotal: 100,
+    discount: 0,
+    total: 100,
+    couponCode: null,
+    address: valid,
+    status: 'payment_pending',
+  };
+
+  it('upgrades orders saved before the store went online', () => {
+    expect(normalizeStoredOrder(legacy)).toMatchObject({
+      id: 'RBLOCAL1',
+      status: 'pending',
+      paymentStatus: 'pending',
+      updatedAt: legacy.createdAt,
+      events: [],
+      token: null,
+    });
+    expect(normalizeStoredOrder({ ...legacy, status: 'cancelled' })?.status).toBe('cancelled');
+  });
+
+  it('keeps server fields and the device token', () => {
+    const order = normalizeStoredOrder({ ...legacy, status: 'shipped', paymentStatus: 'paid', token: 'abc' });
+    expect(order).toMatchObject({ status: 'shipped', paymentStatus: 'paid', token: 'abc' });
+  });
+
+  it('drops malformed entries', () => {
+    expect(normalizeStoredOrder(null)).toBeNull();
+    expect(normalizeStoredOrder({ id: 'x' })).toBeNull();
   });
 });

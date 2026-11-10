@@ -1,29 +1,40 @@
 import { Ionicons } from '@expo/vector-icons';
-import { router, useLocalSearchParams } from 'expo-router';
-import { useState } from 'react';
+import { router, useFocusEffect, useLocalSearchParams } from 'expo-router';
+import { useCallback, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { BrandHeader } from '@/components/BrandHeader';
-import { OrderStatusPill } from '@/components/OrderStatusPill';
+import { OrderStatusPill, PaymentStatusPill } from '@/components/OrderStatusPill';
 import { PrimaryButton } from '@/components/PrimaryButton';
 import { ProductImage } from '@/components/ProductImage';
 import { UnderlinedHeading } from '@/components/UnderlinedHeading';
 import { useAccount } from '@/context/AccountContext';
 import { useCart } from '@/context/CartContext';
-import { formatINR, getProductById } from '@/data/products';
+import { useCatalog } from '@/context/CatalogContext';
+import { formatINR } from '@/data/products';
 import { useGoBack } from '@/hooks/useGoBack';
-import { formatAddress, formatOrderDate } from '@/lib/orders';
+import { errorMessage } from '@/lib/api';
+import { CUSTOMER_CANCELLABLE, formatAddress, formatOrderDate, formatOrderDateTime } from '@/lib/orders';
 import { colors } from '@/theme/colors';
 import { radii, spacing } from '@/theme/spacing';
 
 export default function OrderDetailScreen() {
   const params = useLocalSearchParams<{ id: string; placed?: string }>();
   const goBack = useGoBack('/orders');
-  const { getOrder, cancelOrder } = useAccount();
+  const { getOrder, cancelOrder, refreshOrders } = useAccount();
+  const { getProductById } = useCatalog();
   const { addItem } = useCart();
   const [confirmCancel, setConfirmCancel] = useState(false);
+  const [cancelling, setCancelling] = useState(false);
+  const [cancelError, setCancelError] = useState<string | null>(null);
   const order = getOrder(String(params.id));
+
+  useFocusEffect(
+    useCallback(() => {
+      refreshOrders();
+    }, [refreshOrders]),
+  );
 
   if (!order) {
     return (
@@ -38,11 +49,32 @@ export default function OrderDetailScreen() {
   }
 
   const justPlaced = params.placed === '1';
-  const pending = order.status === 'payment_pending';
+  const cancellable = CUSTOMER_CANCELLABLE.includes(order.status);
+  const shipping = [order.courier, order.trackingNumber && `Tracking no. ${order.trackingNumber}`]
+    .filter(Boolean)
+    .join(' · ');
+  const timeline = [...order.events].reverse();
 
   const reorder = () => {
     order.lines.forEach((line) => addItem(line.productId, line.qty));
     router.push('/cart');
+  };
+
+  const onCancel = async () => {
+    if (!confirmCancel) {
+      setConfirmCancel(true);
+      return;
+    }
+    setCancelling(true);
+    setCancelError(null);
+    try {
+      await cancelOrder(order.id);
+    } catch (err) {
+      setCancelError(errorMessage(err));
+    } finally {
+      setCancelling(false);
+      setConfirmCancel(false);
+    }
   };
 
   return (
@@ -62,8 +94,18 @@ export default function OrderDetailScreen() {
 
         <View style={styles.statusRow}>
           <Text style={styles.date}>Placed on {formatOrderDate(order.createdAt)}</Text>
-          <OrderStatusPill status={order.status} />
+          <View style={styles.pills}>
+            <OrderStatusPill status={order.status} />
+            <PaymentStatusPill status={order.paymentStatus} />
+          </View>
         </View>
+
+        {shipping ? (
+          <View style={[styles.card, styles.shipping]}>
+            <Ionicons name="cube-outline" size={20} color={colors.primary} />
+            <Text style={styles.shippingText}>{shipping}</Text>
+          </View>
+        ) : null}
 
         <UnderlinedHeading style={styles.headingWrap} textStyle={styles.heading} lineWidth={28}>
           Items
@@ -131,21 +173,39 @@ export default function OrderDetailScreen() {
           {order.address.email ? <Text style={styles.addrText}>{order.address.email}</Text> : null}
         </View>
 
+        {timeline.length ? (
+          <>
+            <UnderlinedHeading style={styles.headingWrap} textStyle={styles.heading} lineWidth={28}>
+              Order Updates
+            </UnderlinedHeading>
+            <View style={styles.card}>
+              {timeline.map((event, index) => (
+                <View key={`${event.at}-${index}`} style={styles.event}>
+                  <View style={[styles.eventDot, index === 0 && styles.eventDotLatest]} />
+                  <View style={styles.lineMeta}>
+                    <Text style={styles.eventNote}>{event.note}</Text>
+                    <Text style={styles.lineQty}>{formatOrderDateTime(event.at)}</Text>
+                  </View>
+                </View>
+              ))}
+            </View>
+          </>
+        ) : null}
+
         <View style={styles.actions}>
           <PrimaryButton label="Order Again" onPress={reorder} />
-          {pending ? (
+          {cancellable ? (
             <PrimaryButton
-              label={confirmCancel ? 'Tap again to confirm cancel' : 'Cancel Order'}
+              label={cancelling ? 'Cancelling…' : confirmCancel ? 'Tap again to confirm cancel' : 'Cancel Order'}
               variant="outline"
-              onPress={() => {
-                if (confirmCancel) {
-                  cancelOrder(order.id);
-                  setConfirmCancel(false);
-                } else {
-                  setConfirmCancel(true);
-                }
-              }}
+              disabled={cancelling}
+              onPress={onCancel}
             />
+          ) : null}
+          {cancelError ? (
+            <Text style={styles.error} accessibilityLiveRegion="polite">
+              {cancelError}
+            </Text>
           ) : null}
           {justPlaced ? (
             <PrimaryButton label="Continue Shopping" variant="outline" onPress={() => router.dismissTo('/')} />
@@ -190,6 +250,50 @@ const styles = StyleSheet.create({
     fontFamily: 'DMSans_500Medium',
     fontSize: 13,
     color: colors.textSecondary,
+  },
+  pills: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'flex-end',
+    gap: spacing.xs,
+    flexShrink: 1,
+  },
+  shipping: {
+    marginTop: spacing.md,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  shippingText: {
+    flex: 1,
+    fontFamily: 'DMSans_600SemiBold',
+    fontSize: 13,
+    color: colors.text,
+  },
+  event: {
+    flexDirection: 'row',
+    gap: spacing.md,
+    alignItems: 'flex-start',
+  },
+  eventDot: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    marginTop: 4,
+    backgroundColor: colors.border,
+  },
+  eventDotLatest: {
+    backgroundColor: colors.primary,
+  },
+  eventNote: {
+    fontFamily: 'DMSans_500Medium',
+    fontSize: 13,
+    color: colors.text,
+  },
+  error: {
+    fontFamily: 'DMSans_500Medium',
+    fontSize: 12,
+    color: colors.danger,
+    textAlign: 'center',
   },
   headingWrap: {
     marginTop: spacing.lg,

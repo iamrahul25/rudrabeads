@@ -1,0 +1,37 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "rudrabeads-api",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-11-01",
+  "observability": { "enabled": true },
+
+  // Product, category and order data. Create with: npx wrangler d1 create rudrabeads
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "rudrabeads",
+      "database_id": "aeb79941-500e-4123-bc30-3703971ef658",
+      "migrations_dir": "migrations"
+    }
+  ],
+
+  // Product and category images. Create with: npx wrangler kv namespace create rudrabeads-images
+  "kv_namespaces": [
+    {
+      "binding": "IMAGES",
+      "id": "cc0ff43662964e2d94c4de9b55a6b06d"
+    }
+  ],
+
+  "vars": {
+    // Only these Google accounts can use the admin panel. Comma separated.
+    "ADMIN_EMAILS": "connectrahul25@gmail.com",
+    // OAuth 2.0 Web client ID from Google Cloud Console. Must match EXPO_PUBLIC_GOOGLE_CLIENT_ID in the app.
+    "GOOGLE_CLIENT_ID": "REPLACE_WITH_GOOGLE_WEB_CLIENT_ID.apps.googleusercontent.com",
+    // "*" or a comma-separated list of web origins allowed to call the API from a browser.
+    "ALLOWED_ORIGINS": "*"
+  },
+
+  // Deletes uploaded images that were never attached to a product or category.
+  "triggers": { "crons": ["30 21 * * *"] }
+}

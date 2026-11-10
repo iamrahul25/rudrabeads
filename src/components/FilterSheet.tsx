@@ -4,7 +4,8 @@ import { ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { BottomSheet } from '@/components/BottomSheet';
 import { Chip } from '@/components/Chip';
 import { PrimaryButton } from '@/components/PrimaryButton';
-import { categories, formatINR, products } from '@/data/products';
+import { useCatalog } from '@/context/CatalogContext';
+import { formatINR } from '@/data/products';
 import {
   defaultFilters,
   facetValues,
@@ -18,12 +19,6 @@ import {
 import { colors } from '@/theme/colors';
 import { radii, spacing } from '@/theme/spacing';
 
-const origins = facetValues(products, 'origin');
-const certifications = facetValues(products, 'certification');
-const pricedValues = products.map((p) => p.price).filter((p): p is number => p != null);
-const catalogMin = Math.min(...pricedValues);
-const catalogMax = Math.max(...pricedValues);
-
 type Props = {
   query: string;
   filters: SearchFilters;
@@ -34,6 +29,17 @@ type Props = {
 const toText = (value: number | null) => (value == null ? '' : String(value));
 
 export function FilterSheet({ query, filters, onApply, onClose }: Props) {
+  const { products, categories } = useCatalog();
+  const facets = useMemo(() => {
+    const priced = products.map((p) => p.price).filter((p): p is number => p != null);
+    return {
+      origins: facetValues(products, 'origin'),
+      certifications: facetValues(products, 'certification'),
+      min: priced.length ? Math.min(...priced) : null,
+      max: priced.length ? Math.max(...priced) : null,
+    };
+  }, [products]);
+  const { origins, certifications } = facets;
   const [draft, setDraft] = useState(filters);
   const [minText, setMinText] = useState(toText(filters.minPrice));
   const [maxText, setMaxText] = useState(toText(filters.maxPrice));
@@ -44,7 +50,7 @@ export function FilterSheet({ query, filters, onApply, onClose }: Props) {
   );
   const resultCount = useMemo(
     () => searchProducts(products, query, effective).length,
-    [query, effective],
+    [products, query, effective],
   );
 
   const setPrice = (min: number | null, max: number | null) => {
@@ -117,10 +123,12 @@ export function FilterSheet({ query, filters, onApply, onClose }: Props) {
             />
           </View>
         </View>
-        <Text style={styles.hint}>
-          Catalogue prices range from {formatINR(catalogMin)} to {formatINR(catalogMax)}. Items with
-          price on request are hidden when a price is set.
-        </Text>
+        {facets.min != null && facets.max != null ? (
+          <Text style={styles.hint}>
+            Catalogue prices range from {formatINR(facets.min)} to {formatINR(facets.max)}. Items with
+            price on request are hidden when a price is set.
+          </Text>
+        ) : null}
 
         <Text style={styles.section}>Category</Text>
         <View style={styles.wrap}>

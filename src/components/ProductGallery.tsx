@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 
 import { ProductImage } from '@/components/ProductImage';
+import type { ImageRef } from '@/data/products';
 import { colors } from '@/theme/colors';
 import { radii, spacing } from '@/theme/spacing';
 
@@ -20,7 +21,7 @@ const THUMB_SIZE = 60;
 const THUMB_GAP = spacing.sm;
 
 type Props = {
-  images: number[];
+  images: ImageRef[];
   /** Outer wrapper (margins / width). */
   style?: StyleProp<ViewStyle>;
   /** Main image frame (height / aspect ratio / radius / background). */
@@ -31,7 +32,7 @@ export function ProductGallery({ images, style, frameStyle }: Props) {
   const [frame, setFrame] = useState({ width: 0, height: 0 });
   const frameWidth = frame.width;
   const [index, setIndex] = useState(0);
-  const listRef = useRef<FlatList<number>>(null);
+  const listRef = useRef<FlatList<ImageRef>>(null);
   const thumbsRef = useRef<ComponentRef<typeof ScrollView> | null>(null);
   const indexRef = useRef(0);
   const [thumbsWidth, setThumbsWidth] = useState(0);

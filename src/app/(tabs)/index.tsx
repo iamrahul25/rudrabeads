@@ -1,7 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import { Image } from 'expo-image';
 import { router } from 'expo-router';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import {
   FlatList,
   NativeScrollEvent,
@@ -21,8 +21,8 @@ import { MukhiMarquee } from '@/components/MukhiMarquee';
 import { PrimaryButton } from '@/components/PrimaryButton';
 import { ProductGrid } from '@/components/ProductGrid';
 import { SectionHeader } from '@/components/SectionHeader';
+import { useCatalog } from '@/context/CatalogContext';
 import { business } from '@/data/business';
-import { categories, getFeaturedProducts, products } from '@/data/products';
 import { useResponsive } from '@/hooks/useResponsive';
 import { colors } from '@/theme/colors';
 import { radii, spacing } from '@/theme/spacing';
@@ -85,10 +85,12 @@ const heroSlides: HeroSlide[] = [
   },
 ];
 
-const featured = getFeaturedProducts();
-const popularPool = [...featured, ...products.filter((item) => !item.featured)];
-
 export default function HomeScreen() {
+  const { products, categories } = useCatalog();
+  const popularPool = useMemo(
+    () => [...products.filter((item) => item.featured), ...products.filter((item) => !item.featured)],
+    [products],
+  );
   const { width: windowWidth } = useWindowDimensions();
   const { productColumns, isTablet } = useResponsive();
   const [heroIndex, setHeroIndex] = useState(0);

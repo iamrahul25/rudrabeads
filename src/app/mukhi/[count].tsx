@@ -7,7 +7,7 @@ import { PrimaryButton } from '@/components/PrimaryButton';
 import { ProductGrid } from '@/components/ProductGrid';
 import { UnderlinedHeading } from '@/components/UnderlinedHeading';
 import { useGoBack } from '@/hooks/useGoBack';
-import { getProductsByMukhi } from '@/data/products';
+import { useCatalog } from '@/context/CatalogContext';
 import { colors } from '@/theme/colors';
 import { spacing } from '@/theme/spacing';
 
@@ -22,6 +22,7 @@ function parseMukhiCount(value: string | string[] | undefined): number | null {
 export default function MukhiScreen() {
   const params = useLocalSearchParams<{ count: string }>();
   const goBack = useGoBack('/(tabs)');
+  const { getProductsByMukhi } = useCatalog();
   const mukhi = parseMukhiCount(params.count);
   const items = mukhi != null ? getProductsByMukhi(mukhi) : [];
 

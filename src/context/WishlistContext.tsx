@@ -1,11 +1,13 @@
 import { createContext, useCallback, useContext, useMemo, type ReactNode } from 'react';
 
-import { getProductById, type Product } from '@/data/products';
+import { useCatalog } from '@/context/CatalogContext';
+import type { Product } from '@/data/products';
 import { usePersistentState } from '@/hooks/usePersistentState';
 
+/** Ids are kept even if the product isn't in the current catalogue; `items` only lists known ones. */
 function sanitizeIds(stored: unknown): string[] {
   if (!Array.isArray(stored)) return [];
-  return [...new Set(stored.filter((id): id is string => typeof id === 'string' && !!getProductById(id)))];
+  return [...new Set(stored.filter((id): id is string => typeof id === 'string'))];
 }
 
 type WishlistContextValue = {
@@ -22,6 +24,7 @@ type WishlistContextValue = {
 const WishlistContext = createContext<WishlistContextValue | null>(null);
 
 export function WishlistProvider({ children }: { children: ReactNode }) {
+  const { getProductById } = useCatalog();
   const [ids, setIds, hydrated] = usePersistentState<string[]>('wishlist', [], sanitizeIds);
 
   const toggle = useCallback(
@@ -42,7 +45,7 @@ export function WishlistProvider({ children }: { children: ReactNode }) {
 
   const items = useMemo(
     () => ids.map((id) => getProductById(id)).filter((item): item is Product => item != null),
-    [ids],
+    [getProductById, ids],
   );
 
   const value = useMemo(

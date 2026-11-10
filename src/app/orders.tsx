@@ -1,6 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
-import { router } from 'expo-router';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { router, useFocusEffect } from 'expo-router';
+import { useCallback, useState } from 'react';
+import { Pressable, RefreshControl, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { BrandHeader } from '@/components/BrandHeader';
@@ -15,12 +16,29 @@ import { radii, spacing } from '@/theme/spacing';
 
 export default function OrdersScreen() {
   const goBack = useGoBack('/(tabs)/account');
-  const { orders } = useAccount();
+  const { orders, refreshOrders } = useAccount();
+  const [refreshing, setRefreshing] = useState(false);
+
+  useFocusEffect(
+    useCallback(() => {
+      refreshOrders();
+    }, [refreshOrders]),
+  );
+
+  const onRefresh = async () => {
+    setRefreshing(true);
+    await refreshOrders();
+    setRefreshing(false);
+  };
 
   return (
     <SafeAreaView style={styles.safe} edges={['top', 'bottom']}>
       <BrandHeader title="My Orders" onBack={goBack} showCart />
-      <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
+      <ScrollView
+        contentContainerStyle={styles.content}
+        showsVerticalScrollIndicator={false}
+        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={colors.primary} />}
+      >
         {orders.length === 0 ? (
           <View style={styles.empty}>
             <Ionicons name="receipt-outline" size={42} color={colors.primary} />

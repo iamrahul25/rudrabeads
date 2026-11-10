@@ -7,13 +7,14 @@ import { BrandHeader } from '@/components/BrandHeader';
 import { PrimaryButton } from '@/components/PrimaryButton';
 import { ProductGrid } from '@/components/ProductGrid';
 import { UnderlinedHeading } from '@/components/UnderlinedHeading';
-import { getCategoryById, getProductsByCategory } from '@/data/products';
+import { useCatalog } from '@/context/CatalogContext';
 import { colors } from '@/theme/colors';
 import { spacing } from '@/theme/spacing';
 
 export default function CategoryScreen() {
   const params = useLocalSearchParams<{ id: string }>();
   const goBack = useGoBack('/(tabs)/categories');
+  const { getCategoryById, getProductsByCategory } = useCatalog();
   const id = Array.isArray(params.id) ? params.id[0] : params.id;
   const category = id ? getCategoryById(id) : undefined;
   const items = category ? getProductsByCategory(category.id) : [];

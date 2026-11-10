@@ -10,16 +10,19 @@ import { PrimaryButton } from '@/components/PrimaryButton';
 import { UnderlinedHeading } from '@/components/UnderlinedHeading';
 import { useAccount } from '@/context/AccountContext';
 import { useCart } from '@/context/CartContext';
+import { useCatalog } from '@/context/CatalogContext';
 import { formatINR } from '@/data/products';
 import { useGoBack } from '@/hooks/useGoBack';
-import { emptyAddress, normalizePhone, validateAddress, type AddressErrors } from '@/lib/orders';
+import { ApiError, errorMessage } from '@/lib/api';
+import { cleanAddress, emptyAddress, validateAddress, type AddressErrors } from '@/lib/orders';
 import { colors } from '@/theme/colors';
 import { radii, spacing } from '@/theme/spacing';
 
 export default function CheckoutScreen() {
   const goBack = useGoBack('/cart');
-  const { items, subtotal, discount, total, couponCode, coupon, clear } = useCart();
+  const { items, subtotal, discount, total, couponCode, clear } = useCart();
   const { address: savedAddress, profile, placeOrder } = useAccount();
+  const catalog = useCatalog();
   const [address, setAddress] = useState(
     () =>
       savedAddress ?? {
@@ -31,6 +34,8 @@ export default function CheckoutScreen() {
   );
   const [errors, setErrors] = useState<AddressErrors>({});
   const [submitted, setSubmitted] = useState(false);
+  const [placing, setPlacing] = useState(false);
+  const [placeError, setPlaceError] = useState<string | null>(null);
   const [placed, setPlaced] = useState(false);
 
   if (placed) {
@@ -49,35 +54,32 @@ export default function CheckoutScreen() {
     );
   }
 
-  const submit = () => {
+  const submit = async () => {
+    if (placing) return;
     const nextErrors = validateAddress(address);
     setErrors(nextErrors);
     setSubmitted(true);
+    setPlaceError(null);
     if (Object.keys(nextErrors).length) return;
 
-    const cleanAddress = {
-      ...address,
-      phone: normalizePhone(address.phone),
-      pincode: address.pincode.trim(),
-    };
-    const order = placeOrder({
-      lines: items.map((item) => ({
-        productId: item.id,
-        name: item.name,
-        price: item.price ?? 0,
-        priceUnit: item.priceUnit,
-        qty: item.qty,
-      })),
-      subtotal,
-      discount,
-      total,
-      couponCode: coupon?.ok ? couponCode : null,
-      address: cleanAddress,
-    });
-    setPlaced(true);
-    clear();
-    router.dismissTo('/');
-    router.push({ pathname: '/order/[id]', params: { id: order.id, placed: '1' } });
+    setPlacing(true);
+    try {
+      const order = await placeOrder({
+        lines: items.map((item) => ({ productId: item.id, qty: item.qty })),
+        address: cleanAddress(address),
+        expectedTotal: total,
+      });
+      setPlaced(true);
+      clear();
+      router.dismissTo('/');
+      router.push({ pathname: '/order/[id]', params: { id: order.id, placed: '1' } });
+    } catch (err) {
+      setPlaceError(errorMessage(err));
+      // Prices or availability changed on the server; show the cart with the latest catalogue.
+      if (err instanceof ApiError && err.status === 409) catalog.refresh();
+    } finally {
+      setPlacing(false);
+    }
   };
 
   const errorCount = Object.keys(errors).length;
@@ -156,7 +158,16 @@ export default function CheckoutScreen() {
         {submitted && errorCount > 0 ? (
           <Text style={styles.footerError}>Please fix the highlighted fields above.</Text>
         ) : null}
-        <PrimaryButton label={`Place Order · ${formatINR(total)}`} onPress={submit} />
+        {placeError ? (
+          <Text style={styles.footerError} accessibilityLiveRegion="polite">
+            {placeError}
+          </Text>
+        ) : null}
+        <PrimaryButton
+          label={placing ? 'Placing order…' : `Place Order · ${formatINR(total)}`}
+          onPress={submit}
+          disabled={placing}
+        />
       </View>
     </SafeAreaView>
   );

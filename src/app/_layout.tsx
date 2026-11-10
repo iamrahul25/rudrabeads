@@ -17,6 +17,7 @@ import { View } from 'react-native';
 
 import { AccountProvider, useAccount } from '@/context/AccountContext';
 import { CartProvider, useCart } from '@/context/CartContext';
+import { CatalogProvider, useCatalog } from '@/context/CatalogContext';
 import { useWishlist, WishlistProvider } from '@/context/WishlistContext';
 import { colors } from '@/theme/colors';
 
@@ -38,43 +39,47 @@ export default function RootLayout() {
   const fontsReady = playfairLoaded && dmLoaded;
 
   return (
-    <AccountProvider>
-      <WishlistProvider>
-        <CartProvider>
-          <HydrationGate fontsReady={fontsReady}>
-            <StatusBar style="dark" />
-            <Stack
-              screenOptions={{
-                headerShown: false,
-                contentStyle: { backgroundColor: colors.background },
-                animation: 'slide_from_right',
-              }}
-            >
-              <Stack.Screen name="(tabs)" />
-              <Stack.Screen name="product/[id]" />
-              <Stack.Screen name="category/[id]" />
-              <Stack.Screen name="mukhi/[count]" />
-              <Stack.Screen name="cart" options={{ presentation: 'card' }} />
-              <Stack.Screen name="checkout" />
-              <Stack.Screen name="orders" />
-              <Stack.Screen name="order/[id]" />
-              <Stack.Screen name="profile" />
-              <Stack.Screen name="address" />
-              <Stack.Screen name="info/[page]" />
-              <Stack.Screen name="notifications" />
-            </Stack>
-          </HydrationGate>
-        </CartProvider>
-      </WishlistProvider>
-    </AccountProvider>
+    <CatalogProvider>
+      <AccountProvider>
+        <WishlistProvider>
+          <CartProvider>
+            <HydrationGate fontsReady={fontsReady}>
+              <StatusBar style="dark" />
+              <Stack
+                screenOptions={{
+                  headerShown: false,
+                  contentStyle: { backgroundColor: colors.background },
+                  animation: 'slide_from_right',
+                }}
+              >
+                <Stack.Screen name="(tabs)" />
+                <Stack.Screen name="product/[id]" />
+                <Stack.Screen name="category/[id]" />
+                <Stack.Screen name="mukhi/[count]" />
+                <Stack.Screen name="cart" options={{ presentation: 'card' }} />
+                <Stack.Screen name="checkout" />
+                <Stack.Screen name="orders" />
+                <Stack.Screen name="order/[id]" />
+                <Stack.Screen name="profile" />
+                <Stack.Screen name="address" />
+                <Stack.Screen name="info/[page]" />
+                <Stack.Screen name="notifications" />
+                <Stack.Screen name="admin" options={{ animation: 'none' }} />
+              </Stack>
+            </HydrationGate>
+          </CartProvider>
+        </WishlistProvider>
+      </AccountProvider>
+    </CatalogProvider>
   );
 }
 
 function HydrationGate({ fontsReady, children }: { fontsReady: boolean; children: ReactNode }) {
+  const catalog = useCatalog();
   const cart = useCart();
   const wishlist = useWishlist();
   const account = useAccount();
-  const ready = fontsReady && cart.hydrated && wishlist.hydrated && account.hydrated;
+  const ready = fontsReady && catalog.hydrated && cart.hydrated && wishlist.hydrated && account.hydrated;
 
   useEffect(() => {
     if (ready) {

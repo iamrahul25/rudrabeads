@@ -1,56 +1,24 @@
-export type Address = {
-  fullName: string;
-  phone: string;
-  email: string;
-  line1: string;
-  line2: string;
-  city: string;
-  state: string;
-  pincode: string;
-};
+import type { ApiOrder } from '@/shared/api';
+import {
+  isOrderStatus,
+  isPaymentStatus,
+  type Address,
+  type OrderStatus,
+  type PaymentStatus,
+} from '@/shared/orders';
 
-export const emptyAddress: Address = {
-  fullName: '',
-  phone: '',
-  email: '',
-  line1: '',
-  line2: '',
-  city: '',
-  state: '',
-  pincode: '',
-};
-
-export type AddressErrors = Partial<Record<keyof Address, string>>;
-
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-/** Accepts 10-digit Indian mobiles with optional +91 / 0 prefix and separators. */
-export function normalizePhone(value: string) {
-  const digits = value.replace(/\D/g, '');
-  if (digits.length === 12 && digits.startsWith('91')) return digits.slice(2);
-  if (digits.length === 11 && digits.startsWith('0')) return digits.slice(1);
-  return digits;
-}
-
-export function isValidPhone(value: string) {
-  return /^[6-9]\d{9}$/.test(normalizePhone(value));
-}
-
-export function isValidEmail(value: string) {
-  return EMAIL_RE.test(value.trim());
-}
-
-export function validateAddress(address: Address): AddressErrors {
-  const errors: AddressErrors = {};
-  if (address.fullName.trim().length < 2) errors.fullName = 'Enter the full name.';
-  if (!isValidPhone(address.phone)) errors.phone = 'Enter a valid 10-digit mobile number.';
-  if (address.email.trim() && !isValidEmail(address.email)) errors.email = 'Enter a valid email.';
-  if (address.line1.trim().length < 5) errors.line1 = 'Enter house no. and street.';
-  if (address.city.trim().length < 2) errors.city = 'Enter the city.';
-  if (address.state.trim().length < 2) errors.state = 'Enter the state.';
-  if (!/^[1-9]\d{5}$/.test(address.pincode.trim())) errors.pincode = 'Enter a valid 6-digit pincode.';
-  return errors;
-}
+export {
+  CUSTOMER_CANCELLABLE,
+  cleanAddress,
+  emptyAddress,
+  isValidEmail,
+  isValidPhone,
+  normalizePhone,
+  orderStatusLabel,
+  paymentStatusLabel,
+  validateAddress,
+} from '@/shared/orders';
+export type { Address, AddressErrors, OrderStatus, PaymentStatus } from '@/shared/orders';
 
 export function formatAddress(address: Address) {
   return [
@@ -71,16 +39,18 @@ export type OrderLine = {
   qty: number;
 };
 
-export type OrderStatus = 'payment_pending' | 'cancelled';
-
-export const orderStatusLabel: Record<OrderStatus, string> = {
-  payment_pending: 'Payment pending',
-  cancelled: 'Cancelled',
+export type OrderEvent = {
+  at: string;
+  status: OrderStatus | null;
+  paymentStatus: PaymentStatus | null;
+  note: string;
+  actor: string;
 };
 
 export type Order = {
   id: string;
   createdAt: string;
+  updatedAt: string;
   lines: OrderLine[];
   subtotal: number;
   discount: number;
@@ -88,17 +58,76 @@ export type Order = {
   couponCode: string | null;
   address: Address;
   status: OrderStatus;
+  paymentStatus: PaymentStatus;
+  courier: string;
+  trackingNumber: string;
+  events: OrderEvent[];
+  /** Lets this device view and cancel the order on the server. Null for orders saved before the store went online. */
+  token: string | null;
 };
 
-export function createOrderId(now = Date.now()) {
-  const random = Math.floor(Math.random() * 46656)
-    .toString(36)
-    .padStart(3, '0');
-  return `RB${now.toString(36)}${random}`.toUpperCase();
+export function orderFromApi(api: ApiOrder, token: string | null): Order {
+  return {
+    id: api.id,
+    createdAt: api.createdAt,
+    updatedAt: api.updatedAt,
+    lines: api.lines.map(({ productId, name, price, priceUnit, qty }) => ({ productId, name, price, priceUnit, qty })),
+    subtotal: api.subtotal,
+    discount: api.discount,
+    total: api.total,
+    couponCode: api.couponCode,
+    address: api.address,
+    status: api.status,
+    paymentStatus: api.paymentStatus,
+    courier: api.courier,
+    trackingNumber: api.trackingNumber,
+    events: api.events.map(({ at, status, paymentStatus, note, actor }) => ({ at, status, paymentStatus, note, actor })),
+    token,
+  };
+}
+
+/** Accepts orders saved by any app version, including the old local-only `payment_pending` ones. */
+export function normalizeStoredOrder(raw: unknown): Order | null {
+  if (!raw || typeof raw !== 'object') return null;
+  const order = raw as Record<string, unknown>;
+  if (typeof order.id !== 'string' || !Array.isArray(order.lines) || typeof order.total !== 'number' || !order.address) {
+    return null;
+  }
+  const createdAt = typeof order.createdAt === 'string' ? order.createdAt : new Date(0).toISOString();
+  const status: OrderStatus = isOrderStatus(order.status) ? order.status : order.status === 'cancelled' ? 'cancelled' : 'pending';
+  return {
+    id: order.id,
+    createdAt,
+    updatedAt: typeof order.updatedAt === 'string' ? order.updatedAt : createdAt,
+    lines: order.lines as OrderLine[],
+    subtotal: typeof order.subtotal === 'number' ? order.subtotal : order.total,
+    discount: typeof order.discount === 'number' ? order.discount : 0,
+    total: order.total,
+    couponCode: typeof order.couponCode === 'string' ? order.couponCode : null,
+    address: order.address as Address,
+    status,
+    paymentStatus: isPaymentStatus(order.paymentStatus) ? order.paymentStatus : 'pending',
+    courier: typeof order.courier === 'string' ? order.courier : '',
+    trackingNumber: typeof order.trackingNumber === 'string' ? order.trackingNumber : '',
+    events: Array.isArray(order.events) ? (order.events as OrderEvent[]) : [],
+    token: typeof order.token === 'string' ? order.token : null,
+  };
 }
 
 export function formatOrderDate(iso: string) {
   const date = new Date(iso);
   if (Number.isNaN(date.getTime())) return '';
   return date.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+}
+
+export function formatOrderDateTime(iso: string) {
+  const date = new Date(iso);
+  if (Number.isNaN(date.getTime())) return '';
+  return date.toLocaleString('en-IN', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit',
+  });
 }

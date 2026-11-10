@@ -1,12 +1,9 @@
 import type { Product } from '@/data/products';
+import { MAX_LINE_QTY, minOrderQty } from '@/shared/orders';
 
-export const MAX_LINE_QTY = 9999;
+export { MAX_LINE_QTY, minOrderQty };
 
 type QtyRules = Pick<Product, 'minOrderQty'>;
-
-export function minOrderQty(product: QtyRules) {
-  return Math.max(1, product.minOrderQty ?? 1);
-}
 
 export function clampQty(product: QtyRules, qty: number) {
   return Math.min(MAX_LINE_QTY, Math.max(minOrderQty(product), Math.floor(qty)));

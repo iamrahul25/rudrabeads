@@ -3,7 +3,8 @@ import { router } from 'expo-router';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { ProductImage } from '@/components/ProductImage';
-import { formatINR, getProductsByCategory, type Category } from '@/data/products';
+import { useCatalog } from '@/context/CatalogContext';
+import { formatINR, type Category } from '@/data/products';
 import { colors } from '@/theme/colors';
 import { radii, spacing } from '@/theme/spacing';
 
@@ -15,6 +16,7 @@ type Props = {
 };
 
 export function CategoryCard({ category }: Props) {
+  const { getProductsByCategory } = useCatalog();
   const items = getProductsByCategory(category.id);
   const count = items.length || category.count;
   const prices = items.map((item) => item.price).filter((price): price is number => price != null);

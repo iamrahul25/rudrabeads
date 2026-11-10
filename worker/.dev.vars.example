@@ -1,0 +1,7 @@
+# Copy to .dev.vars for `npm run dev`. In production set it with: npx wrangler secret put SESSION_SECRET
+# Any long random string, e.g. the output of: node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+SESSION_SECRET=
+
+# Optional local overrides of the vars in wrangler.jsonc
+# ADMIN_EMAILS=you@gmail.com
+# GOOGLE_CLIENT_ID=1234-abc.apps.googleusercontent.com

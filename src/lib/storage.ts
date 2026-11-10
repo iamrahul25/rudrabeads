@@ -18,3 +18,11 @@ export async function saveJSON(key: string, value: unknown) {
     // Storage can be unavailable (private browsing, quota); state still works in memory.
   }
 }
+
+export async function removeJSON(key: string) {
+  try {
+    await AsyncStorage.removeItem(PREFIX + key);
+  } catch {
+    // See saveJSON.
+  }
+}
