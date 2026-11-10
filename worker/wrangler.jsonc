@@ -27,7 +27,7 @@
     // Only these Google accounts can use the admin panel. Comma separated.
     "ADMIN_EMAILS": "connectrahul25@gmail.com",
     // OAuth 2.0 Web client ID from Google Cloud Console. Must match EXPO_PUBLIC_GOOGLE_CLIENT_ID in the app.
-    "GOOGLE_CLIENT_ID": "REPLACE_WITH_GOOGLE_WEB_CLIENT_ID.apps.googleusercontent.com",
+    "GOOGLE_CLIENT_ID": "948431258988-a41jq7a21hvifn32gm1d9vakv907vh2s.apps.googleusercontent.com",
     // "*" or a comma-separated list of web origins allowed to call the API from a browser.
     "ALLOWED_ORIGINS": "*"
   },

@@ -63,6 +63,7 @@ export default function AccountScreen() {
   ];
 
   const support: MenuItem[] = [
+    { icon: 'book-outline', label: 'Rudraksha Guide', href: '/info/guide' },
     { icon: 'help-circle-outline', label: 'Help & Support', href: '/info/help' },
     { icon: 'chatbubbles-outline', label: 'Contact Us', href: '/info/contact' },
     { icon: 'star-outline', label: 'Testimonials', href: '/info/testimonials' },

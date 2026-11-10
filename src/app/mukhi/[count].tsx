@@ -1,5 +1,6 @@
+import { Ionicons } from '@expo/vector-icons';
 import { router, useLocalSearchParams } from 'expo-router';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { BrandHeader } from '@/components/BrandHeader';
@@ -53,6 +54,16 @@ export default function MukhiScreen() {
           <Text style={styles.intro}>
             All {mukhi} Mukhi rudraksha beads available in the catalogue.
           </Text>
+          <Pressable
+            style={styles.guideLink}
+            onPress={() => router.push('/info/guide')}
+            accessibilityRole="link"
+            hitSlop={8}
+          >
+            <Ionicons name="book-outline" size={16} color={colors.primary} />
+            <Text style={styles.guideLinkText}>Not sure which mukhi suits you? Read the guide</Text>
+            <Ionicons name="chevron-forward" size={14} color={colors.primary} />
+          </Pressable>
         </View>
 
         <ProductGrid products={items} style={styles.grid} />
@@ -89,6 +100,19 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 20,
     color: colors.textSecondary,
+  },
+  guideLink: {
+    marginTop: spacing.sm,
+    minHeight: 32,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+  },
+  guideLinkText: {
+    flexShrink: 1,
+    fontFamily: 'DMSans_600SemiBold',
+    fontSize: 13,
+    color: colors.primary,
   },
   grid: {
     paddingHorizontal: spacing.lg,

@@ -6,6 +6,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { BrandHeader } from '@/components/BrandHeader';
 import { AboutUs } from '@/components/info/AboutUs';
 import { ContactUs } from '@/components/info/ContactUs';
+import { RudrakshaGuide } from '@/components/info/RudrakshaGuide';
 import { infoStyles } from '@/components/info/styles';
 import { Testimonials } from '@/components/info/Testimonials';
 import { business } from '@/data/business';
@@ -21,6 +22,7 @@ const titles = {
   about: 'About Us',
   contact: 'Contact Us',
   testimonials: 'Testimonials',
+  guide: 'Rudraksha Guide',
 } as const;
 
 type Page = keyof typeof titles;
@@ -110,6 +112,7 @@ export default function InfoScreen() {
         {page === 'about' ? <AboutUs /> : null}
         {page === 'contact' ? <ContactUs /> : null}
         {page === 'testimonials' ? <Testimonials /> : null}
+        {page === 'guide' ? <RudrakshaGuide /> : null}
         {page == null ? <Text style={styles.paragraph}>This page is not available.</Text> : null}
       </ScrollView>
     </SafeAreaView>

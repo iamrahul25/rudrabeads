@@ -23,6 +23,7 @@ import { ProductGrid } from '@/components/ProductGrid';
 import { SectionHeader } from '@/components/SectionHeader';
 import { useCatalog } from '@/context/CatalogContext';
 import { business } from '@/data/business';
+import { rudrakshaGuides } from '@/data/guides';
 import { useResponsive } from '@/hooks/useResponsive';
 import { colors } from '@/theme/colors';
 import { radii, spacing } from '@/theme/spacing';
@@ -208,6 +209,42 @@ export default function HomeScreen() {
         <SectionHeader title="Popular Products" onAction={() => router.push('/(tabs)/search')} />
         <ProductGrid products={popular} style={styles.productGrid} />
 
+        <SectionHeader
+          title="Rudraksha Guides"
+          actionLabel="View All"
+          onAction={() => router.push('/info/guide')}
+        />
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.guideRow}
+        >
+          {rudrakshaGuides.map((guide) => (
+            <Pressable
+              key={guide.id}
+              style={[styles.guideCard, isTablet && styles.guideCardTablet]}
+              onPress={() => router.push('/info/guide')}
+              accessibilityRole="link"
+              accessibilityLabel={`${guide.title}. ${guide.summary}`}
+            >
+              <Image
+                source={guide.image}
+                style={styles.guideThumb}
+                contentFit="cover"
+                contentPosition="top"
+              />
+              <View style={styles.guideMeta}>
+                <Text style={styles.guideTitle} numberOfLines={2}>
+                  {guide.title}
+                </Text>
+                <Text style={styles.guideSummary} numberOfLines={2}>
+                  {guide.summary}
+                </Text>
+              </View>
+            </Pressable>
+          ))}
+        </ScrollView>
+
         <View style={styles.welcome}>
           <Text style={styles.welcomeKicker}>Welcome to</Text>
           <Text style={styles.welcomeTitle}>{business.name}</Text>
@@ -350,6 +387,41 @@ const styles = StyleSheet.create({
   },
   productGrid: {
     paddingHorizontal: spacing.lg,
+  },
+  guideRow: {
+    paddingHorizontal: spacing.lg,
+    gap: spacing.md,
+  },
+  guideCard: {
+    width: 220,
+    borderRadius: radii.lg,
+    borderWidth: 1,
+    borderColor: colors.border,
+    backgroundColor: colors.surface,
+    overflow: 'hidden',
+  },
+  guideCardTablet: {
+    width: 280,
+  },
+  guideThumb: {
+    width: '100%',
+    aspectRatio: 4 / 3,
+    backgroundColor: colors.placeholder,
+  },
+  guideMeta: {
+    padding: spacing.md,
+    gap: 2,
+  },
+  guideTitle: {
+    fontFamily: 'DMSans_700Bold',
+    fontSize: 14,
+    color: colors.text,
+  },
+  guideSummary: {
+    fontFamily: 'DMSans_400Regular',
+    fontSize: 12,
+    lineHeight: 17,
+    color: colors.textSecondary,
   },
   welcome: {
     marginHorizontal: spacing.lg,
